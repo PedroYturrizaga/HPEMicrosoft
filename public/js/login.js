@@ -87,7 +87,7 @@ function verificarDatos(e){
 }
 function cerrarCesion(){
   $.ajax({
-    url  : 'admin/cerrarCesion',
+    url  : 'login/cerrarCesion',
     type : 'POST'
   }).done(function(data){
     try{

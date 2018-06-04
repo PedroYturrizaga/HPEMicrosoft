@@ -46,7 +46,7 @@ class C_Solicitud extends CI_Controller {
 										   'mayorista' 	   => $nomMayorista,
 										   'nu_cotizacion' => $numFactura,
 										   'monto' 		   => $monto);
-			$datoInsertCotizacion = $this->M_Solicitud->insertarCotizacion($arrayInsertCotizacion, 'tb_cotizacion');
+			
 			$arrayInsertProducto = array('nu_producto' => [	$noProducto1,
 															$noProducto2,
 															$noProducto3,
@@ -55,11 +55,26 @@ class C_Solicitud extends CI_Controller {
 															$cantidadWSSE,
 															$cantidadWSDE,
 															$cantidadCAL] );
-			$datosInsertProducto = $this->M_Solicitud->insertProducto($arrayInsertProducto, 'tb_producto');
+			$datoInsertCotizacion = $this->M_Solicitud->insertarCotizacion($arrayInsertCotizacion, 'tb_cotizacion', $arrayInsertProducto, 'tb_producto');
+			// $datosInsertProducto = $this->M_Solicitud->insertProducto($arrayInsertProducto, 'tb_producto');
 			$data['error'] = EXIT_SUCCESS; 
 		} catch (Exception $e) {
 			$data['msj'] = $e->getMessage();
 		}
 		echo json_encode(array_map('utf8_encode', $data));
 	} 
+
+	function getLastOrders() {
+		$data['error'] = EXIT_ERROR;
+		$data['msj'] = null;
+		try {
+			$idUser = $this->session->get_userdata($session->Id_user); ;
+			$obtenerOrdenes = $this->M_Solicitud->getLastOrders($idUser);
+			$data['error'] = EXIT_SUCCESS;
+		} catch (Exception $ex){
+			$data['msj'] = $ex->getMessage();
+		}
+		echo json_encode(array_map('utf8_encode', $data));
+
+	}
 }
