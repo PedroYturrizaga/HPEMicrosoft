@@ -1,0 +1,317 @@
+-moz-transform $translate,
+-ms-transform $translate {
+  -o-transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+}
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  overflow-y: scroll;
+  font-family: 'RobotoRegular';
+}
+label {
+  font-weight: 100;
+}
+.section {
+  position: relative;
+  padding: 20px;
+}
+.center-login {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  margin: auto;
+  -webkit-transform: translate(-50%, -50%);
+  -webkit-transition: transform 0.2s linear;
+  -moz-transition: transform 0.2s linear;
+  -ms-transition: transform 0.2s linear;
+  -o-transition: transform 0.2s linear;
+  transition: transform 0.2s linear;
+}
+.header {
+  background-color: #415564;
+  padding: 20px 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+}
+.header img {
+  width: 100%;
+  max-width: 175px;
+}
+.header p {
+  font-size: 32px;
+  color: #fff;
+  font-family: 'RobotoBold';
+  margin-top: 25px;
+}
+.mdl-container {
+  max-width: 1200px;
+  margin: auto;
+  -webkit-transition: max-width 0.2s linear;
+  -moz-transition: max-width 0.2s linear;
+  -ms-transition: max-width 0.2s linear;
+  -o-transition: max-width 0.2s linear;
+  transition: max-width 0.2s linear;
+}
+.mdl-container .promociones {
+  margin-top: 120px;
+}
+.mdl-container .promociones .buscador {
+  border: 1px solid #000;
+  padding: 5px;
+}
+.mdl-container .promociones .buscador .search {
+  max-width: calc(100% - 55px);
+  width: 100%;
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0;
+}
+.mdl-container .promociones .buscador .search input {
+  box-shadow: none;
+  border: none;
+}
+.mdl-container .promociones .buscador .button-search {
+  max-width: 45px;
+  width: 100%;
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+}
+.mdl-container .promociones .filtro {
+  margin: 20px 0;
+  padding: 0;
+}
+.mdl-container .promociones .filtro .breadcrumb {
+  width: 100%;
+  max-width: calc(100% - 245px);
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0;
+  margin-right: 20px;
+  border: 1px solid #000;
+  border-radius: 0;
+  background-color: transparent;
+}
+.mdl-container .promociones .filtro .mdl-select {
+  width: 100%;
+  max-width: 220px;
+  display: inline-block;
+  vertical-align: middle;
+}
+.mdl-container .promociones .filtro .mdl-select .bootstrap-select {
+  width: 100%;
+}
+.mdl-container .promociones .filtro .mdl-select .bootstrap-select button {
+  outline: 0 !important;
+  box-shadow: none !important;
+  background-color: transparent !important;
+  border-color: #000;
+  border-radius: 0;
+  height: 42px;
+}
+.mdl-input {
+  padding: 7px 20px;
+  height: 75px;
+  margin: 0;
+  border: 1px solid #000;
+}
+.mdl-input label {
+  font-family: 'RobotoLight';
+  color: #000;
+  cursor: pointer;
+}
+.mdl-input input {
+  display: block;
+  height: 36px;
+  width: 100%;
+  border: none;
+}
+.mdl-input input:focus {
+  outline: 0;
+}
+.mdl-input.input-focused {
+  border: 1px solid #01a982;
+}
+.mdl-input .bootstrap-select {
+  width: 100% !important;
+}
+.mdl-input .bootstrap-select .dropdown-toggle {
+  border: none !important;
+  padding: 6px 0;
+  outline: 0 !important;
+  box-shadow: none !important;
+  background-color: transparent !important;
+}
+.mdl-input .bootstrap-select .dropdown-toggle:focus {
+  outline: 0 !important;
+}
+.mdl-label {
+  padding: 20px 10px;
+}
+.mdl-create {
+  padding: 20px 0;
+}
+.mdl-create .col-xs-6 {
+  text-align: center;
+}
+.mdl-create .col-xs-6:nth-child(1) {
+  border-right: 1px solid #4fc0a6;
+}
+.mdl-card-login {
+  width: 100%;
+  max-width: 400px;
+  margin: auto;
+  border: none;
+  padding: 10px;
+}
+.mdl-card-login .mdl-card__actions button {
+  width: 100%;
+  background-color: #4fc0a6;
+  color: #fff;
+  font-family: 'RobotoBold';
+  text-transform: initial;
+  height: 42px;
+  box-shadow: none;
+  border-radius: 0;
+  font-size: 16px;
+}
+.mdl-card-login .mdl-card__actions .button-user {
+  width: 49%;
+  display: inline-block;
+}
+.mdl-card-login .mdl-card__actions .button-user button {
+  border: 1px solid #4fc0a6;
+  background-color: transparent;
+  color: #000;
+}
+.mdl-card-login .mdl-card__actions .button-user button:hover {
+  background-color: #4fc0a6;
+  color: #fff;
+}
+.mdl-card-login .mdl-card__actions .button-register {
+  max-width: 180px;
+  margin-top: 38px;
+}
+.mdl-card-login .mdl-card__actions .button-register i {
+  vertical-align: middle;
+  color: #fff;
+  margin-right: 20px;
+}
+.mdl-card-login .mdl-card__actions p {
+  color: #000;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+.mdl-card-login a {
+  color: #000;
+  text-decoration: underline;
+  text-decoration-color: #4fc0a6;
+  font-family: 'RobotoMedium';
+}
+.mdl-card-register {
+  max-width: 800px;
+}
+.mdl-card-register .mdl-input {
+  margin: 10px 0;
+}
+.userActive {
+  background-color: #4fc0a6 !important;
+  color: #fff !important;
+}
+.mdl-card__supporting-text {
+  width: 100%;
+  padding: 0;
+}
+.mdl-card-promocion {
+  width: 49%;
+  max-width: 590px;
+  display: inline-block;
+  margin: 15px 0;
+  float: left;
+  padding: 10px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+.mdl-card-promocion:nth-child(2n+1) {
+  margin-right: 8px;
+}
+.mdl-card-promocion:nth-child(2n) {
+  margin-left: 8px;
+}
+.mdl-card-promocion .mdl-header {
+  background-color: #624967;
+  padding: 0 5px;
+}
+.mdl-card-promocion .mdl-header h2 {
+  color: #fff;
+  font-size: 16px;
+  margin: 0;
+  line-height: 20px;
+  display: inline-block;
+  vertical-align: middle;
+  max-width: calc(100% - 135px);
+  width: 100%;
+  font-family: 'RobotoMedium';
+}
+.mdl-card-promocion .mdl-header p {
+  max-width: 120px;
+  color: #624967;
+  width: 100%;
+  padding: 0 20px 0 10px;
+  line-height: 16px;
+  font-size: 14px;
+  font-family: 'RobotoMedium';
+  display: inline-block;
+  vertical-align: middle;
+  background-color: #fff;
+  margin: 0;
+}
+.mdl-card-promocion .mdl-contenido {
+  padding: 10px 0;
+  font-size: 0;
+}
+.mdl-card-promocion .mdl-contenido .contenido {
+  display: inline-block;
+  width: 55%;
+  vertical-align: top;
+}
+.mdl-card-promocion .mdl-contenido .contenido .promocion .title {
+  background-color: #d1d3d4;
+  color: #624967;
+  font-size: 16px;
+  margin: 0;
+  line-height: 20px;
+  font-family: 'RobotoMedium';
+  padding: 5px;
+}
+.mdl-card-promocion .mdl-contenido .contenido .promocion p {
+  margin: 0;
+  line-height: 20px;
+  padding: 5px;
+}
+.mdl-card-promocion .mdl-contenido .imagenes {
+  display: inline-block;
+  width: 43%;
+  border: 1px solid #000;
+  vertical-align: top;
+  float: right;
+}
+.mdl-card-promocion .mdl-contenido .imagenes .imagen-promocion {
+  width: 100%;
+  max-width: 180px;
+  padding: 5px;
+}
+.mdl-card-promocion .mdl-contenido .imagenes .footer-promocion {
+  padding: 5px 15px;
+}
+.mdl-card-promocion .mdl-contenido .imagenes .footer-promocion img:nth-child(1) {
+  float: left;
+}
+.mdl-card-promocion .mdl-contenido .imagenes .footer-promocion img:nth-child(2) {
+  float: right;
+}
