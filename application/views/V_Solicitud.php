@@ -50,9 +50,12 @@
                                 <!-- <label for="email">Email</label> -->
                                 <input type="email" class="form-control" id="email" placeholder="Email" onchange="validarCampos()">
                             </div>
+
+                            <!-- Simple Select -->
                             <div class="form-group col-xs-12 p-0">
-                                <!-- <label for="apellido">Apellido</label> -->
-                                <input type="text" class="form-control" id="noMayorista" placeholder="Nombre mayorista" onchange="validarCampos()">
+                                <select name="noMayorista" id="noMayorista"> 
+                                    <?php echo $option ?>
+                                </select>
                             </div>
                             <div class="form-group col-xs-12 p-0">
                                 <!-- <label for="correo">Confirmar email</label> -->
@@ -65,12 +68,12 @@
                             <div class="form-group col-xs-12 p-0">
                                 <!-- <label for="correo">Confirmar email</label> -->
                                 <label> Tipo Documento:</label>
-                                <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-1">
-                                    <input type="radio" id="radioCotizacion" class="mdl-radio__button" name="radioCotizacion" value="1" onchange="validarCampos()" checked>
+                                <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="radioCotizacion">
+                                    <input type="radio" id="radioCotizacion" class="mdl-radio__button" name="option1" value="1" onchange="validarCampos()">
                                     <span class="mdl-radio__label">Cotizaci&oacute;n</span>
                                 </label>
-                                <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-1">
-                                    <input type="radio" id="radioFacturacion" class="mdl-radio__button" name="radioFacturacion" value="0" onchange="validarCampos()">
+                                <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="radioFacturacion">
+                                    <input type="radio" id="radioFacturacion" class="mdl-radio__button" name="option1" value="0" onchange="validarCampos()">
                                     <span class="mdl-radio__label">Factura</span>
                                 </label>
                             </div>
@@ -102,28 +105,29 @@
                                     <tr>
                                         <th>Licencia Microsoft</th>
                                         <th>Unidades</th>
+                                        <th>Puntos</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
                                         <td id="product1">Windows Server Essentials Edition</td>
-                                        <td><input type="text" id="cantidadWSEE"/></td>
-                                        <label id="puntosWSEE"> </label>
+                                        <td><input type="text" id="cantidadWSEE" name="cantidadWSEE" onchange="calcularWSEE()" /></td>
+                                        <td> <span id="puntosWSEE"> </span> </td>
                                     </tr>
                                     <tr>
                                         <td id="product2">Windows Server Standard Edition</td>
-                                        <td><input type="text" id="cantidadWSSE"/></td>
-                                        <label id="puntosWSSE"> </label>
+                                        <td><input type="text" id="cantidadWSSE" name="cantidadWSSE" onchange="calcularWSSE()"/></td>
+                                        <td> <span id="puntosWSSE"> </span> </td>
                                     </tr>
                                     <tr>
                                         <td id="product3">Windows Server Datacenter Edition</td>
-                                        <td><input type="text" id="cantidadWSDE"/></td>
-                                        <label id="puntosWSDE"> </label>
+                                        <td><input type="text" id="cantidadWSDE" name="cantidadWSDE" onchange="calcularWSDE()"/></td>
+                                        <td> <span id="puntosWSDE"> </span> </td>
                                     </tr>
                                     <tr>
                                         <td id="product4">CALs</td>
-                                        <td><input type="text" id="cantidadCAL"/></td>
-                                        <label id="puntosCAL"> </label>
+                                        <td><input type="text" id="cantidadCAL" name="cantidadCAL" onchange="calcularCAL()"/></td>
+                                        <td> <span id="puntosCAL"> </span> </td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -136,10 +140,13 @@
                     
                     <!-- PUNTAJE ACUMULADO -->
                     <div class="col-sm-12 col-xs-12" id="puntaje">
-                        <h2 class="title-formulario">&Uacute;ltimos 4 ingresos</h2>
+                        <h2 class="title-formulario">&Uacute;ltimos 4 ingresos del trimestre</h2>
                         <div class="col-sm-8 col-xs-12">
                             <table id="tbUltimosIngresos" >
                                 <thead>
+                                    <tr> 
+                                        <th class="col-spam-3 col-sm-2 "> <strong>Puntaje</strong> </th>
+                                    </tr>
                                     <tr>
                                         <th>Pais</th>
                                         <th>Documento</th>
@@ -150,12 +157,16 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-
+                                    <tr> </tr>
+                                    <tr> </tr>
+                                    <tr> </tr>
+                                    <tr> </tr>
                                 </tbody>
                             </table>
                         </div>
                         <div class="col-sm-4 col-xs-12">
                             <h2 class="title-formulario">Puntos Engage & Grow acumulados</h2>
+                            <h4 id="puntosTrimestral"> </h4>
                         </div>
                     </div>
                         
@@ -215,7 +226,7 @@
     <script src="<?php echo RUTA_PLUGINS?>toaster/toastr.js?v=<?php echo time();?>"></script>
     <script src="<?php echo RUTA_JS?>Utils.js?v=<?php echo time();?>"></script>
     <script src="<?php echo RUTA_JS?>jsmenu.js?v=<?php echo time();?>"></script>
-    <script src="<?php echo RUTA_JS?>index.js?v=<?php echo time();?>"></script>
+    <script src="<?php echo RUTA_JS?>solicitud.js?v=<?php echo time();?>"></script>
     <script type="text/javascript">
     	if( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ) {
         	$('select').selectpicker('mobile');

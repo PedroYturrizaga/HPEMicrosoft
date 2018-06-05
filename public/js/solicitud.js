@@ -5,6 +5,10 @@ function registrar() {
 	var canal 		= $('#canal').val();
 	var numFactura  = $('#numFactura').val();
 	var monto		= $('#monto').val();
+	var pais 		= $('#pais').val();
+	var facturacion = $('#radioFacturacion').is(':checked');
+	var cotizacion  = $('#radioCotizacion').is(':checked');
+	var tipoDoc		= null;
 
 	var noProducto1 = "Windows Server Essentials Edition";
 	var cantidadWSEE= $('#cantidadWSEE').val();
@@ -66,12 +70,25 @@ function registrar() {
 		$('#fecha').css('border-color','red');
 		return;
 	}
+	if(pais == null || pais == '') {
+		msj('error', 'Ingrese un pais');
+		$('#pais').css('border-color','red');
+		return;		
+	}
+	if(facturacion == true){
+		tipoDoc = 0;
+	}
+	if(cotizacion == true){
+		tipoDoc = 1;
+	}
 	$.ajax({
 		data  : { Nombre 	  : Nombre,
 				  email 	  : email,
 				  noMayorista : noMayorista,
 				  fecha		  : newdate,
 				  canal 	  : canal,
+				  tipoDoc 	  : tipoDoc,
+				  pais		  : pais,
 				  numFactura  : numFactura,
 				  monto		  : monto ,
 				  noProducto1 : noProducto1,
@@ -82,7 +99,7 @@ function registrar() {
 				  cantidadWSSE: cantidadWSSE ,
 				  cantidadWSDE: cantidadWSDE,
 				  cantidadCAL : cantidadCAL },
-		url   : 'c_solicitud/registrar',
+		url   : 'solicitud/registrar',
 		type  : 'POST'
 	}).done(function(data){
 		try{
@@ -90,7 +107,7 @@ function registrar() {
         	if(data.error == 0){
         		modal('ModalQuestion');
 				limpiarCampos();
-        	}else {return;}
+        	} else { return; }
       } catch (err){
         msj('error',err.message);
       }
@@ -99,14 +116,16 @@ function registrar() {
 
 function limpiarCampos(){
 	$('#Nombre').val(null);
-	$('#apellido').val(null);
 	$('#email').val(null);
-	$('#correo').val(null);
-	$('#rol').val(null);
+	$('#noMayorista').val(null);
 	$('#canal').val(null);
-	$('#oportunidad').val(null);
-	$('#cliente').val(null);
-	$('#productos').val('0');
+	$('#numFactura').val(null);
+	$('#monto').val(null);
+	$('#pais').val(null);
+	$('#cantidadWSEE').val(null);
+	$('#cantidadWSSE').val(null);
+	$('#cantidadWSDE').val(null);
+	$('#cantidadCAL').val(null);
 	$('.selectpicker').selectpicker('refresh');
 	$('#attach').val('0');
 	$('.selectpicker').selectpicker('refresh');
@@ -162,4 +181,69 @@ function isEmpty(val){
 	if(jQuery.trim(val).length != 0)
     	return false;
 		return true;
+}
+
+var WSEE = '';
+var WSSE = '';
+var WSDE = '';
+var CAL = '';
+function calcularWSEE() {
+	var WSEE = $('#cantidadWSEE').val();
+	var cantidad = 0;
+	if(WSEE != '') {
+		cantidad = WSEE * 50;
+ 		$('#puntosWSEE').text(cantidad);
+	} else {
+		$cantidad = '';
+		$('#puntosWSEE').text('');
+	}
+}
+function calcularWSSE() {
+	var WSSE = $('#cantidadWSSE').val();
+	var cantidad = 0;
+	if(WSSE != '') {
+		cantidad = WSSE * 50;
+ 		$('#puntosWSSE').text(cantidad);
+	} else {
+		$('#puntosWSSE').text('');
+	}
+}
+function calcularWSDE() {
+	var WSDE = $('#cantidadWSDE').val();
+	var cantidad = 0;
+	if(WSDE != '') {
+		cantidad = WSDE * 100;
+ 		$('#puntosWSDE').text(cantidad);
+	} else {
+		$('#puntosWSDE').text('');
+	}
+}
+function calcularCAL() {
+	var CAL = $('#cantidadCAL').val();
+	var cantidad = 0;
+	if(CAL != '') {
+		cantidad = CAL * 100;
+ 		$('#puntosCAL').text(cantidad);
+	} else {
+		$('#puntosCAL').text('');
+	}
+}
+
+function getLastOrder() {
+	var total = 0;
+	$.ajax({
+		data  : { Nombre 	  : Nombre },
+		url   : 'solicitud/getLastOrders',
+		type  : 'POST'
+	}).done(function(data){
+		try{
+        	data = JSON.parse(data);
+        	console.log(data);
+        	if(data.error == 0){
+        		
+        	}
+      } catch (err){
+        msj('error',err.message);
+      }
+	});
 }
