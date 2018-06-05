@@ -18,7 +18,7 @@ class Solicitud extends CI_Controller {
 		$datos = $this->M_Solicitud->getMayoristas();
 		$option = ' ';
 		foreach ($datos as $key) {
-			$option .= '<option value=" '.$key->noMayorista.' ">'.$key->noMayorista.'</option>';
+			$option .= '<option value=" '.$key->id_mayorista.' ">'.$key->noMayorista.'</option>';
 		}
 		$data['option'] = $option;
 		$this->load->view('v_solicitud', $data);
@@ -32,11 +32,12 @@ class Solicitud extends CI_Controller {
 			$email			= $this->input->post('email');
 			$fecha		 	= $this->input->post('fecha');
 			$canal		 	= ucwords(strtolower($this->input->post('canal')));
-			$nomMayorista 	= $this->input->post('noMayorista');
+			$idMayorista 	= $this->input->post('idMayorista');
 			$numFactura	  	= $this->input->post('numFactura');
 			$monto		 	= floatval($this->input->post('monto'));
 			$tipoDoc 	    = $this->input->post('tipoDoc');
 			$pais			= ucwords(strtolower($this->input->post('pais')));
+			$puntos 		= $this->input->post('puntos');
 
 			$noProducto1	= $this->input->post('noProducto1');
 			$noProducto2	= $this->input->post('noProducto2');
@@ -47,15 +48,19 @@ class Solicitud extends CI_Controller {
 			$cantidadWSDE	= $this->input->post('cantidadWSDE');
 			$cantidadCAL	= $this->input->post('cantidadCAL');
 
+			$columnaFinal   = (($tipoDoc == 1 ) ? 'puntos_cotizados': 'puntos_cerrados') ;
+
 			$arrayInsertCotizacion = array('no_vendedor'   => $nombreVendedor,
 										   'email'		   => $email,
 										   'fecha' 		   => $fecha,
 										   'canal' 		   => $canal,
-										   'mayorista' 	   => $nomMayorista,
+										   '_id_mayorista' => $idMayorista,
 										   'tipo_documento'=> $tipoDoc,
 										   'pais'		   => $pais,
 										   'nu_cotizacion' => $numFactura,
-										   'monto' 		   => $monto);
+										   'monto' 		   => $monto,
+										   $columnaFinal   => $puntos
+										   );
 			
 			$arrayInsertProducto = array('no_producto' => array 
 														   ($noProducto1,
@@ -80,14 +85,27 @@ class Solicitud extends CI_Controller {
 		$data['error'] = EXIT_ERROR;
 		$data['msj'] = null;
 		try {
-			$idUser = $this->session->userdata($session->Id_user); ;
-			$obtenerOrdenes = $this->M_Solicitud->getLastOrders($idUser);
+			// $idUser = $this->session->userdata($session->Id_user); ;
+			$obtenerOrdenes = $this->M_Solicitud->getLastOrders(5);
+			$html = null;
+			$puntosEngage = 0;
+			foreach ($obtenerOrdenes as $key) {
+				$html .= '<tr>
+						      <td class="text-center">'.$key->pais.'</td>
+	                          <td class="text-center">'.$key->documento.'</td>
+	                          <td class="text-center">'.$key->fecha.'</td>
+	                          <td class="text-center"> '.$key->puntos_cotizados.' </td>
+	                          <td class="text-center"> '.$key->puntos_facturados.' </td>
+	                          <td class="text-center"> '.$key->puntos_total.' </td> 
+	                      </tr>';
+              	$puntosEngage += $key->puntos_total;
+			}
+			$data['html'] = $html;
+			$data['puntosGeneral'] = $puntosEngage;
 			$data['error'] = EXIT_SUCCESS;
 		} catch (Exception $ex){
 			$data['msj'] = $ex->getMessage();
-			$data['pais'] = null;
 		}
 		echo json_encode($data);
-
 	}
 }

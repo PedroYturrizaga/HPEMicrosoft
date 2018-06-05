@@ -6,6 +6,7 @@ class M_Solicitud extends CI_Model {
 	}
 
 	function insertarCotizacion($arrayInsert, $tabla, $arrayInsertProducto, $tabla2) {
+		// print_r($arrayInsert);
 		$this->db->insert($tabla, $arrayInsert);
 		$sql = $this->db->insert_id();
 		if($this->db->affected_rows() != 1) {
@@ -39,11 +40,35 @@ class M_Solicitud extends CI_Model {
 	}
 
 	function getLastOrders($idUser) {
-		$sql="SELECT *
-				FROM tb_cotizacion 
+		$sql="SELECT id_cotizacion, 
+	   				 pais,
+	   				 CASE WHEN(tipo_documento = 1) THEN 'Cotización' else 'Factura' end AS documento,
+	   				 fecha,
+			       	 SUM(puntos_cotizados) AS puntos_cotizados,
+			       	 SUM(puntos_cerrados) AS puntos_facturados,
+			       	 SUM(puntos_cerrados + puntos_cotizados) AS puntos_total
+			   	FROM tb_cotizacion 
 			   WHERE _id_mayorista = ".$idUser."
-			ORDER BY id_cotizacion 
-		  DESC LIMIT 4 ";
+ 			GROUP BY id_cotizacion
+			ORDER BY id_cotizacion DESC
+			   LIMIT 4";
+
+/*
+SELECT id_cotizacion, 
+	   pais,
+	   CASE WHEN(tipo_documento = 1) THEN 'Cotización' else 'Factura' end AS documento,
+	   fecha,
+       SUM(puntos_cotizados) AS puntos_cotizados,
+       SUM(puntos_cerrados) AS puntos_facturados,
+       (SELECT SUM(puntos_cerrados + puntos_cotizados)) AS puntos_total
+  FROM tb_cotizacion 
+ WHERE _id_mayorista = 5
+ GROUP BY id_cotizacion,pais
+ ORDER BY id_cotizacion DESC
+ LIMIT 4
+*/
+
+
 	  	$result = $this->db->query($sql);
 		return $result->result();
 	}

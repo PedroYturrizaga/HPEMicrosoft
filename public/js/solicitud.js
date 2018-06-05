@@ -1,7 +1,7 @@
 function registrar() {
 	var Nombre 		= $('#Nombre').val();
 	var email 		= $('#email').val();
-	var noMayorista = $('#noMayorista').val();
+	var idMayorista = $('#noMayorista').val();
 	var canal 		= $('#canal').val();
 	var numFactura  = $('#numFactura').val();
 	var monto		= $('#monto').val();
@@ -9,6 +9,11 @@ function registrar() {
 	var facturacion = $('#radioFacturacion').is(':checked');
 	var cotizacion  = $('#radioCotizacion').is(':checked');
 	var tipoDoc		= null;
+	var puntosWSEE  = ($('#puntosWSEE').text() == " ") ? 0 : $('#puntosWSEE').text() ;
+	var puntosWSSE  = ($('#puntosWSSE').text() == " ") ? 0 : $('#puntosWSSE').text() ;
+	var puntosWSDE  = ($('#puntosWSDE').text() == " ") ? 0 : $('#puntosWSDE').text() ;
+	var puntosCAL   = ($('#puntosCAL').text() == " ") ? 0 : $('#puntosCAL').text() ;
+	var puntos      = parseInt(puntosWSEE) + parseInt(puntosWSSE) + parseInt(puntosWSDE) + parseInt(puntosCAL);
 
 	var noProducto1 = "Windows Server Essentials Edition";
 	var cantidadWSEE= $('#cantidadWSEE').val();
@@ -46,7 +51,7 @@ function registrar() {
 		$('#email').css('border-color','#C6C9CA');
 	}
 	if(noMayorista == null || noMayorista == ''){
-		msj('error', 'Ingrese el nombre del mayorista');
+		msj('error', 'seleccione el nombre del mayorista');
 		$('#noMayorista').css('border-color','red');
 		return;
 	}
@@ -84,7 +89,7 @@ function registrar() {
 	$.ajax({
 		data  : { Nombre 	  : Nombre,
 				  email 	  : email,
-				  noMayorista : noMayorista,
+				  idMayorista : idMayorista,
 				  fecha		  : newdate,
 				  canal 	  : canal,
 				  tipoDoc 	  : tipoDoc,
@@ -98,7 +103,8 @@ function registrar() {
 				  cantidadWSEE: cantidadWSEE,
 				  cantidadWSSE: cantidadWSSE ,
 				  cantidadWSDE: cantidadWSDE,
-				  cantidadCAL : cantidadCAL },
+				  cantidadCAL : cantidadCAL,
+				  puntos 	  : puntos },
 		url   : 'solicitud/registrar',
 		type  : 'POST'
 	}).done(function(data){
@@ -126,6 +132,10 @@ function limpiarCampos(){
 	$('#cantidadWSSE').val(null);
 	$('#cantidadWSDE').val(null);
 	$('#cantidadCAL').val(null);
+	$('#puntosWSEE').text('');
+	$('#puntosWSSE').text('');
+	$('#puntosWSDE').text('');
+	$('#puntosCAL').text('');
 	$('.selectpicker').selectpicker('refresh');
 	$('#attach').val('0');
 	$('.selectpicker').selectpicker('refresh');
@@ -232,18 +242,24 @@ function calcularCAL() {
 function getLastOrder() {
 	var total = 0;
 	$.ajax({
-		data  : { Nombre 	  : Nombre },
+		data  : {  },
 		url   : 'solicitud/getLastOrders',
 		type  : 'POST'
 	}).done(function(data){
 		try{
         	data = JSON.parse(data);
-        	console.log(data);
         	if(data.error == 0){
-        		
+        		$('#body').html('');
+        		$('#body').append(data.html);
+        		$('#puntosTrimestral').html('');
+        		$('#puntosTrimestral').append(data.puntosGeneral);
         	}
       } catch (err){
         msj('error',err.message);
       }
 	});
+}
+
+function initPage(){
+	getLastOrder();
 }

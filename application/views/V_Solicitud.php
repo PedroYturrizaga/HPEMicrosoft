@@ -155,12 +155,9 @@
                                         <th>Cerrado</th>
                                         <th>Total</th>
                                     </tr>
-                                </thead>
-                                <tbody>
-                                    <tr> </tr>
-                                    <tr> </tr>
-                                    <tr> </tr>
-                                    <tr> </tr>
+                                </thead >
+                                <tbody id="body">
+                                    
                                 </tbody>
                             </table>
                         </div>
@@ -233,6 +230,7 @@
         } else {
             $('select').selectpicker();
         }
+        initPage();
         initButtonCalendarDaysRange('fecha','01/11/2017','31/10/2018');
         initMaskInputs('fecha');
     </script>
