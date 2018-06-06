@@ -52,47 +52,74 @@ class M_Solicitud extends CI_Model {
  			GROUP BY id_cotizacion
 			ORDER BY id_cotizacion DESC
 			   LIMIT 4";
-
-/*
-SELECT id_cotizacion, 
-	   pais,
-	   CASE WHEN(tipo_documento = 1) THEN 'Cotización' else 'Factura' end AS documento,
-	   fecha,
-       SUM(puntos_cotizados) AS puntos_cotizados,
-       SUM(puntos_cerrados) AS puntos_facturados,
-       (SELECT SUM(puntos_cerrados + puntos_cotizados)) AS puntos_total
-  FROM tb_cotizacion 
- WHERE _id_mayorista = 5
- GROUP BY id_cotizacion,pais
- ORDER BY id_cotizacion DESC
- LIMIT 4
-*/
-
-
 	  	$result = $this->db->query($sql);
 		return $result->result();
 	}
 
+// 	PARA EL CHAMPION
 	function getDetallesCotizacion($idCotizacion) {
-		$sql = "SELECT * 
-				  FROM tb_producto
-				 WHERE _id_cotizacion = ".$idCotizacion."
-				   AND cantidad <> 0";
+		$sql = "SELECT c.email, 
+					   c.no_vendedor, 
+					   c.pais, 
+					   c.canal, 
+					   c.tipo_documento, 
+					   c.nu_cotizacion, 
+					   c.fecha, 
+					   c.monto, 
+					   m.noMayorista, 
+					   p.no_producto, 
+					   p.cantidad 
+				  FROM tb_producto p, 
+				       tb_cotizacion c, 
+				       tb_mayorista m 
+				 WHERE c.id_cotizacion = ".$idCotizacion." 
+				   AND c.id_cotizacion = p._id_cotizacion 
+				   AND p.cantidad <> 0 
+				   AND c._id_mayorista = m.id_mayorista";
 	   	$result = $this->db->query($sql);
 	   	return $result->result();
 	}
 
-// 	PARA EL CHAMPION
 	function getCanalMasUsado () {
 		$sql = "SELECT COUNT(canal) AS cantidad_canal,
-					   LOWER(canal)
+					   canal AS no_canal, 
+					   no_vendedor, 
+					   pais, 
+					   SUM(monto) AS importe
 				  FROM tb_cotizacion
-			  GROUP BY LOWER(canal)";
+			  GROUP BY LOWER(canal)
+			  ORDER BY cantidad_canal DESC, importe DESC
+			  	 LIMIT 3";
+		$result = $this->db->query($sql);
+		return $result->result();
 	}
 
-	/**
-	QUERY PARA OBTENER EL CANAL Y LAS VECES QUE SE REALIZO UNA SOLICITUD POR ESE CANAL
-	SELECT COUNT(canal) as cantidad_canal, canal FROM `tb_cotizacion`
-	**/
+	function getLastCotizaciones() {
+		$sql = "SELECT id_cotizacion,
+					   email,
+				       no_vendedor,
+				       canal,
+				       pais,
+				       fecha
+				  FROM tb_cotizacion
+			  ORDER BY id_cotizacion DESC
+				 LIMIT 10";
+		$result = $this->db->query($sql);
+		return $result->result();
+	}
+
+	function getDatosGraficosCanales(){
+		$sql = "SELECT pais, 
+					   SUM(monto) AS importe
+				  FROM tb_cotizacion
+			  GROUP BY pais
+			  ORDER BY importe DESC";
+		$result = $this->db->query($sql);
+		return $result->result();
+	}
+
+	function getDatosGraficoCotiza() {
+		
+	}
 
 }

@@ -27,7 +27,12 @@ function ingresar(){
         if(data.error == 0){
         	$('#usuario').val("");
         	$('#password').val("");
-          location.href = 'Admin';
+          console.log(data);
+          if(data.rol == 1) {
+            location.href = 'Solicitud';
+          } else if(data.rol == 0) {
+            location.href = 'Champion';
+          }
         }else {
           if(data.pass == null || data.pass == '') {
             msj('error', 'alguno de sus datos son incorrectos');

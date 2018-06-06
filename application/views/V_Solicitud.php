@@ -32,7 +32,7 @@
                         <img src="<?php echo RUTA_IMG?>logo.png">
                     </div>
                     <div class="header-contenido inline">
-                        <p>Registro de Oportunidades Centro&aacute;merica</p>
+                        <p>Registro de Oportunidades Centroam&eacute;rica</p>
                     </div>
                 </div>
                 
@@ -230,7 +230,6 @@
         } else {
             $('select').selectpicker();
         }
-        initPage();
         initButtonCalendarDaysRange('fecha','01/11/2017','31/10/2018');
         initMaskInputs('fecha');
     </script>

@@ -9,11 +9,13 @@ function registrar() {
 	var facturacion = $('#radioFacturacion').is(':checked');
 	var cotizacion  = $('#radioCotizacion').is(':checked');
 	var tipoDoc		= null;
-	var puntosWSEE  = ($('#puntosWSEE').text() == " ") ? 0 : $('#puntosWSEE').text() ;
-	var puntosWSSE  = ($('#puntosWSSE').text() == " ") ? 0 : $('#puntosWSSE').text() ;
-	var puntosWSDE  = ($('#puntosWSDE').text() == " ") ? 0 : $('#puntosWSDE').text() ;
-	var puntosCAL   = ($('#puntosCAL').text() == " ") ? 0 : $('#puntosCAL').text() ;
-	var puntos      = parseInt(puntosWSEE) + parseInt(puntosWSSE) + parseInt(puntosWSDE) + parseInt(puntosCAL);
+	var puntos      = 0;
+	if($('#puntosWSEE').text() != " " || $('#puntosWSSE').text() != " ") {
+		puntos += 50; 
+	}
+	if($('#puntosWSDE').text() != " " || $('#puntosCAL').text() != " ") {
+		puntos += 100;
+	}
 
 	var noProducto1 = "Windows Server Essentials Edition";
 	var cantidadWSEE= $('#cantidadWSEE').val();
@@ -193,54 +195,40 @@ function isEmpty(val){
 		return true;
 }
 
-var WSEE = '';
-var WSSE = '';
-var WSDE = '';
-var CAL = '';
 function calcularWSEE() {
 	var WSEE = $('#cantidadWSEE').val();
-	var cantidad = 0;
 	if(WSEE != '') {
-		cantidad = WSEE * 50;
- 		$('#puntosWSEE').text(cantidad);
+ 		$('#puntosWSEE').text('50');
 	} else {
-		$cantidad = '';
 		$('#puntosWSEE').text('');
 	}
 }
 function calcularWSSE() {
 	var WSSE = $('#cantidadWSSE').val();
-	var cantidad = 0;
 	if(WSSE != '') {
-		cantidad = WSSE * 50;
- 		$('#puntosWSSE').text(cantidad);
+ 		$('#puntosWSSE').text('50');
 	} else {
 		$('#puntosWSSE').text('');
 	}
 }
 function calcularWSDE() {
 	var WSDE = $('#cantidadWSDE').val();
-	var cantidad = 0;
 	if(WSDE != '') {
-		cantidad = WSDE * 100;
- 		$('#puntosWSDE').text(cantidad);
+ 		$('#puntosWSDE').text('100');
 	} else {
 		$('#puntosWSDE').text('');
 	}
 }
 function calcularCAL() {
 	var CAL = $('#cantidadCAL').val();
-	var cantidad = 0;
 	if(CAL != '') {
-		cantidad = CAL * 100;
- 		$('#puntosCAL').text(cantidad);
+ 		$('#puntosCAL').text('100');
 	} else {
 		$('#puntosCAL').text('');
 	}
 }
 
 function getLastOrder() {
-	var total = 0;
 	$.ajax({
 		data  : {  },
 		url   : 'solicitud/getLastOrders',
@@ -258,8 +246,4 @@ function getLastOrder() {
         msj('error',err.message);
       }
 	});
-}
-
-function initPage(){
-	getLastOrder();
 }

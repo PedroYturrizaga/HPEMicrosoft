@@ -247,6 +247,12 @@ table.dataTable.no-footer{
     max-width: 300px;
     width: 100%;
 }
+.modal.fade .modal-dialog.modal-md{
+	max-width: 600px
+}
+.modal.fade .modal-dialog.modal-lg{
+	max-width: 900px
+}
 .modal.fade.in .modal-dialog{
     opacity: 1;
     -webkit-transform: scale(1);
@@ -282,6 +288,9 @@ table.dataTable.no-footer{
 .modal .mdl-card__actions button{
     background-color: #000000;
     color: #FFFFFF;
+}
+.mdl-card{
+	width: 100%
 }
 @media ( max-width: 1200px ){
 	.contenido-partner{

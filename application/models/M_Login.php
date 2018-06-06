@@ -8,7 +8,7 @@ class M_Login extends CI_Model {
 
 	function verificaUsuario($user) {
 		$sql = "SELECT *
-				  FROM mayorista
+				  FROM tb_mayorista
 				 WHERE usuario LIKE '%".$user."%'";
 		$result = $this->db->query($sql);
 		return $result->result();
