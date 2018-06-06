@@ -1,0 +1,187 @@
+$light     = 'MetricLight'
+$regular   = 'MetricRegular'
+$medium    = 'MetricSemiBold'
+$bold      = 'MetricBold'
+$default   = #01a982
+$color     = #425563
+flexCenter()
+	display flex
+	display -webkit-flex
+	align-items center
+flexStart()
+	display flex
+	display -webkit-flex
+	align-items start
+flexEnd()
+	display flex
+	display -webkit-flex
+	align-items flex-end
+transitionOpacity()
+	-webkit-transition opacity .3s linear
+	-moz-transition opacity .3s linear
+	-ms-transition opacity .3s linear
+	-o-transition opacity .3s linear
+	transition opacity .3s linear
+transitionWidth()
+	-webkit-transition width .3s linear
+	-moz-transition width .3s linear
+	-ms-transition width .3s linear
+	-o-transition width .3s linear
+	transition width .3s linear
+transitionMaxWidth()
+	-webkit-transition max-width .3s linear
+	-moz-transition max-width .3s linear
+	-ms-transition max-width .3s linear
+	-o-transition max-width .3s linear
+	transition max-width .3s linear
+transitionBgColor()
+	-webkit-transition background-color .3s linear
+	-moz-transition background-color .3s linear
+	-ms-transition background-color .3s linear
+	-o-transition background-color .3s linear
+	transition background-color .3s linear
+transitionTransform()
+	-webkit-transition transform .3s linear
+	-moz-transition transform .3s linear
+	-ms-transition transform .3s linear
+	-o-transition transform .3s linear
+	transition transform .3s linear
+absolute()
+	position absolute
+	top 0
+	left 0
+	right 0
+	bottom 0
+relative()
+	position relative
+	top 0
+	left 0
+	right 0
+	bottom 0
+flipCard()
+	-moz-backface-visibility hidden
+	-webkit-backface-visibility hidden
+	backface-visibility hidden
+	-webkit-transition -webkit-transform 500ms
+	-moz-transition -moz-transform 500ms
+	-o-transition -o-transform 500ms
+	transition transform 500ms
+	border-radius 5px
+	position absolute
+flipCardFront()
+	-webkit-transform perspective(600) rotateY(0)
+	-moz-transform perspective(600) rotateY(0)
+	-o-transform perspective(600) rotateY(0)
+	transform perspective(600) rotateY(0)
+flipCardBack()
+	-webkit-transform rotateY(-180deg)
+	-moz-transform rotateY(-180deg)
+	-o-transform rotateY(-180deg)
+	transform rotateY(-180deg)
+	z-index 900
+flipCardFrontHover()
+	-webkit-transform rotateY(180deg)
+	-moz-transform rotateY(180deg)
+	-o-transform rotateY(180deg)
+	transform rotateY(180deg)
+	-webkit-transform perspective(600) rotateY(180deg)
+	-moz-transform perspective(600) rotateY(180deg)
+	-o-transform perspective(600) rotateY(180deg)
+	transform perspective(600) rotateY(180deg)
+flipCardBackHover()
+	-webkit-transform rotateY(0)
+	-moz-transform rotateY(0)
+	-o-transform rotateY(0)
+	transform rotateY(0)
+	-webkit-transform perspective(600) rotateY(0)
+	-moz-transform perspective(600) rotateY(0)
+	-o-transform perspective(600) rotateY(0)
+	transform perspective(600) rotateY(0)
+	z-index 950
+body
+	margin 0
+	padding 0
+	font-family $regular
+	color #000000
+	background-color #FFFFFF
+p
+	margin 0
+h2
+	margin 20px 0
+label
+	font-weight 100
+.js-section
+	position relative
+	padding 40px 20px
+.js-flex
+	flexCenter()
+.js-height
+	height 100vh
+.js-header
+	position fixed
+	top 0
+	width 100%
+	background-color $color
+	z-index 5
+	padding 10px 25px
+	color #FFFFFF
+	flexCenter()
+	img
+		width initial
+	.js-header--left
+		flexCenter()
+		width 100%
+		justify-content flex-start
+		p
+			font-family $bold
+			margin-left 10px
+			font-size 16px
+			line-height 16px
+	.js-header--right
+		flexCenter()
+		width 100%
+		justify-content flex-end
+		p
+			font-size 20px
+.js-container
+	transitionMaxWidth()
+	width 100%
+	max-width 1100px
+	height 100%
+	margin auto
+	position relative
+	&.js-flex
+		justify-content flex-end
+.js-fondo--login
+	absolute()
+	background url(../img/fondo/fondo-login.jpg) no-repeat center center
+	background-size cover
+	height 100vh
+.js-input
+	padding 7px 20px
+	height 75px
+	margin 0
+	border 1px solid rgba(0, 0, 0, 0.15)
+	background-color #FFFFFF
+	margin-bottom -1px
+	label
+		font-family $light
+		color #000000
+		cursor pointer
+	input
+		display block
+		height 36px
+		width 100%
+		border none
+		&:focus
+			outline 0
+	&.input-focused
+		background-color #FFFFFF
+	.bootstrap-select
+		width 100% !important
+		.dropdown-toggle
+			border none !important
+			padding 6px 0
+			selectTransparent()
+			&:focus
+				outline: 0 !important

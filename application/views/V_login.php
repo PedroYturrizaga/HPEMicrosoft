@@ -10,7 +10,7 @@
         <meta name="date"                   content="Febrero 15, 2018"/>
         <meta name="language"               content="es">
         <meta name="theme-color"            content="#000000">
-    	<title>HPE promo made simple</title>
+    	<title>HPE Microsoft</title>
     	<link rel="shortcut icon" href="<?php echo RUTA_IMG?>logo/favicon.ico">
     	<link rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>toaster/toastr.min.css?v=<?php echo time();?>">
         <link rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>bootstrap-select/css/bootstrap-select.min.css?v=<?php echo time();?>">
@@ -18,13 +18,41 @@
         <link rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>mdl/material.min.css?v=<?php echo time();?>">
         <link rel="stylesheet"    href="<?php echo RUTA_FONTS?>font-awesome.min.css?v=<?php echo time();?>">
         <link rel="stylesheet"    href="<?php echo RUTA_FONTS?>material-icons.css?v=<?php echo time();?>">
-        <link rel="stylesheet"    href="<?php echo RUTA_FONTS?>roboto.css?v=<?php echo time();?>">
+        <link rel="stylesheet"    href="<?php echo RUTA_FONTS?>metric.css?v=<?php echo time();?>">
     	<link rel="stylesheet"    href="<?php echo RUTA_CSS?>m-p.min.css?v=<?php echo time();?>">
     	<!-- <link rel="stylesheet"    href="<?php echo RUTA_CSS?>index.css?v=<?php echo time();?>"> -->
         <link rel="stylesheet"    href="<?php echo RUTA_CSS?>style.css?v=<?php echo time();?>">
     </head>
     <body>
-        <section class>
+        <div class="js-header">
+            <div class="js-header--left">
+                <img src="<?php echo RUTA_IMG?>logo/hpe-logo.png">
+                <img src="<?php echo RUTA_IMG?>logo/microsoft-logo.png">
+            </div>
+            <div class="js-header--right">
+                <p>Registro de Oportunidades Centroam&eacute;rica</p>
+            </div>
+        </div>
+        <section class="js-section js-height">
+            <div class="js-fondo--login"></div>
+            <div class="js-container js-flex">
+                <div class="js-login">
+                    <h2>Acceso a Herramienta</h2>
+                    <div class="col-xs-12 form-group js-input">
+                        <label for="usuario">Usuario</label>
+                        <input type="text" id="usuario" onkeyup="verificarDatos(event);">
+                    </div>
+                    <div class="col-xs-12 form-group js-input">
+                        <label for="password">Contrase&ntilde;a</label>
+                        <input type="password" id="password" onkeyup="verificarDatos(event);">
+                    </div>
+                    <div class="col-xs-12 mdl-card__actions text-right">
+                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" onclick="ingresar()">Login</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- <section class>
             <div class="header">
                 <div class="mdl-container row">
                     <div class="col-xs-12">
@@ -58,17 +86,17 @@
                     <div class="mdl-card__actions p-0">
                         <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" onclick="ingresar()">Login</button>
                     </div>
-                    <!-- <div class="col-xs-12 mdl-create">
+                    <div class="col-xs-12 mdl-create">
                         <div class="col-xs-6">
                             <a href="">Forgot password</a>
                         </div>
                         <div class="col-xs-6">
                             <a href="Registro">Create an account</a>
                         </div>
-                    </div> -->
+                    </div>
                 </div>
             </div>
-        </section>
+        </section> -->
         <script src="<?php echo RUTA_JS?>jquery-3.2.1.min.js?v=<?php echo time();?>"></script>
         <script src="<?php echo RUTA_JS?>jquery-1.11.2.min.js?v=<?php echo time();?>"></script>
         <script src="<?php echo RUTA_PLUGINS?>bootstrap/bootstrap.min.js?v=<?php echo time();?>"></script>
