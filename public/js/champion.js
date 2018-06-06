@@ -1,15 +1,14 @@
 function getDetails(cotizacion) {
 	var idCotizacion = cotizacion;
-
 	$.ajax({
-		data  : { id_cotizacion 	  : idCotizacion },
-		url   : 'champion/getDetalle',
+		data  : { idCotizacion : idCotizacion },
+		url   : 'Champion/getDetalles',
 		post : 'POST'
 	}).done(function(data){
 		try{
         	data = JSON.parse(data);
+        	console.log(data.detalles);
         	if(data.error == 0){
-        		console.log(data.detalles);
         		$('#Nombre').val(data.detalles[0]['no_vendedor']);
         		$('#email').val(data.detalles[0]['email']);
         		$('#noMayorista').val(data.detalles[0]['noMayorista']);
@@ -18,27 +17,19 @@ function getDetails(cotizacion) {
         		$('#numFactura').val(data.detalles[0]['nu_cotizacion']);
         		$('#fecha').val(data.detalles[0]['fecha']);
         		$('#monto').val(data.detalles[0]['monto']);
-        		for (var i = 0; i <= data.detalles.length; i++) {
-        			switch(i <= data.detalles.length){
-        				case data.detalles[i]['no_producto'] == "Windows Server Essentials Edition" :
-        					$('#cantidadWSEE').val(data.detalles[i]['cantidad']);
-        					break;
-        				case data.detalles[i]['no_producto'] == "Windows Server Standard Edition" :
-        					$('#cantidadWSSE').val(data.detalles[i]['cantidad']);
-        					break;
-        				case data.detalles[i]['no_producto'] == "Windows Server Datacenter Edition" :
-        					$('#cantidadWSDE').val(data.detalles[i]['cantidad']);
-        					break;
-        				case data.detalles[i]['no_producto'] == "CALs" :
-        					$('#cantidadCAL').val(data.detalles[i]['cantidad']);
-        					break;
+        		(data.detalles[0]['tipo_documento'] == 0) ? $('#facturacion').addClass('is-checked') : $('#cotizacion').addClass('is-checked');
+        		for (var i = 0; i < data.detalles.length; i++) {
+        			if(data.detalles[i]['no_producto'] == "Windows Server Essentials Edition") {
+						$('#cantidadWSEE').val(data.detalles[i]['cantidad']);
+        			} else if(data.detalles[i]['no_producto'] == "Windows Server Standard Edition") {
+						$('#cantidadWSSE').val(data.detalles[i]['cantidad']);
+        			} else if(data.detalles[i]['no_producto'] == "Windows Server Datacenter Edition") {
+						$('#cantidadWSDE').val(data.detalles[i]['cantidad']);
+        			} else if (data.detalles[i]['no_producto'] == "CALs") {
+        				$('#cantidadCAL').val(data.detalles[i]['cantidad']);
         			}
-        			console.log(data.detalles[i]['no_producto']);
-        			console.log(data.detalles[i]['cantidad']);
         		}
         		modal('modalDetalles');
-        		// $('#').val();
-        		// $('#').val();
         	} else { return; }
       } catch (err){
         msj('error',err.message);
@@ -49,11 +40,11 @@ function getDetails(cotizacion) {
 function drawChartDonut() {
 	$.ajax({
 		data : {},
-		url  : 'champion/getDatosGraficosCanales',
+		url  : 'Champion/getDatosGraficosCanales',
 		post : 'POST'
 	}).done(function(data) {
 		data = JSON.parse(data);
-		console.log(data.datos);
+		// console.log(data.datos);
 		var data = new google.visualization.DataTable();
 			data.addColumn('string', 'paises');
 			data.addColumn('number', 'importe');
@@ -76,7 +67,7 @@ function drawChart() {
 		post : 'POST'
 	}).done(function(data) {
 		data = JSON.parse(data);
-		console.log(data.datos);
+		// console.log(data.datos);
 		var data = new google.visualization.DataTable(data.datos);
 			data.addColumn('string', 'paises');
 			data.addColumn('number', 'puntaje');

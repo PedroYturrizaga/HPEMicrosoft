@@ -46,12 +46,14 @@ class Champion extends CI_Controller
 		$this->load->view('v_champion', $data);
 	}
 
-    public function getDetalle() {
+    function getDetalles() {
         $data['error'] = EXIT_ERROR;
         $data['msj']   = null;
         try {
-            $id    = $this->input->post('id_cotizacion');
-            $datos = $this->M_Solicitud->getDetallesCotizacion(36);
+            $id    = $this->input->post("idCotizacion");
+            // print_r('id1 :::: '.$this->input->post('idCotizacion'));
+            // print_r('id2 :::: '.$id);
+            $datos = $this->M_Solicitud->getDetallesCotizacion(33);
             $data['detalles'] = $datos;
         }
         catch (Exception $ex){

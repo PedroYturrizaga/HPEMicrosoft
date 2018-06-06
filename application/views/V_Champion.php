@@ -100,8 +100,7 @@
 
                             <!-- Simple Select -->
                             <div class="form-group col-xs-12 p-0">
-                                <select name="noMayorista" id="noMayorista" disabled> 
-                                    <?php echo $option ?>
+                                <select name="noMayorista" id="noMayorista" disabled>
                                 </select>
                             </div>
                             <div class="form-group col-xs-12 p-0">
@@ -112,11 +111,11 @@
                             </div>
                             <div class="form-group col-xs-12 p-0">
                                 <label> Tipo Documento:</label>
-                                <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="radioCotizacion">
+                                <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="radioCotizacion" id="cotizacion">
                                     <input type="radio" id="radioCotizacion" class="mdl-radio__button" name="option1" value="1" onchange="validarCampos()" disabled>
                                     <span class="mdl-radio__label">Cotizaci&oacute;n</span>
                                 </label>
-                                <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="radioFacturacion">
+                                <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="radioFacturacion" id="facturacion">
                                     <input type="radio" id="radioFacturacion" class="mdl-radio__button" name="option1" value="0" onchange="validarCampos()" disabled>
                                     <span class="mdl-radio__label">Factura</span>
                                 </label>
@@ -148,29 +147,24 @@
                                     <tr>
                                         <th>Licencia Microsoft</th>
                                         <th>Unidades</th>
-                                        <th>Puntos</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
                                         <td id="product1">Windows Server Essentials Edition</td>
                                         <td><input type="text" id="cantidadWSEE" name="cantidadWSEE" onchange="calcularWSEE()" disabled/></td>
-                                        <td> <span id="puntosWSEE"> </span> </td>
                                     </tr>
                                     <tr>
                                         <td id="product2">Windows Server Standard Edition</td>
                                         <td><input type="text" id="cantidadWSSE" name="cantidadWSSE" onchange="calcularWSSE()" disabled/></td>
-                                        <td> <span id="puntosWSSE"> </span> </td>
                                     </tr>
                                     <tr>
                                         <td id="product3">Windows Server Datacenter Edition</td>
                                         <td><input type="text" id="cantidadWSDE" name="cantidadWSDE" onchange="calcularWSDE()" disabled/></td>
-                                        <td> <span id="puntosWSDE"> </span> </td>
                                     </tr>
                                     <tr>
                                         <td id="product4">CALs</td>
                                         <td><input type="text" id="cantidadCAL" name="cantidadCAL" onchange="calcularCAL()" disabled/></td>
-                                        <td> <span id="puntosCAL"> </span> </td>
                                     </tr>
                                 </tbody>
                             </table>
