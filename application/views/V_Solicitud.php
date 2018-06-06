@@ -22,8 +22,18 @@
     <link rel="stylesheet"    href="<?php echo RUTA_FONTS?>roboto.css?v=<?php echo time();?>">
     <link rel="stylesheet"    href="<?php echo RUTA_CSS?>m-p.min.css?v=<?php echo time();?>">
     <link rel="stylesheet"    href="<?php echo RUTA_CSS?>index.css?v=<?php echo time();?>">
+    <link rel="stylesheet"    href="<?php echo RUTA_CSS?>style.css?v=<?php echo time();?>">
 </head>
 <body>
+    <div class="js-header">
+        <div class="js-header--left">
+            <img src="<?php echo RUTA_IMG?>logo/hpe-logo.png">
+            <img src="<?php echo RUTA_IMG?>logo/microsoft-logo.png">
+        </div>
+        <div class="js-header--right">
+            <p>Registro de Oportunidades Centroam&eacute;rica</p>
+        </div>
+    </div>
     <section id="principal">
         <div class="container">
             <div class="row">
@@ -35,9 +45,7 @@
                         <p>Registro de Oportunidades Centroam&eacute;rica</p>
                     </div>
                 </div>
-                
                 <div class="formulario col-sm-12 col-xs-12 m-t-20">
-
                     <!-- INGRESO DE NUEVA SOLICITUD -->
                     <div class="col-sm-12 col-xs-12" id="solicitud">
                         <div class="col-sm-6 col-xs-12"> 
@@ -50,7 +58,6 @@
                                 <!-- <label for="email">Email</label> -->
                                 <input type="email" class="form-control" id="email" placeholder="Email" onchange="validarCampos()">
                             </div>
-
                             <!-- Simple Select -->
                             <div class="form-group col-xs-12 p-0">
                                 <select name="noMayorista" id="noMayorista"> 
@@ -78,7 +85,6 @@
                                 </label>
                             </div>
                         </div>
-                        
                         <div class="col-sm-6 col-xs-12">
                             <div class="form-group col-xs-12 p-0">
                             <input type="text" class="form-control" id="numFactura" placeholder="# Factura" onchange="validarCampos()">
@@ -136,8 +142,6 @@
                             </div>
                         </div>
                     </div>
-                        
-                    
                     <!-- PUNTAJE ACUMULADO -->
                     <div class="col-sm-12 col-xs-12" id="puntaje">
                         <h2 class="title-formulario">&Uacute;ltimos 4 ingresos del trimestre</h2>
@@ -166,7 +170,6 @@
                             <h4 id="puntosTrimestral"> </h4>
                         </div>
                     </div>
-                        
                     <!-- TERMINOS Y CONDICIONES -->
                     <div class="col-sm-12 col-xs-12" id="condiciones">
                         <div class="col-sm-12 col-xs-12">
@@ -191,26 +194,25 @@
                 </div>
             </div>
         </div>
-        <!--MODAL-->
-        <div class="modal fade" id="ModalQuestion" tabindex="-1" role="dialog" aria-labelledby="simpleModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
-            <div class="modal-dialog modal-sm text-center">
-                <div class="modal-content">
-                    <div class="mdl-card">
-                        <div class="mdl-card__supporting-text">
-                            <h2>PERFECTO&#33;</h2>
-                            <h2>Tu registro ha sido enviado satisfactoriamente.</h2>
-                            <p>Nos pondremos en contacto contigo a la brevedad</p>
-                            <small>Equipo HPE Latinoamerica</small>
-                        </div> 
-                        <div class="mdl-card__actions">                         
-                            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" data-dismiss="modal">Aceptar</button>
-                        </div>
+    </section>
+    <!--MODAL-->
+    <div class="modal fade" id="ModalQuestion" tabindex="-1" role="dialog" aria-labelledby="simpleModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog modal-sm text-center">
+            <div class="modal-content">
+                <div class="mdl-card">
+                    <div class="mdl-card__supporting-text">
+                        <h2>PERFECTO&#33;</h2>
+                        <h2>Tu registro ha sido enviado satisfactoriamente.</h2>
+                        <p>Nos pondremos en contacto contigo a la brevedad</p>
+                        <small>Equipo HPE Latinoamerica</small>
+                    </div> 
+                    <div class="mdl-card__actions">                         
+                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" data-dismiss="modal">Aceptar</button>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-
+    </div>
 	<script src="<?php echo RUTA_JS?>jquery-3.2.1.min.js?v=<?php echo time();?>"></script>
 	<script src="<?php echo RUTA_JS?>jquery-1.11.2.min.js?v=<?php echo time();?>"></script>
 	<script src="<?php echo RUTA_PLUGINS?>bootstrap/bootstrap.min.js?v=<?php echo time();?>"></script>
