@@ -36,7 +36,7 @@
                     </div>
                 </div>
                 
-                <form class="formulario col-sm-12 col-xs-12 m-t-20">
+                <div class="formulario col-sm-12 col-xs-12 m-t-20">
 
                     <!-- INGRESO DE NUEVA SOLICITUD -->
                     <div class="col-sm-12 col-xs-12" id="solicitud">
@@ -188,7 +188,7 @@
                         </div>
                     </div>
                     
-                </form>
+                </div>
             </div>
         </div>
         <!--MODAL-->

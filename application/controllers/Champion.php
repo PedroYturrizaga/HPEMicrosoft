@@ -35,8 +35,8 @@ class Champion extends CI_Controller
         			       <td class="text-center">'.$key->pais.'</td>
         			       <td class="text-center">'.$key->fecha.'</td>
                            <td class="text-center">
-                               <button class="mdl-button mdl-js-button mdl-button--icon">
-                                   <i class="mdi mdi-visibility" onclick="getDetails('.$key->id_cotizacion.')"></i>
+                               <button class="mdl-button mdl-js-button mdl-button--icon" onclick="getDetails('.$key->id_cotizacion.')">
+                                   <i class="mdi mdi-visibility"></i>
                                </button>
                            </td>
         			     </tr>';
@@ -50,13 +50,14 @@ class Champion extends CI_Controller
         $data['error'] = EXIT_ERROR;
         $data['msj']   = null;
         try {
-            $id    = $this->input->post('idCotizacion');
-            $datos = $this->M_Solicitud->getMayoristas($id);
+            $id    = $this->input->post('id_cotizacion');
+            $datos = $this->M_Solicitud->getDetallesCotizacion(36);
             $data['detalles'] = $datos;
         }
         catch (Exception $ex){
             $data['msj'] = $ex->getMessage();
         }
+        $data['error'] = EXIT_SUCCESS;
         echo json_encode($data);
     }
 
@@ -82,7 +83,11 @@ class Champion extends CI_Controller
         $data['msj']   = null;
         try {
             $datos = $this->M_Solicitud->getDatosGraficoCotiza();
-            $data['datos'] = json_encode($datos);
+            $array = [];
+            foreach ($datos as $key) {
+                array_push($array, [$key->pais, intval($key->puntos_entregados) ]);
+            }
+            $data['datos'] = json_encode($array);
         }
         catch (Exception $ex){
             $data['msj'] = $ex->getMessage();

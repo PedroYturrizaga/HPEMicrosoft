@@ -6,7 +6,6 @@ class M_Solicitud extends CI_Model {
 	}
 
 	function insertarCotizacion($arrayInsert, $tabla, $arrayInsertProducto, $tabla2) {
-		// print_r($arrayInsert);
 		$this->db->insert($tabla, $arrayInsert);
 		$sql = $this->db->insert_id();
 		if($this->db->affected_rows() != 1) {
@@ -119,7 +118,13 @@ class M_Solicitud extends CI_Model {
 	}
 
 	function getDatosGraficoCotiza() {
-		
+		$sql = "SELECT pais, 
+					   SUM(puntos_cotizados+puntos_cerrados) AS puntos_entregados 
+				  FROM tb_cotizacion 
+			  GROUP BY pais 
+			  ORDER BY puntos_entregados DESC";
+		$result = $this->db->query($sql);
+		return $result->result();
 	}
 
 }
