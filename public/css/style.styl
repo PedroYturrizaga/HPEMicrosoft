@@ -121,7 +121,7 @@ label
 	position fixed
 	top 0
 	width 100%
-	background-color $color
+	background-color transparent
 	z-index 5
 	padding 10px 25px
 	color #FFFFFF
@@ -190,3 +190,14 @@ label
 /*MATERIAL*/
 .mdl-layout__container
 	position fixed
+	.mdl-layout__drawer
+		background-color $color
+		color #FFFFFF
+		.mdl-navigation
+			.mdl-navigation__link
+				padding 16px 30px
+				text-decoration none
+				color #FFFFFF
+				&:HOVER
+					background-color #384854
+			
