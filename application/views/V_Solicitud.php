@@ -19,13 +19,13 @@
     <link rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>datetimepicker/css/bootstrap-material-datetimepicker.css?v=<?php echo time();?>">
     <link rel="stylesheet"    href="<?php echo RUTA_FONTS?>font-awesome.min.css?v=<?php echo time();?>">
     <link rel="stylesheet"    href="<?php echo RUTA_FONTS?>material-icons.css?v=<?php echo time();?>">
-    <link rel="stylesheet"    href="<?php echo RUTA_FONTS?>roboto.css?v=<?php echo time();?>">
+    <link rel="stylesheet"    href="<?php echo RUTA_FONTS?>metric.css?v=<?php echo time();?>">
     <link rel="stylesheet"    href="<?php echo RUTA_CSS?>m-p.min.css?v=<?php echo time();?>">
     <link rel="stylesheet"    href="<?php echo RUTA_CSS?>index.css?v=<?php echo time();?>">
     <link rel="stylesheet"    href="<?php echo RUTA_CSS?>style.css?v=<?php echo time();?>">
 </head>
 <body>
-    <div class="js-header">
+    <div class="js-header js-relative">
         <div class="js-header--left">
             <img src="<?php echo RUTA_IMG?>logo/hpe-logo.png">
             <img src="<?php echo RUTA_IMG?>logo/microsoft-logo.png">
@@ -34,18 +34,19 @@
             <p>Registro de Oportunidades Centroam&eacute;rica</p>
         </div>
     </div>
-    <section id="principal">
-        <div class="container">
-            <div class="row">
-                <div class="header">
-                    <div class="header-imagen inline">
-                        <img src="<?php echo RUTA_IMG?>logo.png">
-                    </div>
-                    <div class="header-contenido inline">
-                        <p>Registro de Oportunidades Centroam&eacute;rica</p>
-                    </div>
-                </div>
-                <div class="formulario col-sm-12 col-xs-12 m-t-20">
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer">
+        <div class="mdl-layout__drawer">
+            <span class="mdl-layout-title">Title</span>
+            <nav class="mdl-navigation">
+                <a class="mdl-navigation__link" href="">Ingresar una nueva cotizaci&oacute;n</a>
+                <a class="mdl-navigation__link" href="">Ver puntaje acumulado</a>
+                <a class="mdl-navigation__link" href="">T&eacute;rminos y Condiciones</a>
+                <a class="mdl-navigation__link" href="">Escribir al Champion</a>
+            </nav>
+        </div>
+        <main class="mdl-layout__content">
+            <section class="section">
+                <div class="js-container">
                     <!-- INGRESO DE NUEVA SOLICITUD -->
                     <div class="col-sm-12 col-xs-12" id="solicitud">
                         <div class="col-sm-6 col-xs-12"> 
@@ -142,7 +143,14 @@
                             </div>
                         </div>
                     </div>
-                    <!-- PUNTAJE ACUMULADO -->
+                </div>
+            </section>
+        </main>
+    </div>
+    <!-- <section id="principal">
+        <div class="container">
+            <div class="row">
+                <div class="formulario col-sm-12 col-xs-12 m-t-20">
                     <div class="col-sm-12 col-xs-12" id="puntaje">
                         <h2 class="title-formulario">&Uacute;ltimos 4 ingresos del trimestre</h2>
                         <div class="col-sm-8 col-xs-12">
@@ -170,7 +178,7 @@
                             <h4 id="puntosTrimestral"> </h4>
                         </div>
                     </div>
-                    <!-- TERMINOS Y CONDICIONES -->
+                    TERMINOS Y CONDICIONES
                     <div class="col-sm-12 col-xs-12" id="condiciones">
                         <div class="col-sm-12 col-xs-12">
                             <h2 class="title-formulario">T&eacute;rminos y condiciones generales</h2>
@@ -194,7 +202,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
     <!--MODAL-->
     <div class="modal fade" id="ModalQuestion" tabindex="-1" role="dialog" aria-labelledby="simpleModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
         <div class="modal-dialog modal-sm text-center">
