@@ -215,9 +215,6 @@
         }
         initButtonCalendarDaysRange('fecha','01/11/2017','31/10/2018');
         initMaskInputs('fecha');
-        $(document).ready(function(){
-            // $('#modalDetalles').modal('show');
-        })
     </script>
 
     <script type="text/javascript">
