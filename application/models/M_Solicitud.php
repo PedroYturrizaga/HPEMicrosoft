@@ -30,10 +30,17 @@ class M_Solicitud extends CI_Model {
 		return array("error" => EXIT_SUCCESS, "msj"=> MSJ_INS, "id_cotizacion"=> $sql);
 	}
 
-	function getMayoristas() {
-		$sql = "SELECT * 
-				  FROM tb_mayorista
-			  ORDER BY noMayorista ASC";
+	function getMayoristas($idRol) {
+		if($idRol == 1) {
+			$sql = "SELECT * 
+					  FROM tb_mayorista
+					 WHERE id_rol <> 0
+				  ORDER BY noMayorista ASC";
+		} else if ($idRol == 0) {
+			$sql = "SELECT * 
+					  FROM tb_mayorista
+				  ORDER BY noMayorista ASC";
+		}
 		$result = $this->db->query($sql);
 		return $result->result();
 	}

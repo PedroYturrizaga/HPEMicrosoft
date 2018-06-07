@@ -14,8 +14,9 @@ class Solicitud extends CI_Controller {
 	}
 
 	public function index (){
-		$data['nombre']='';
-		$datos = $this->M_Solicitud->getMayoristas();
+		$idRol = $this->session->userdata('id_rol');
+
+		$datos = $this->M_Solicitud->getMayoristas($idRol);
 		$option = ' ';
 		foreach ($datos as $key) {
 			$option .= '<option value=" '.$key->id_mayorista.' ">'.$key->noMayorista.'</option>';
@@ -85,8 +86,8 @@ class Solicitud extends CI_Controller {
 		$data['error'] = EXIT_ERROR;
 		$data['msj'] = null;
 		try {
-			// $idUser = $this->session->userdata($session->Id_user); ;
-			$obtenerOrdenes = $this->M_Solicitud->getLastOrders(5);
+			$idUser = $this->session->userdata('Id_user');
+			$obtenerOrdenes = $this->M_Solicitud->getLastOrders($idUser);
 			$html = null;
 			$puntosEngage = 0;
 			foreach ($obtenerOrdenes as $key) {

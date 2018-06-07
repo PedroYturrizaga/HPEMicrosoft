@@ -47,27 +47,27 @@ function drawChartDonut() {
 		post : 'POST'
 	}).done(function(data) {
 		data = JSON.parse(data);
-		
-		var data = google.visualization.arrayToDataTable( $.parseJSON(data.datos) );
-		// var data = new google.visualization.DataTable();
-		// 	data.addColumn('string', 'paises');
-		// 	data.addColumn('number', 'importe');
-		// 	// for(var i = 0; i < data.datos.length; i++){
-		// 	// 	pais = data.datos[i].
-
-		// 	// 	mes = jsonData[i].Mes;
-  //  //              total = jsonData[i].Total;
-  //  //              data.addRow([mes, total]);
-		// 	// }
-		// 	data.addRows( [["Panama",6230],["Mexico",2904],["Argentina",1995],["Peru",850],["Chile",126]] );
-		// 	// data.addRows( data.datos );
+		var arr = $.parseJSON(data.datos);
+		arr.splice(0, 0, ["pais", "ventas"]);
+		var data = google.visualization.arrayToDataTable( arr );
 
 	    var options = {
 			title: 'Venta por paises',
 			pieHole: 0.6,
+			pieSliceTextStyle: {
+				color: 'black',
+			},
+			titleTextStyle : { 
+				color: 'black',
+				// fontName: <string>,
+				fontSize: 18,
+				bold: true,
+			},
+			colors: ['#2AD2C9', '#FF8D6D', '#614767', '#5F7A76'], //, '#425563'. '#80746E', '#C6C9CA']
+			legend : 'bottom'
 	    };
 
-	    var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+	    var chart = new google.visualization.PieChart(document.getElementById('venta'));
 	    chart.draw(data, options);
 	});
 }
@@ -79,14 +79,9 @@ function drawChart() {
 		post : 'POST'
 	}).done(function(data) {
 		data = JSON.parse(data);
-
-		var data = google.visualization.arrayToDataTable( $.parseJSON(data.datos) );
-
-		// var data = new google.visualization.DataTable(data.datos);
-		// 	data.addColumn('string', 'paises');
-		// 	data.addColumn('number', 'puntaje');
-		// 	// data.addRows( [["Panama",4350],["Chile",1900],["Mexico",1250],["Peru",850],["Argentina",800]] );
-		// 	data.addRows( data.datos );
+		var arr = $.parseJSON(data.datos);
+		arr.splice(0, 0, ["pais", "puntaje"]);
+		var data = google.visualization.arrayToDataTable( arr );
 
         var options = {
         	title: 'Puntaje entregado',
@@ -94,10 +89,17 @@ function drawChart() {
 			pieSliceTextStyle: {
 				color: 'black',
 			},
+			titleTextStyle : { 
+				color: 'black',
+				// fontName: <string>,
+				fontSize: 18,
+				bold: true,
+			},
+			colors: ['#2AD2C9', '#FF8D6D', '#614767', '#5F7A76'], //, '#425563'. '#80746E', '#C6C9CA']
+			legend : 'bottom'
         };
 
-        var chart = new google.visualization.PieChart(document.getElementById('donut_single'));
+        var chart = new google.visualization.PieChart(document.getElementById('puntaje'));
         chart.draw(data, options);
 	});
-
 }

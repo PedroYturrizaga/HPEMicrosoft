@@ -16,7 +16,6 @@ function ingresar(){
     msj('error', 'Ingrese su contraseña');
 		return;
 	}
-  debugger;
 	$.ajax({
 		data : {usuario  : usuario,
 				    password : password},

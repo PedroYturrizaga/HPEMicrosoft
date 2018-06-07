@@ -35,12 +35,18 @@
                         <p>Registro de Oportunidades Centroam&eacute;rica</p>
                     </div>
                 </div>
-                
+
+                <div class="formulario col-sm-12 col-xs-12 m-t-20">
+                    <div class="text-right">
+                        <button type="button" name="boton" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" href="Solicitud" >Nueva Oportunidad</button>
+                    </div>
+                </div>
+
                 <div class="formulario col-sm-12 col-xs-12 m-t-20">
 					<!-- GRAFICOS -->
 					<div class="col-sm-4 col-xs-12"> 
-                        <div id="donutchart" style="width: 350px; height: 250px;"></div>
-                        <div id="donut_single" style="width: 350px; height: 250px;"></div>
+                        <div id="venta" style="width: 350px; height: 250px;"></div>
+                        <div id="puntaje" style="width: 350px; height: 250px;"></div>
 					</div>
                     <!-- TOP CANALES CON MAS IMPORTE -->
                     <div class="col-sm-8 col-xs-12">
@@ -100,7 +106,7 @@
 
                             <!-- Simple Select -->
                             <div class="form-group col-xs-12 p-0">
-                                <select name="noMayorista" id="noMayorista">
+                                <select name="noMayorista" id="noMayorista" disaled>
                                 </select>
                             </div>
                             <div class="form-group col-xs-12 p-0">
@@ -152,19 +158,19 @@
                                 <tbody>
                                     <tr>
                                         <td id="product1">Windows Server Essentials Edition</td>
-                                        <td><input type="text" id="cantidadWSEE" name="cantidadWSEE" onchange="calcularWSEE()" disabled/></td>
+                                        <td><input type="text" id="cantidadWSEE" name="cantidadWSEE" disabled/></td>
                                     </tr>
                                     <tr>
                                         <td id="product2">Windows Server Standard Edition</td>
-                                        <td><input type="text" id="cantidadWSSE" name="cantidadWSSE" onchange="calcularWSSE()" disabled/></td>
+                                        <td><input type="text" id="cantidadWSSE" name="cantidadWSSE" disabled/></td>
                                     </tr>
                                     <tr>
                                         <td id="product3">Windows Server Datacenter Edition</td>
-                                        <td><input type="text" id="cantidadWSDE" name="cantidadWSDE" onchange="calcularWSDE()" disabled/></td>
+                                        <td><input type="text" id="cantidadWSDE" name="cantidadWSDE" disabled/></td>
                                     </tr>
                                     <tr>
                                         <td id="product4">CALs</td>
-                                        <td><input type="text" id="cantidadCAL" name="cantidadCAL" onchange="calcularCAL()" disabled/></td>
+                                        <td><input type="text" id="cantidadCAL" name="cantidadCAL" disabled/></td>
                                     </tr>
                                 </tbody>
                             </table>

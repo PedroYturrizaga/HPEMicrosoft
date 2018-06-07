@@ -50,10 +50,11 @@ class Champion extends CI_Controller
         $data['error'] = EXIT_ERROR;
         $data['msj']   = null;
         try {
-            $id    = $_GET['cotizacion'];
-            $datos = $this->M_Solicitud->getDetallesCotizacion($id);
+            $id     = $_GET['cotizacion'];
+            $datos  = $this->M_Solicitud->getDetallesCotizacion($id);
             $data['detalles'] = $datos;
-            $datos2 = $this->M_Solicitud->getMayoristas();
+            $idRol  = $this->session->userdata('id_rol');
+            $datos2 = $this->M_Solicitud->getMayoristas($idRol);
             $option = ' ';
             foreach ($datos2 as $key) {
                 if($datos[0]->noMayorista == $key->noMayorista) {
