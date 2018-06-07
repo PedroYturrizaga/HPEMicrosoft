@@ -111,8 +111,14 @@ h2
 label
 	font-weight 100
 .js-section
-	position relative
-	padding 40px 20px
+	position relative;
+	padding 40px 20px;
+.js-title
+	width 100%
+	margin 10px 0
+	font-size 32px
+	line-height 30px;
+	font-family $medium
 .js-flex
 	flexCenter()
 .js-height
@@ -127,7 +133,8 @@ label
 	color #FFFFFF
 	flexCenter()
 	img
-		width initial
+		width 100%
+		max-width 130px
 	.js-header--left
 		flexCenter()
 		width 100%
@@ -144,7 +151,9 @@ label
 		p
 			font-size 20px
 	&.js-relative
-		position relative	
+		position relative
+		color #000000
+		box-shadow 1px 2px 3px rgba(0,0,0,.2)
 .js-container
 	transitionMaxWidth()
 	width 100%
@@ -198,6 +207,9 @@ label
 				padding 16px 30px
 				text-decoration none
 				color #FFFFFF
+				cursor pointer
 				&:HOVER
 					background-color #384854
+				&.active
+					background-color $bold
 			

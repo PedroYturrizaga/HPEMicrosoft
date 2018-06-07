@@ -27,7 +27,7 @@
 <body>
     <div class="js-header js-relative">
         <div class="js-header--left">
-            <img src="<?php echo RUTA_IMG?>logo/hpe-logo.png">
+            <img src="<?php echo RUTA_IMG?>logo/hpe-logo.svg">
             <img src="<?php echo RUTA_IMG?>logo/microsoft-logo.png">
         </div>
         <div class="js-header--right">
@@ -38,19 +38,18 @@
         <div class="mdl-layout__drawer">
             <span class="mdl-layout-title">¿Qu&eacute; deseas hacer</span>
             <nav class="mdl-navigation">
-                <a class="mdl-navigation__link" href="">Ingresar una nueva cotizaci&oacute;n</a>
-                <a class="mdl-navigation__link" href="">Ver puntaje acumulado</a>
-                <a class="mdl-navigation__link" href="">T&eacute;rminos y Condiciones</a>
-                <a class="mdl-navigation__link" href="">Escribir al Champion</a>
+                <a id="cotizacion" class="mdl-navigation__link active" onclick="goToMenu(this.id)">Ingresar una nueva cotizaci&oacute;n</a>
+                <a id="puntaje" class="mdl-navigation__link" onclick="goToMenu(this.id)">Ver puntaje acumulado</a>
+                <a id="terminos" class="mdl-navigation__link" onclick="goToMenu(this.id)">T&eacute;rminos y Condiciones</a>
+                <a id="champion" class="mdl-navigation__link" onclick="goToMenu(this.id)" ="">Escribir al Champion</a>
             </nav>
         </div>
         <main class="mdl-layout__content">
-            <section class="section">
+            <section id="section-cotizacion" class="js-section js-section--menu">
                 <div class="js-container">
-                    <!-- INGRESO DE NUEVA SOLICITUD -->
+                    <h2 class="js-title">Nuevo ingreso</h2>
                     <div class="col-sm-12 col-xs-12" id="solicitud">
                         <div class="col-sm-6 col-xs-12"> 
-                            <h2 class="title-formulario">Nuevo ingreso</h2>
                             <div class="form-group col-xs-12 p-0">
                                 <!-- <label for="apellido">Nombre</label> -->
                                 <input type="text" class="form-control" id="Nombre" placeholder="Nombre del vendedor" onchange="validarCampos()">
@@ -145,6 +144,21 @@
                     </div>
                 </div>
             </section>
+            <section id="section-puntaje" class="js-section js-section--menu">
+                <div class="js-container">
+                    <h2 class="js-title">&Uacute;ltimos 4 ingresos</h2>
+                </div>
+            </section>
+            <section id="section-terminos" class="js-section js-section--menu">
+                <div class="js-container">
+                    <h2 class="js-title">T&eacute;rminos y condiciones generales</h2>
+                </div>
+            </section>
+            <section id="section-champion" class="js-section js-section--menu">
+                <div class="js-container">
+                    <h2 class="js-title">Escr&iacute;benos</h2>
+                </div>
+            </section>
         </main>
     </div>
     <!-- <section id="principal">
@@ -168,9 +182,7 @@
                                         <th>Total</th>
                                     </tr>
                                 </thead >
-                                <tbody id="body">
-                                    
-                                </tbody>
+                                <tbody id="body"></tbody>
                             </table>
                         </div>
                         <div class="col-sm-4 col-xs-12">
@@ -178,27 +190,6 @@
                             <h4 id="puntosTrimestral"> </h4>
                         </div>
                     </div>
-                    TERMINOS Y CONDICIONES
-                    <div class="col-sm-12 col-xs-12" id="condiciones">
-                        <div class="col-sm-12 col-xs-12">
-                            <h2 class="title-formulario">T&eacute;rminos y condiciones generales</h2>
-                            <label> Premios: </label>
-                            <p> - <strong> Licencias Standard:</strong> </p>
-                            <p> · 50 puntos ENGAGE & GROW por cada cotizaci&oacute;n +200 puntos adicionales por cierre de la oportunidad al mayorista.</p>
-                            <p> · El reseller gana otros 250 puntos por venta cerrada.</p>
-                            <br>
-                            <p> - <strong> Licencias de DataCenter:</strong> </p>
-                            <p> · 100 puntos ENGAGE & GROW por cada cotizaci&oacute;n +300 puntos adicionales por cierre de la oportunidad al mayorista.</p>
-                            <p> · El reseller gana otros 400 puntos por venta cerrada.</p>
-                            <br>
-                            <label> T&eacute;rminos y condiciones: </label>
-                            <p>-Solo se puede hacer 4 cotizaciones por reseller por trimestre.</p>
-                            <p>-Las ventas valen a&uacute;n cuando no hayan sido cotizadas.</p>
-                            <p>-Las cotizaciones valen a&uacute;n cuando no se cierre la venta.</p>
-                            <p>-Cantidad l&iacute;mite de puntos disponibles para esta campaña: 40 000 puntos.</p>
-                        </div>
-                    </div>
-                    
                 </div>
             </div>
         </div>

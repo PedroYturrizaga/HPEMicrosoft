@@ -234,7 +234,6 @@ function calcularCAL() {
 		$('#puntosCAL').text('');
 	}
 }
-
 function getLastOrder() {
 	$.ajax({
 		data  : {  },
@@ -253,4 +252,7 @@ function getLastOrder() {
         msj('error',err.message);
       }
 	});
+}
+function goToMenu(id){
+	console.log(id);
 }
