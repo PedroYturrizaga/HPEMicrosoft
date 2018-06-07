@@ -38,7 +38,7 @@
 
                 <div class="formulario col-sm-12 col-xs-12 m-t-20">
                     <div class="text-right">
-                        <button type="button" name="boton" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" href="Solicitud" >Nueva Oportunidad</button>
+                        <button type="button" name="boton" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" onclick="openModal();" >Nueva Oportunidad</button>
                     </div>
                 </div>
 
@@ -98,54 +98,52 @@
                         <div class="col-sm-6 col-xs-12"> 
                             <h2 class="title-formulario">Detalles del ingreso</h2>
                             <div class="form-group col-xs-12 p-0">
-                                <input type="text" class="form-control" id="Nombre" placeholder="Nombre del vendedor" disabled>
+                                <input type="text" class="form-control" id="Nombre" placeholder="Nombre del vendedor">
                             </div>
                             <div class="form-group col-xs-12 p-0">
-                                <input type="email" class="form-control" id="email" placeholder="Email" disabled>
+                                <input type="email" class="form-control" id="email" placeholder="Email">
                             </div>
-
-                            <!-- Simple Select -->
                             <div class="form-group col-xs-12 p-0">
-                                <select name="noMayorista" id="noMayorista" disaled>
+                                <select name="noMayorista" id="noMayorista" class="selectpicker">
                                 </select>
                             </div>
                             <div class="form-group col-xs-12 p-0">
-                                <input type="text" class="form-control" id="canal" placeholder="Canal al que cotiza" disabled>
+                                <input type="text" class="form-control" id="canal" placeholder="Canal al que cotiza">
                             </div>
                             <div class="form-group col-xs-12 p-0">
-                                <input type="text" class="form-control" id="pais" placeholder="Pais" disabled>
+                                <input type="text" class="form-control" id="pais" placeholder="Pais">
                             </div>
                             <div class="form-group col-xs-12 p-0">
                                 <label> Tipo Documento:</label>
                                 <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="radioCotizacion" id="cotizacion">
-                                    <input type="radio" id="radioCotizacion" class="mdl-radio__button" name="option1" value="1" disabled>
+                                    <input type="radio" id="radioCotizacion" class="mdl-radio__button" name="option1" value="1">
                                     <span class="mdl-radio__label">Cotizaci&oacute;n</span>
                                 </label>
                                 <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="radioFacturacion" id="facturacion">
-                                    <input type="radio" id="radioFacturacion" class="mdl-radio__button" name="option1" value="0" disabled>
+                                    <input type="radio" id="radioFacturacion" class="mdl-radio__button" name="option1" value="0">
                                     <span class="mdl-radio__label">Factura</span>
                                 </label>
                             </div>
                         </div>
                         <div class="col-sm-6 col-xs-12">
                             <div class="form-group col-xs-12 p-0">
-                            <input type="text" class="form-control" id="numFactura" placeholder="# Factura" disabled>
+                            <input type="text" class="form-control" id="numFactura" placeholder="# Factura">
                             </div>
                             <div class="form-group col-xs-12 p-0">
                                 <div class="form-group">
                                     <div class="mdl-input">
                                         <div class="mdl-icon">
-                                            <button type="button" class="mdl-button mdl-js-button mdl-button--icon" disabled>
+                                            <button type="button" class="mdl-button mdl-js-button mdl-button--icon">
                                                 <i class="mdi mdi-date_range"></i>
                                             </button>
                                         </div>
-                                        <input class="form-control" type="text" id="fecha" name="fecha" maxlength="10" placeholder="dd/mm/aaaa" value="" style="pointer-events: none" disabled>
+                                        <input class="form-control" type="text" id="fecha" name="fecha" maxlength="10" placeholder="dd/mm/aaaa" value="" style="pointer-events: none">
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group col-xs-12 p-0">
                                 <!-- <label for="rol">Rol</label> -->
-                                <input type="text" class="form-control" id="monto" placeholder="Monto" disabled>
+                                <input type="text" class="form-control" id="monto" placeholder="Monto">
                             </div>
                             <h2 class="title-formulario">Productos</h2>
                             <table id="tbProductos" >
@@ -158,26 +156,36 @@
                                 <tbody>
                                     <tr>
                                         <td id="product1">Windows Server Essentials Edition</td>
-                                        <td><input type="text" id="cantidadWSEE" name="cantidadWSEE" disabled/></td>
+                                        <td><input type="text" id="cantidadWSEE" name="cantidadWSEE" onchange="calcularWSEE()"/></td>
+                                        <td> <span id="puntosWSEE"> </span> </td>
                                     </tr>
                                     <tr>
                                         <td id="product2">Windows Server Standard Edition</td>
-                                        <td><input type="text" id="cantidadWSSE" name="cantidadWSSE" disabled/></td>
+                                        <td><input type="text" id="cantidadWSSE" name="cantidadWSSE" onchange="calcularWSSE()"/></td>
+                                        <td> <span id="puntosWSSE"> </span> </td>
                                     </tr>
                                     <tr>
                                         <td id="product3">Windows Server Datacenter Edition</td>
-                                        <td><input type="text" id="cantidadWSDE" name="cantidadWSDE" disabled/></td>
+                                        <td><input type="text" id="cantidadWSDE" name="cantidadWSDE" onchange="calcularWSDE()"/></td>
+                                        <td> <span id="puntosWSDE"> </span> </td>
                                     </tr>
                                     <tr>
                                         <td id="product4">CALs</td>
-                                        <td><input type="text" id="cantidadCAL" name="cantidadCAL" disabled/></td>
+                                        <td><input type="text" id="cantidadCAL" name="cantidadCAL" onchange="calcularCAL()"/></td>
+                                        <td> <span id="puntosCAL"> </span> </td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
                     </div> 
-                    <div class="mdl-card__actions">                         
+                    <div class="mdl-card__actions" id="aceptar">                         
                         <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" data-dismiss="modal">Aceptar</button>
+                    </div>
+                    <div class="mdl-register" id="registrar">
+                        <button type="button" name="boton" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" onclick="registrar()">Registrar Oportunidad</button>
+                    </div>
+                    <div class="mdl-card__actions" id="cancelar">                         
+                        <button type="button" name="boton" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" data-dismiss="modal">Cancelar</button>
                     </div>
                 </div>
             </div>
@@ -197,6 +205,7 @@
     <script src="<?php echo RUTA_JS?>Utils.js?v=<?php echo time();?>"></script>
     <script src="<?php echo RUTA_JS?>jsmenu.js?v=<?php echo time();?>"></script>
     <script src="<?php echo RUTA_JS?>champion.js?v=<?php echo time();?>"></script>
+    <script src="<?php echo RUTA_JS?>solicitud.js?v=<?php echo time();?>"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
     	if( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ) {

@@ -1,5 +1,6 @@
 function getDetails(cotizacion) {
 	var cotizacion = cotizacion;
+	limpiarCampos();
 	$.ajax({
 		data  : { cotizacion : cotizacion },
 		url   : 'champion/getDetalles',
@@ -10,9 +11,8 @@ function getDetails(cotizacion) {
         	if(data.error == 0){
         		$('#Nombre').val(data.detalles[0]['no_vendedor']);
         		$('#email').val(data.detalles[0]['email']);
-        		//FALTA METODO PARA SETEAR COMBOS
-        		$('#noMayorista').html(data.option);
-
+				$('#noMayorista').html(data.option);
+				$('#noMayorista').selectpicker('render');
         		$('#canal').val(data.detalles[0]['canal']);
         		$('#pais').val(data.detalles[0]['pais']);
         		$('#numFactura').val(data.detalles[0]['nu_cotizacion']);
@@ -30,12 +30,95 @@ function getDetails(cotizacion) {
         				$('#cantidadCAL').val(data.detalles[i]['cantidad']);
         			}
         		}
+        		$('#Nombre').prop('disabled', true);
+				$('#email').prop('disabled', true);
+				$('#noMayorista').prop('disabled', true);
+				$('#canal').prop('disabled', true);
+				$('#pais').prop('disabled', true);
+				$('#facturacion').prop('disabled', true);
+				$('#cotizacion').prop('disabled', true);
+				$('#numFactura').prop('disabled', true);
+				$('#fecha').prop('disabled', true);
+				$('#monto').prop('disabled', true);
+				$('#cantidadWSEE').prop('disabled', true);
+				$('#cantidadWSSE').prop('disabled', true);
+				$('#cantidadWSDE').prop('disabled', true);
+				$('#cantidadCAL').prop('disabled', true);
+				$('#aceptar').css('display', 'block');
+				$('#registrar').css('display', 'none');
+				$('#cancelar').css('display', 'none');
+				$('#puntosWSEE').css('display','none');
+				$('#puntosWSSE').css('display','none');
+				$('#puntosWSDE').css('display','none');
+				$('#puntosCAL').css('display','none');
+
         		modal('modalDetalles');
         	} else { return; }
       } catch (err){
         msj('error',err.message);
       }
 	});
+}
+
+function openModal(){
+	limpiarCampos();
+	$.ajax({
+		data : { },
+		url  : 'champion/comboMayoristas',
+		post : 'POST'
+	}).done(function(data){
+		data = JSON.parse(data);
+		if(data.error == 0 ){
+    		$('#Nombre').prop('disabled', false);
+			$('#email').prop('disabled', false);
+			$('#noMayorista').prop('disabled', false);
+			$('#canal').prop('disabled', false);
+			$('#pais').prop('disabled', false);
+			$('#facturacion').prop('disabled', false);
+			$('#cotizacion').prop('disabled', false);
+			$('#numFactura').prop('disabled', false);
+			$('#fecha').prop('disabled', false);
+			$('#monto').prop('disabled', false);
+			$('#cantidadWSEE').prop('disabled', false);
+			$('#cantidadWSSE').prop('disabled', false);
+			$('#cantidadWSDE').prop('disabled', false);
+			$('#cantidadCAL').prop('disabled', false);
+			$('#aceptar').css('display', 'none');
+			$('#registrar').css('display', 'block');
+			$('#cancelar').css('display', 'block');
+			$('#puntosWSEE').css('display','block');
+			$('#puntosWSSE').css('display','block');
+			$('#puntosWSDE').css('display','block');
+			$('#puntosCAL').css('display','block');
+			$('#noMayorista').html(data.option);
+			$('#noMayorista').selectpicker('refresh');
+			componentHandler.upgradeAllRegistered();
+			modal('modalDetalles');		
+		} else { return; }
+	});
+}
+
+function limpiarCampos() {
+	$('#facturacion').removeClass('is-checked');
+	$('#cotizacion').removeClass('is-checked');
+	$('#Nombre').val('');
+	$('#email').val('');
+	$('#noMayorista').prop('disabled', false);
+	$('#canal').val('');
+	$('#pais').val('');
+	$('#facturacion').val('');
+	$('#cotizacion').val('');
+	$('#numFactura').val('');
+	$('#fecha').val('');
+	$('#monto').val('');
+	$('#cantidadWSEE').val('');
+	$('#cantidadWSSE').val('');
+	$('#cantidadWSDE').val('');
+	$('#cantidadCAL').val('');
+	$('#puntosWSEE').val('');
+	$('#puntosWSSE').val('');
+	$('#puntosWSDE').val('');
+	$('#puntosCAL').val('');
 }
 
 function drawChartDonut() {
@@ -74,7 +157,7 @@ function drawChartDonut() {
 
 function drawChart() {
 	$.ajax({
-		data : {},
+		data : { },
 		url  : 'champion/getDatosGraficoCotiza',
 		post : 'POST'
 	}).done(function(data) {
@@ -103,3 +186,4 @@ function drawChart() {
         chart.draw(data, options);
 	});
 }
+

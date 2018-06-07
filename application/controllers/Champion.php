@@ -16,10 +16,10 @@ class Champion extends CI_Controller
 
 	public function index (){
 		$data['nombre'] = '';
-		$datos = $this->M_Solicitud->getCanalMasUsado();
+		$datos  = $this->M_Solicitud->getCanalMasUsado();
         $datos2 = $this->M_Solicitud->getLastCotizaciones();
-		$html  = ' ';
-		$html2 = ' ';
+		$html   = ' ';
+		$html2  = ' ';
 		foreach ($datos as $key) {
 			$html .= '<tr>
 					      <td class="text-center">'.$key->no_canal.'</td>
@@ -58,10 +58,8 @@ class Champion extends CI_Controller
             $option = ' ';
             foreach ($datos2 as $key) {
                 if($datos[0]->noMayorista == $key->noMayorista) {
-                    $option .= '<option value=" '.$key->id_mayorista.' " class="selected">'.$key->noMayorista.'</option>';
-                } else {
-                    $option .= '<option value=" '.$key->id_mayorista.' ">'.$key->noMayorista.'</option>';
-                }            
+                    $option = '<option value=" '.$key->id_mayorista.' " class="selected">'.$key->noMayorista.'</option>';
+                }          
             }
             $data['option'] = $option;
             $data['error'] = EXIT_SUCCESS;
@@ -69,6 +67,25 @@ class Champion extends CI_Controller
         catch (Exception $ex){
             $data['msj'] = $ex->getMessage();
         }
+        echo json_encode($data);
+    }
+
+    function comboMayoristas(){
+        $data['error'] = EXIT_ERROR;
+        $data['msj']   = null;
+        try {
+            $idRol  = $this->session->userdata('id_rol');
+            $datos2 = $this->M_Solicitud->getMayoristas($idRol);
+            $option = ' ';
+            foreach ($datos2 as $key) {
+                $option .= '<option value=" '.$key->id_mayorista.' ">'.$key->noMayorista.'</option>';
+            }
+            $data['option'] = $option;
+            $data['error'] = EXIT_SUCCESS;
+        } catch (Exception $ex){
+            $data['msj'] = $ex->getMessage();
+        }
+        
         echo json_encode($data);
     }
 
