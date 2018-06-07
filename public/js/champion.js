@@ -1,17 +1,18 @@
 function getDetails(cotizacion) {
-	var idCotizacion = cotizacion;
+	var cotizacion = cotizacion;
 	$.ajax({
-		data  : { idCotizacion : idCotizacion },
-		url   : 'Champion/getDetalles',
+		data  : { cotizacion : cotizacion },
+		url   : 'champion/getDetalles',
 		post : 'POST'
 	}).done(function(data){
 		try{
         	data = JSON.parse(data);
-        	console.log(data.detalles);
         	if(data.error == 0){
         		$('#Nombre').val(data.detalles[0]['no_vendedor']);
         		$('#email').val(data.detalles[0]['email']);
-        		$('#noMayorista').val(data.detalles[0]['noMayorista']);
+        		//FALTA METODO PARA SETEAR COMBOS
+        		$('#noMayorista').html(data.option);
+
         		$('#canal').val(data.detalles[0]['canal']);
         		$('#pais').val(data.detalles[0]['pais']);
         		$('#numFactura').val(data.detalles[0]['nu_cotizacion']);
@@ -38,17 +39,28 @@ function getDetails(cotizacion) {
 }
 
 function drawChartDonut() {
+	var pais = null;
+	var importe = null;
 	$.ajax({
 		data : {},
-		url  : 'Champion/getDatosGraficosCanales',
+		url  : 'champion/getDatosGraficosCanales',
 		post : 'POST'
 	}).done(function(data) {
 		data = JSON.parse(data);
-		// console.log(data.datos);
-		var data = new google.visualization.DataTable();
-			data.addColumn('string', 'paises');
-			data.addColumn('number', 'importe');
-			data.addRow(data.datos);
+		
+		var data = google.visualization.arrayToDataTable( $.parseJSON(data.datos) );
+		// var data = new google.visualization.DataTable();
+		// 	data.addColumn('string', 'paises');
+		// 	data.addColumn('number', 'importe');
+		// 	// for(var i = 0; i < data.datos.length; i++){
+		// 	// 	pais = data.datos[i].
+
+		// 	// 	mes = jsonData[i].Mes;
+  //  //              total = jsonData[i].Total;
+  //  //              data.addRow([mes, total]);
+		// 	// }
+		// 	data.addRows( [["Panama",6230],["Mexico",2904],["Argentina",1995],["Peru",850],["Chile",126]] );
+		// 	// data.addRows( data.datos );
 
 	    var options = {
 			title: 'Venta por paises',
@@ -67,11 +79,14 @@ function drawChart() {
 		post : 'POST'
 	}).done(function(data) {
 		data = JSON.parse(data);
-		// console.log(data.datos);
-		var data = new google.visualization.DataTable(data.datos);
-			data.addColumn('string', 'paises');
-			data.addColumn('number', 'puntaje');
-			data.addRow(data.datos);
+
+		var data = google.visualization.arrayToDataTable( $.parseJSON(data.datos) );
+
+		// var data = new google.visualization.DataTable(data.datos);
+		// 	data.addColumn('string', 'paises');
+		// 	data.addColumn('number', 'puntaje');
+		// 	// data.addRows( [["Panama",4350],["Chile",1900],["Mexico",1250],["Peru",850],["Argentina",800]] );
+		// 	data.addRows( data.datos );
 
         var options = {
         	title: 'Puntaje entregado',

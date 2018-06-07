@@ -19,7 +19,7 @@
     <link rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>datetimepicker/css/bootstrap-material-datetimepicker.css?v=<?php echo time();?>">
     <link rel="stylesheet"    href="<?php echo RUTA_FONTS?>font-awesome.min.css?v=<?php echo time();?>">
     <link rel="stylesheet"    href="<?php echo RUTA_FONTS?>material-icons.css?v=<?php echo time();?>">
-    <link rel="stylesheet"    href="<?php echo RUTA_FONTS?>roboto.css?v=<?php echo time();?>">
+    <!-- <link rel="stylesheet"    href="<?php echo RUTA_FONTS?>roboto.css?v=<?php echo time();?>"> -->
     <link rel="stylesheet"    href="<?php echo RUTA_CSS?>m-p.min.css?v=<?php echo time();?>">
     <link rel="stylesheet"    href="<?php echo RUTA_CSS?>index.css?v=<?php echo time();?>">
 </head>
@@ -29,7 +29,7 @@
             <div class="row">
                 <div class="header">
                     <div class="header-imagen inline">
-                        <img src="<?php echo RUTA_IMG?>logo.png">
+                        <!-- <img src="<?php echo RUTA_IMG?>logo.png"> -->
                     </div>
                     <div class="header-contenido inline">
                         <p>Registro de Oportunidades Centroam&eacute;rica</p>
@@ -39,8 +39,8 @@
                 <div class="formulario col-sm-12 col-xs-12 m-t-20">
 					<!-- GRAFICOS -->
 					<div class="col-sm-4 col-xs-12"> 
-                        <div id="donutchart" style="width: 250px; height: 100px;"></div>
-                        <div id="donut_single" style="width: 250px; height: 100px;"></div>
+                        <div id="donutchart" style="width: 350px; height: 250px;"></div>
+                        <div id="donut_single" style="width: 350px; height: 250px;"></div>
 					</div>
                     <!-- TOP CANALES CON MAS IMPORTE -->
                     <div class="col-sm-8 col-xs-12">
@@ -63,7 +63,7 @@
                         
                         <div class="col-sm-8 col-xs-12">
                         	<h3>&Uacute;ltimas 10 cotizaciones </h3>
-                            <table id="tbProductos" >
+                            <table >
                                 <thead>
                                     <tr>
                                         <th>Nombre canal</th>
@@ -92,38 +92,38 @@
                         <div class="col-sm-6 col-xs-12"> 
                             <h2 class="title-formulario">Detalles del ingreso</h2>
                             <div class="form-group col-xs-12 p-0">
-                                <input type="text" class="form-control" id="Nombre" placeholder="Nombre del vendedor" onchange="validarCampos()" disabled>
+                                <input type="text" class="form-control" id="Nombre" placeholder="Nombre del vendedor" disabled>
                             </div>
                             <div class="form-group col-xs-12 p-0">
-                                <input type="email" class="form-control" id="email" placeholder="Email" onchange="validarCampos()" disabled>
+                                <input type="email" class="form-control" id="email" placeholder="Email" disabled>
                             </div>
 
                             <!-- Simple Select -->
                             <div class="form-group col-xs-12 p-0">
-                                <select name="noMayorista" id="noMayorista" disabled>
+                                <select name="noMayorista" id="noMayorista">
                                 </select>
                             </div>
                             <div class="form-group col-xs-12 p-0">
-                                <input type="text" class="form-control" id="canal" placeholder="Canal al que cotiza" onchange="validarCampos()" disabled>
+                                <input type="text" class="form-control" id="canal" placeholder="Canal al que cotiza" disabled>
                             </div>
                             <div class="form-group col-xs-12 p-0">
-                                <input type="text" class="form-control" id="pais" placeholder="Pais" onchange="validarCampos()" disabled>
+                                <input type="text" class="form-control" id="pais" placeholder="Pais" disabled>
                             </div>
                             <div class="form-group col-xs-12 p-0">
                                 <label> Tipo Documento:</label>
                                 <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="radioCotizacion" id="cotizacion">
-                                    <input type="radio" id="radioCotizacion" class="mdl-radio__button" name="option1" value="1" onchange="validarCampos()" disabled>
+                                    <input type="radio" id="radioCotizacion" class="mdl-radio__button" name="option1" value="1" disabled>
                                     <span class="mdl-radio__label">Cotizaci&oacute;n</span>
                                 </label>
                                 <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="radioFacturacion" id="facturacion">
-                                    <input type="radio" id="radioFacturacion" class="mdl-radio__button" name="option1" value="0" onchange="validarCampos()" disabled>
+                                    <input type="radio" id="radioFacturacion" class="mdl-radio__button" name="option1" value="0" disabled>
                                     <span class="mdl-radio__label">Factura</span>
                                 </label>
                             </div>
                         </div>
                         <div class="col-sm-6 col-xs-12">
                             <div class="form-group col-xs-12 p-0">
-                            <input type="text" class="form-control" id="numFactura" placeholder="# Factura" onchange="validarCampos()" disabled>
+                            <input type="text" class="form-control" id="numFactura" placeholder="# Factura" disabled>
                             </div>
                             <div class="form-group col-xs-12 p-0">
                                 <div class="form-group">
@@ -139,7 +139,7 @@
                             </div>
                             <div class="form-group col-xs-12 p-0">
                                 <!-- <label for="rol">Rol</label> -->
-                                <input type="text" class="form-control" id="monto" placeholder="Monto" onchange="validarCampos()" disabled>
+                                <input type="text" class="form-control" id="monto" placeholder="Monto" disabled>
                             </div>
                             <h2 class="title-formulario">Productos</h2>
                             <table id="tbProductos" >

@@ -35,8 +35,8 @@ class Champion extends CI_Controller
         			       <td class="text-center">'.$key->pais.'</td>
         			       <td class="text-center">'.$key->fecha.'</td>
                            <td class="text-center">
-                               <button class="mdl-button mdl-js-button mdl-button--icon" onclick="getDetails('.$key->id_cotizacion.')">
-                                   <i class="mdi mdi-visibility"></i>
+                               <button class="mdl-button mdl-js-button mdl-button--icon" onclick="getDetails('.$key->id_cotizacion.');">
+                                   <i class="mdi mdi-visibility"> </i>
                                </button>
                            </td>
         			     </tr>';
@@ -50,16 +50,24 @@ class Champion extends CI_Controller
         $data['error'] = EXIT_ERROR;
         $data['msj']   = null;
         try {
-            $id    = $this->input->post("idCotizacion");
-            // print_r('id1 :::: '.$this->input->post('idCotizacion'));
-            // print_r('id2 :::: '.$id);
-            $datos = $this->M_Solicitud->getDetallesCotizacion(33);
+            $id    = $_GET['cotizacion'];
+            $datos = $this->M_Solicitud->getDetallesCotizacion($id);
             $data['detalles'] = $datos;
+            $datos2 = $this->M_Solicitud->getMayoristas();
+            $option = ' ';
+            foreach ($datos2 as $key) {
+                if($datos[0]->noMayorista == $key->noMayorista) {
+                    $option .= '<option value=" '.$key->id_mayorista.' " class="selected">'.$key->noMayorista.'</option>';
+                } else {
+                    $option .= '<option value=" '.$key->id_mayorista.' ">'.$key->noMayorista.'</option>';
+                }            
+            }
+            $data['option'] = $option;
+            $data['error'] = EXIT_SUCCESS;
         }
         catch (Exception $ex){
             $data['msj'] = $ex->getMessage();
         }
-        $data['error'] = EXIT_SUCCESS;
         echo json_encode($data);
     }
 
