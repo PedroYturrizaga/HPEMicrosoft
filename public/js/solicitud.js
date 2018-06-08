@@ -254,5 +254,7 @@ function getLastOrder() {
 	});
 }
 function goToMenu(id){
-	console.log(id);
+	var idLink = $('#'+id);
+	$('.mdl-navigation__link').removeClass('active');
+	idLink.addClass('active');
 }

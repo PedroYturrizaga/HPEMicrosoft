@@ -144,17 +144,17 @@
                     </div>
                 </div>
             </section>
-            <section id="section-puntaje" class="js-section js-section--menu">
+            <section id="section-puntaje" class="js-section js-section--menu js-opacity-done">
                 <div class="js-container">
                     <h2 class="js-title">&Uacute;ltimos 4 ingresos</h2>
                 </div>
             </section>
-            <section id="section-terminos" class="js-section js-section--menu">
+            <section id="section-terminos" class="js-section js-section--menu js-opacity-done">
                 <div class="js-container">
                     <h2 class="js-title">T&eacute;rminos y condiciones generales</h2>
                 </div>
             </section>
-            <section id="section-champion" class="js-section js-section--menu">
+            <section id="section-champion" class="js-section js-section--menu js-opacity-done">
                 <div class="js-container">
                     <h2 class="js-title">Escr&iacute;benos</h2>
                 </div>
