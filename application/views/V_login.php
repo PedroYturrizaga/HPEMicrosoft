@@ -26,7 +26,7 @@
     <body>
         <div class="js-header">
             <div class="js-header--left">
-                <img src="<?php echo RUTA_IMG?>logo/hpe-logo.png">
+                <img class="js-partner" src="<?php echo RUTA_IMG?>logo/hpe-logo.svg">
                 <img src="<?php echo RUTA_IMG?>logo/microsoft-logo.png">
             </div>
             <div class="js-header--right">
@@ -38,11 +38,11 @@
             <div class="js-container js-flex">
                 <div class="js-login">
                     <h2>Acceso a Herramienta</h2>
-                    <div class="col-xs-12 form-group js-input">
+                    <div class="col-xs-12 js-input m-0">
                         <label for="usuario">Usuario</label>
                         <input type="text" id="usuario" onkeyup="verificarDatos(event);">
                     </div>
-                    <div class="col-xs-12 form-group js-input">
+                    <div class="col-xs-12 js-input m-0">
                         <label for="password">Contrase&ntilde;a</label>
                         <input type="password" id="password" onkeyup="verificarDatos(event);">
                     </div>
@@ -64,7 +64,7 @@
                             <span >Registrarse</span>
                         </div> -->
                         <div class="col-xs-12 mdl-card__actions text-right">
-                            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" onclick="ingresar()">Login</button>
+                            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect js-button" onclick="ingresar()">Login</button>
                         </div>
                     </div>
 
@@ -74,20 +74,22 @@
 
         <!-- MODAL RECUPERAR CONTRASEÑA -->
         <div class="modal fade" id="recuperaContrasena" tabindex="-1" role="dialog" aria-labelledby="simpleModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
-            <div class="modal-dialog modal-sm text-center">
+            <div class="modal-dialog modal-sm">
                 <div class="modal-content">
                     <div class="mdl-card">
+                        <div class="mdl-card__title">
+                            <h2>Recuperar Contrase&ntilde;a</h2>
+                            <p>Comp&aacute;rtenos tu correo y en breve te enviaremos un correo con tu contrase&ntilde;a</p>
+                        </div>
                         <div class="mdl-card__supporting-text">
-                            <h3>RECUPERAR CONTRASE&Ntilde;A</h3>
-                            <p class="text-left">Comp&aacute;rtenos tu correo y en breve te enviaremos un correo con tu contrase&ntilde;a</p>
-                            <div class="col-xs-12 form-group">
-                                <!-- <label for="usuarioRecupera">Usuario</label> -->
-                                <input type="text" placeholder="Usuario" id="usuarioRecupera" onkeyup="verificarDatos(event);">
+                            <div class="col-xs-12 js-input">
+                                <label for="usuarioRecupera">Usuario</label>
+                                <input type="text" id="usuarioRecupera" onkeyup="verificarDatos(event);">
                             </div>
                         </div> 
-                        <div class="mdl-card__actions">
-                            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" data-dismiss="modal">Cancelar</button>
-                            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" onclick="recuperar()" >Aceptar</button>
+                        <div class="mdl-card__actions text-right">
+                            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect js-button js-button--default" data-dismiss="modal">Cancelar</button>
+                            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect js-button" onclick="recuperar()" >Aceptar</button>
                         </div>
                     </div>
                 </div>

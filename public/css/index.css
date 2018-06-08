@@ -120,10 +120,6 @@ table.dataTable.no-footer{
     padding: 20px;
     text-align: right;
 }
-.modal .mdl-card__actions button{
-    background-color: #000000;
-    color: #FFFFFF;
-}
 .mdl-card{
 	width: 100%
 }

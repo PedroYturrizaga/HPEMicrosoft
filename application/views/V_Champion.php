@@ -21,7 +21,7 @@
     <link rel="stylesheet"    href="<?php echo RUTA_FONTS?>metric.css?v=<?php echo time();?>">
     <link rel="stylesheet"    href="<?php echo RUTA_FONTS?>material-icons.css?v=<?php echo time();?>">
     <link rel="stylesheet"    href="<?php echo RUTA_CSS?>m-p.min.css?v=<?php echo time();?>">
-    <!-- <link rel="stylesheet"    href="<?php echo RUTA_CSS?>index.css?v=<?php echo time();?>"> -->
+    <link rel="stylesheet"    href="<?php echo RUTA_CSS?>index.css?v=<?php echo time();?>">
     <link rel="stylesheet"    href="<?php echo RUTA_CSS?>style.css?v=<?php echo time();?>">
 </head>
 <body>
@@ -37,52 +37,53 @@
     </div>
     <section id="principal" class="js-section">
         <div class="js-container">
-            <div class="row">
-                <div class="formulario col-sm-12 col-xs-12 m-t-20">
-                    <div class="text-right">
-                        <button type="button" name="boton" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" onclick="openModal();" >Nueva Oportunidad</button>
-                    </div>
+            <div class="js-user m-t-50">
+                <div class="js-user--left">
+                    <p>Bienvenido(a) </p>
                 </div>
-                <div class="formulario col-sm-12 col-xs-12 m-t-20">
-					<div class="col-sm-4 col-xs-12"> 
-                        <div id="venta" style="width: 350px; height: 250px;"></div>
-                        <div id="puntaje" style="width: 350px; height: 250px;"></div>
-					</div>
+                <div class="js-user--right">
+                    <button type="button" name="boton" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect js-button" onclick="openModal();" >Nueva Oportunidad</button>
+                </div>
+            </div>
+            <div class="formulario col-sm-12 col-xs-12 m-t-20">
+				<div class="col-sm-4 col-xs-12"> 
+                    <div id="venta" style="width: 350px; height: 250px;"></div>
+                    <div id="puntaje" style="width: 350px; height: 250px;"></div>
+				</div>
+                <div class="col-sm-8 col-xs-12">
+                    <div class="col-sm-12 col-xs-12"> 
+                        <h3>Top 3 canales en importes facturados</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Nombre canal</th>
+                                    <th>Nombre vendedor</th>
+                                    <th>Pais</th>
+                                    <th>Importe</th>
+                                </tr>
+                            </thead>
+                            <tbody id="bodyCanales">
+                                <?php echo $bodyCanales?>
+                            </tbody>
+                        </table>
+                    </div>
+                    
                     <div class="col-sm-8 col-xs-12">
-                        <div class="col-sm-12 col-xs-12"> 
-                            <h3>Top 3 canales en importes facturados</h3>
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>Nombre canal</th>
-                                        <th>Nombre vendedor</th>
-                                        <th>Pais</th>
-                                        <th>Importe</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="bodyCanales">
-                                    <?php echo $bodyCanales?>
-                                </tbody>
-                            </table>
-                        </div>
-                        
-                        <div class="col-sm-8 col-xs-12">
-                        	<h3>&Uacute;ltimas 10 cotizaciones </h3>
-                            <table >
-                                <thead>
-                                    <tr>
-                                        <th>Nombre canal</th>
-                                        <th>Nombre vendedor</th>
-                                        <th>Pais</th>
-                                        <th>Fecha</th>
-                                        <th>Ver m&aacute;s</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="bodyUltimaCotizacion">
-                                    <?php echo $bodyCotizaciones?>
-                                </tbody>
-                            </table>
-                        </div>
+                    	<h3>&Uacute;ltimas 10 cotizaciones </h3>
+                        <table >
+                            <thead>
+                                <tr>
+                                    <th>Nombre canal</th>
+                                    <th>Nombre vendedor</th>
+                                    <th>Pais</th>
+                                    <th>Fecha</th>
+                                    <th>Ver m&aacute;s</th>
+                                </tr>
+                            </thead>
+                            <tbody id="bodyUltimaCotizacion">
+                                <?php echo $bodyCotizaciones?>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -90,29 +91,32 @@
     </section>
     <!--MODAL-->
     <div class="modal fade" id="modalDetalles" tabindex="-1" role="dialog" aria-labelledby="simpleModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
-        <div class="modal-dialog modal-lg text-center">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="mdl-card">
                     <div class="mdl-card__supporting-text">
                         <div class="col-sm-6 col-xs-12"> 
                             <h2 class="title-formulario">Detalles del ingreso</h2>
-                            <div class="form-group col-xs-12 p-0">
-                                <input type="text" class="form-control" id="Nombre" placeholder="Nombre del vendedor">
+                            <div class="col-xs-12 js-input">
+                                <label for="Nombre">Nombre del Vendedor</label>
+                                <input type="text" id="Nombre">
                             </div>
-                            <div class="form-group col-xs-12 p-0">
-                                <input type="email" class="form-control" id="email" placeholder="Email">
+                            <div class="col-xs-12 js-input">
+                                <label for="email">Email</label>
+                                <input type="email" id="email">
                             </div>
-                            <div class="form-group col-xs-12 p-0">
-                                <select name="noMayorista" id="noMayorista" class="selectpicker">
-                                </select>
+                            <div class="col-xs-12 js-input js-select">
+                                <select name="noMayorista" id="noMayorista" class="selectpicker"></select>
                             </div>
-                            <div class="form-group col-xs-12 p-0">
-                                <input type="text" class="form-control" id="canal" placeholder="Canal al que cotiza">
+                            <div class="col-xs-12 js-input">
+                                <label for="canal">Canal al que cotiza</label>
+                                <input type="text" id="canal">
                             </div>
-                            <div class="form-group col-xs-12 p-0">
-                                <input type="text" class="form-control" id="pais" placeholder="Pais">
+                            <div class="col-xs-12 js-input">
+                                <label for="pais">Pais</label>
+                                <input type="text"  id="pais">
                             </div>
-                            <div class="form-group col-xs-12 p-0">
+                            <div class="col-xs-12 js-input js-radio">
                                 <label> Tipo Documento:</label>
                                 <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="radioCotizacion" id="cotizacion">
                                     <input type="radio" id="radioCotizacion" class="mdl-radio__button" name="option1" value="1">
@@ -125,24 +129,20 @@
                             </div>
                         </div>
                         <div class="col-sm-6 col-xs-12">
-                            <div class="form-group col-xs-12 p-0">
-                            <input type="text" class="form-control" id="numFactura" placeholder="# Factura">
+                            <div class="col-xs-12 js-input">
+                                <input type="text"id="numFactura" placeholder="# Factura">
                             </div>
-                            <div class="form-group col-xs-12 p-0">
-                                <div class="form-group">
-                                    <div class="mdl-input">
-                                        <div class="mdl-icon">
-                                            <button type="button" class="mdl-button mdl-js-button mdl-button--icon">
-                                                <i class="mdi mdi-date_range"></i>
-                                            </button>
-                                        </div>
-                                        <input class="form-control" type="text" id="fecha" name="fecha" maxlength="10" placeholder="dd/mm/aaaa" value="" style="pointer-events: none">
-                                    </div>
+                            <div class="col-xs-12 js-input js-date js-flex">
+                                <input type="text" id="fecha" name="fecha" maxlength="10" placeholder="dd/mm/aaaa" value="" style="pointer-events: none">
+                                <div class="js-icon">
+                                    <button type="button" class="mdl-button mdl-js-button mdl-button--icon">
+                                        <i class="mdi mdi-date_range"></i>
+                                    </button>
                                 </div>
                             </div>
-                            <div class="form-group col-xs-12 p-0">
-                                <!-- <label for="rol">Rol</label> -->
-                                <input type="text" class="form-control" id="monto" placeholder="Monto">
+                            <div class="col-xs-12 js-input">
+                                <label for="rol">Rol</label>
+                                <input type="text" id="monto" placeholder="Monto">
                             </div>
                             <h2 class="title-formulario">Productos</h2>
                             <table id="tbProductos" >
@@ -178,13 +178,11 @@
                         </div>
                     </div> 
                     <div class="mdl-card__actions" id="aceptar">                         
-                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" data-dismiss="modal">Aceptar</button>
+                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect js-button" data-dismiss="modal">Aceptar</button>
                     </div>
-                    <div class="mdl-register" id="registrar">
-                        <button type="button" name="boton" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" onclick="registrar()">Registrar Oportunidad</button>
-                    </div>
-                    <div class="mdl-card__actions" id="cancelar">                         
-                        <button type="button" name="boton" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" data-dismiss="modal">Cancelar</button>
+                    <div class="mdl-card__actions" id="registrar">                         
+                        <button type="button" name="boton" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect js-button js-button--default" data-dismiss="modal">Cancelar</button>
+                        <button type="button" name="boton" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect js-button" onclick="registrar()">Registrar Oportunidad</button>
                     </div>
                 </div>
             </div>

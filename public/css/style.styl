@@ -197,6 +197,9 @@ label
 .js-opacity-done
 	opacity 0
 	z-index -5
+.js-login
+	width 100%
+	max-width 450px
 .js-input
 	padding 7px 20px
 	height 72px
@@ -277,8 +280,26 @@ label
 	background-color $default !important
 	border-radius 0
 	font-size 18px
+	box-shadow none
+	border 2px solid $default
+	margin 5px
 	&:hover
 		box-shadow 0px 0px 0px 2px $default
+	&.js-button--default
+		background-color transparent !important
+		color #000000
+.js-user
+	flexCenter()
+	.js-user--left
+		flexCenter()
+		justify-content flex-start
+		width 100%
+		p
+			font-size 20px
+	.js-user--right
+		flexCenter()
+		justify-content flex-end
+		width 100%
 .js-terminos
 	h3
 		color $default
@@ -316,6 +337,20 @@ label
 			padding 30px 0
 			display block
 /*MATERIAL*/
+.mdl-card
+	width 100%
+	.mdl-card__title
+		display block
+		h2
+			margin 10px 0
+			font-size 26px
+			line-height 28px
+			font-family $medium
+		p
+			font-size 16px
+			line-height 18px
+.mdl-card__supporting-text
+	width 100%
 .mdl-layout__container
 	position fixed
 	.mdl-layout__drawer
