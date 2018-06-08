@@ -60,6 +60,35 @@ class Login extends CI_Controller {
         echo json_encode($data);
     }
 
+//POR CONFIRMAR SI SE USARÁ
+    // function registrarUsuario () {
+    //     $data['error'] = EXIT_ERROR;
+    //     $data['msj']   = null;
+    //     try {
+    //         $nombre    = $this->input->post('nombre');
+    //         $apellidos = $this->input->post('apellidos');
+    //         $canal     = $this->input->post('canal');
+    //         $pais      = $this->input->post('pais');
+    //         $email     = $this->input->post('email');
+    //         $movil     = $this->input->post('movil');
+    //         $pass      = $this->input->post('pass');
+
+    //         $arrayInsert = array('no_vendedor'   => $nombreVendedor,
+    //                              'email'         => $email,
+    //                              'fecha'         => $fecha,
+    //                              'canal'         => $canal,
+    //                              '_id_mayorista' => $idMayorista,
+    //                              'tipo_documento'=> $tipoDoc,
+    //                              'pais'          => $pais,
+    //                              'nu_cotizacion' => $numFactura,
+    //                              'monto'         => $monto,
+    //                              $columnaFinal   => $puntos );
+    //     } catch (Exception $ex) {
+    //         $data['msj'] = $ex->getMessage();
+    //     }
+    //     echo json_encode($data);
+    // }
+
     function sendGmail(){
         $data['error'] = EXIT_ERROR;
         $data['msj']   = null;
@@ -81,7 +110,7 @@ class Login extends CI_Controller {
                                      'newline'   => "\r\n");
                 $this->email->initialize($configGmail);
                 $this->email->from('info@marketinghpe.com');
-                $this->email->to('pyf136@gmail.com');//maria-alejandra.prieto@hpe.com
+                $this->email->to($usuario);
                 $this->email->subject('HPE Microsoft - recuperación de contraseña');
                 $texto = '<!DOCTYPE html>
                             <html>
@@ -143,6 +172,5 @@ class Login extends CI_Controller {
             $data['msj'] = $e->getMessage();
         }
         echo json_encode($data);
-        // return json_encode(array_map('utf8_encode', $data));
     }
 }

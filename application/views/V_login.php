@@ -57,12 +57,12 @@
                         <div class="col-xs-12 mdl-card__actions text-left" onclick="openModalRecuperar()">
                             <span>¿Olvidaste tu contraseña?</span>
                         </div>
-                        <div class="col-xs-12 mdl-card__actions text-left" onclick="openModalCambiar()">
+                        <!-- <div class="col-xs-12 mdl-card__actions text-left" onclick="openModalCambiar()">
                             <span>Cambiar contraseña</span>
                         </div>
                         <div class="col-xs-12 mdl-card__actions text-left" onclick="openModalCrear()">
                             <span >Registrarse</span>
-                        </div>
+                        </div> -->
                         <div class="col-xs-12 mdl-card__actions text-right">
                             <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" onclick="ingresar()">Login</button>
                         </div>

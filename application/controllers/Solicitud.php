@@ -97,32 +97,4 @@ class Solicitud extends CI_Controller {
 		}
 		echo json_encode($data);
 	} 
-
-	function getLastOrders() {
-		$data['error'] = EXIT_ERROR;
-		$data['msj'] = null;
-		try {
-			$idUser = $this->session->userdata('Id_user');
-			$obtenerOrdenes = $this->M_Solicitud->getLastOrders($idUser);
-			$html = null;
-			$puntosEngage = 0;
-			foreach ($obtenerOrdenes as $key) {
-				$html .= '<tr>
-						      <td class="text-center">'.$key->pais.'</td>
-	                          <td class="text-center">'.$key->documento.'</td>
-	                          <td class="text-center">'.$key->fecha.'</td>
-	                          <td class="text-center"> '.$key->puntos_cotizados.' </td>
-	                          <td class="text-center"> '.$key->puntos_facturados.' </td>
-	                          <td class="text-center"> '.$key->puntos_total.' </td> 
-	                      </tr>';
-              	$puntosEngage += $key->puntos_total;
-			}
-			$data['html'] = $html;
-			$data['puntosGeneral'] = $puntosEngage;
-			$data['error'] = EXIT_SUCCESS;
-		} catch (Exception $ex){
-			$data['msj'] = $ex->getMessage();
-		}
-		echo json_encode($data);
-	}
 }

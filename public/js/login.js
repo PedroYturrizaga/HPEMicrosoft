@@ -76,6 +76,24 @@ function soloLetras(e){
         return false;
     }
  }
+
+ function validarCampos(){
+    var $inputs = $('form :input');
+    var formvalido = true;
+    $inputs.each(function() {
+        if(isEmpty($(this).val())){
+            $(this).css('border-color','red');
+            $('.btn-default').css('border-color','#C6C9CA');
+            $('#fecha').css('border-color','#C6C9CA');
+            formvalido = false;
+        }else{
+            $(this).css('border-color','#C6C9CA');
+            $('#fecha').css('border-color','#C6C9CA');
+        }
+    });
+    return formvalido;
+}
+
  function valida(e){
     tecla = (document.all) ? e.keyCode : e.which;
     if (tecla==8){
@@ -153,58 +171,103 @@ function recuperar() {
     });
 }
 
-function cambiar() {
-    $.ajax({
-        data : {},
-        url  : '',
-        type : 'POST'
-    })
-    .done(function(data) {
-        data = JSON.parse(data);
-        try {
-            if(data.error == 0) {
-                abrirCerrarModal('recuperaContrasena');
-            }
-        } catch (err){
-            msj('error', err.message);
-        }
-    });
-}
+// POR CONFIRMAR SI SE USARÁ
 
-function registrar() {
-    var nombre    = $('#nombre').val();
-    var apellidos = $('#apellidos').val();
-    var canal     = $('#canal').val();
-    var pais      = $('#pais').val();
-    var email     = $('#email').val();
-    var movil     = $('#movil').val();
-    var pass      = $('#pass').val();
-    var passRep   = $('#passRep').val();
-    // $.ajax({
-    //     data : { nombre    : nombre,
-    //              apellidos : apellidos,
-    //              canal     : canal,
-    //              pais      : pais,
-    //              email     : email,
-    //              movil     : movil,
-    //              pass      : pass,
-    //              passRep   : passRep },
-    //     url  : 'login/registrarUsuario',
-    //     type : 'POST'
-    // })
-    // .done(function(data) {
-    //     data = JSON.parse(data);
-    //     console.log(data);
-    //     try {
-    //         if(data.error == 0) {
-    //             abrirCerrarModal('recuperaContrasena');
-    //         } else { 
-    //             toastr.clear();
-    //             msj('error',data.msj);
-    //             return; 
-    //         }
-    //     } catch (err){
-    //         msj('error', err.message);
-    //     }
-    // });
-}
+// function cambiar() {
+//     $.ajax({
+//         data : {},
+//         url  : '',
+//         type : 'POST'
+//     })
+//     .done(function(data) {
+//         data = JSON.parse(data);
+//         try {
+//             if(data.error == 0) {
+//                 abrirCerrarModal('recuperaContrasena');
+//             }
+//         } catch (err){
+//             msj('error', err.message);
+//         }
+//     });
+// }
+
+// function registrar() {
+//     var nombre    = $('#nombre').val();
+//     var apellidos = $('#apellidos').val();
+//     var canal     = $('#canal').val();
+//     var pais      = $('#pais').val();
+//     var email     = $('#email').val();
+//     var movil     = $('#movil').val();
+//     var pass      = $('#pass').val();
+//     var passRep   = $('#passRep').val();
+//     if(nombre == '' || nombre == null) {
+//         msj('error', 'Ingrese su nombre');
+//         $('#nombre').css('border-color','red');
+//         return;
+//     }
+//     if(apellidos == '' || apellidos == null) {
+//         msj('error', 'Ingrese sus apellidos');
+//         $('#apellidos').css('border-color','red');
+//         return;
+//     }
+//     if(canal == '' || canal == null) {
+//         msj('error', 'Ingrese su canal');
+//         $('#canal').css('border-color','red');
+//         return;
+//     }
+//     if(pais == '' || pais == null) {
+//         msj('error', 'Ingrese su pais');
+//         $('#pais').css('border-color','red');
+//         return;
+//     }
+//     if(email == '' || email == null) {
+//         msj('error', 'Ingrese su email');
+//         $('#email').css('border-color','red');
+//         return;
+//     }
+//     if(movil == '' || movil == null) {
+//         msj('error', 'Ingrese su movil');
+//         $('#movil').css('border-color','red');
+//         return;
+//     }
+//     if(pass == '' || pass == null) {
+//         msj('error', 'Ingrese su contraseña');
+//         $('#pass').css('border-color','red');
+//         return;
+//     }
+//     if(passRep == '' || passRep == null) {
+//         msj('error', 'Ingrese la confimacion de contraseña');
+//         $('#passRep').css('border-color','red');
+//         return;
+//     }
+//     if(pass != passRep) {
+//         msj('error', 'Las contraseñas no coinciden');
+//         return;
+//     }
+//     $.ajax({
+//         data : { nombre    : nombre,
+//                  apellidos : apellidos,
+//                  canal     : canal,
+//                  pais      : pais,
+//                  email     : email,
+//                  movil     : movil,
+//                  pass      : pass },
+//         url  : 'login/registrarUsuario',
+//         type : 'POST'
+//     })
+//     .done(function(data) {
+//         data = JSON.parse(data);
+//         console.log(data);
+//         try {
+//             if(data.error == 0) {
+//                 abrirCerrarModal('recuperaContrasena');
+//             } else { 
+//                 toastr.clear();
+//                 msj('error',data.msj);
+//                 return; 
+//             }
+//         } catch (err){
+//             msj('error', err.message);
+//         }
+//     });
+// }

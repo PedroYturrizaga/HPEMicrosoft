@@ -234,25 +234,6 @@ function calcularCAL() {
 		$('#puntosCAL').text('');
 	}
 }
-function getLastOrder() {
-	$.ajax({
-		data  : {  },
-		url   : 'solicitud/getLastOrders',
-		type  : 'POST'
-	}).done(function(data){
-		try{
-        	data = JSON.parse(data);
-        	if(data.error == 0){
-        		$('#body').html('');
-        		$('#body').append(data.html);
-        		$('#puntosTrimestral').html('');
-        		$('#puntosTrimestral').append(data.puntosGeneral);
-        	}
-      } catch (err){
-        msj('error',err.message);
-      }
-	});
-}
 function goToMenu(id){
 	var idLink    = $('#'+id);
 	var idSection = $('#section-'+id)
