@@ -148,6 +148,28 @@
             <section id="section-puntaje" class="js-section js-section--menu js-opacity-done">
                 <div class="js-container">
                     <h2 class="js-title">&Uacute;ltimos 4 ingresos</h2>
+                    <div class="js-puntaje">
+                        <table id="tbUltimosIngresos" class="table">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th></th> 
+                                    <th></th>
+                                    <th class="text-center" colspan="2"> <strong>Puntaje</strong> </th> 
+                                    <th></th>  
+                                </tr>
+                                <tr>
+                                    <th>Pais</th>
+                                    <th>Documento</th>
+                                    <th>Fecha</th>
+                                    <th class="text-center">Cotizado</th>
+                                    <th class="text-center">Cerrado</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead >
+                            <tbody id="body"></tbody>
+                        </table>
+                    </div>
                 </div>
             </section>
             <section id="section-terminos" class="js-section js-section--menu js-opacity-done">
