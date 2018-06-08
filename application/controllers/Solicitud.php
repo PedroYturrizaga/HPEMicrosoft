@@ -27,9 +27,9 @@ class Solicitud extends CI_Controller {
 		$puntosEngage = 0;
 		foreach ($obtenerOrdenes as $key) {
 			$html .= '<tr>
-					      <td class="text-center">'.$key->pais.'</td>
-                          <td class="text-center">'.$key->documento.'</td>
-                          <td class="text-center">'.$key->fecha.'</td>
+					      <td class="text-left">'.$key->pais.'</td>
+                          <td class="text-left">'.$key->documento.'</td>
+                          <td class="text-left">'.$key->fecha.'</td>
                           <td class="text-center"> '.$key->puntos_cotizados.' </td>
                           <td class="text-center"> '.$key->puntos_facturados.' </td>
                           <td class="text-center"> '.$key->puntos_total.' </td> 
