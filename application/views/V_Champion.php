@@ -25,7 +25,7 @@
     <link rel="stylesheet"    href="<?php echo RUTA_CSS?>style.css?v=<?php echo time();?>">
 </head>
 <body>
-    <div class="js-header js-relative">
+    <div class="js-header js-fixed">
         <div class="js-header--left">
             <img class="js-partner" src="<?php echo RUTA_IMG?>logo/hpe-logo.svg">
             <img src="<?php echo RUTA_IMG?>logo/microsoft-logo.png">
