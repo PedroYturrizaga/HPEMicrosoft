@@ -148,27 +148,33 @@
             <section id="section-puntaje" class="js-section js-section--menu js-opacity-done">
                 <div class="js-container">
                     <h2 class="js-title">&Uacute;ltimos 4 ingresos</h2>
-                    <div class="js-puntaje">
-                        <table id="tbUltimosIngresos" class="table">
-                            <thead>
-                                <tr>
-                                    <th></th>
-                                    <th></th> 
-                                    <th></th>
-                                    <th class="text-center" colspan="2"> <strong>Puntaje</strong> </th> 
-                                    <th></th>  
-                                </tr>
-                                <tr>
-                                    <th>Pais</th>
-                                    <th>Documento</th>
-                                    <th>Fecha</th>
-                                    <th class="text-center">Cotizado</th>
-                                    <th class="text-center">Cerrado</th>
-                                    <th>Total</th>
-                                </tr>
-                            </thead >
-                            <tbody id="body"></tbody>
-                        </table>
+                    <div class="js-puntaje js-flex">
+                        <div class="table-responsive">
+                            <table id="tbUltimosIngresos" class="table">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th></th> 
+                                        <th></th>
+                                        <th class="text-center" colspan="2"> <strong>Puntaje</strong> </th> 
+                                        <th></th>  
+                                    </tr>
+                                    <tr>
+                                        <th>Pais</th>
+                                        <th>Documento</th>
+                                        <th>Fecha</th>
+                                        <th class="text-center">Cotizado</th>
+                                        <th class="text-center">Cerrado</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead >
+                                <tbody id="body"></tbody>
+                            </table>
+                        </div>
+                        <div class="js-puntaje__puntos">
+                            <p class="title-formulario">Puntos Engage & Grow acumulados</h2>
+                            <span id="puntosTrimestral"></span>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -206,39 +212,6 @@
             </section>
         </main>
     </div>
-    <!-- <section id="principal">
-        <div class="container">
-            <div class="row">
-                <div class="formulario col-sm-12 col-xs-12 m-t-20">
-                    <div class="col-sm-12 col-xs-12" id="puntaje">
-                        <h2 class="title-formulario">&Uacute;ltimos 4 ingresos del trimestre</h2>
-                        <div class="col-sm-8 col-xs-12">
-                            <table id="tbUltimosIngresos" >
-                                <thead>
-                                    <tr> 
-                                        <th class="col-spam-3 col-sm-2 "> <strong>Puntaje</strong> </th>
-                                    </tr>
-                                    <tr>
-                                        <th>Pais</th>
-                                        <th>Documento</th>
-                                        <th>Fecha</th>
-                                        <th>Cotizado</th>
-                                        <th>Cerrado</th>
-                                        <th>Total</th>
-                                    </tr>
-                                </thead >
-                                <tbody id="body"></tbody>
-                            </table>
-                        </div>
-                        <div class="col-sm-4 col-xs-12">
-                            <h2 class="title-formulario">Puntos Engage & Grow acumulados</h2>
-                            <h4 id="puntosTrimestral"> </h4>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> -->
     <!--MODAL-->
     <div class="modal fade" id="ModalQuestion" tabindex="-1" role="dialog" aria-labelledby="simpleModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
         <div class="modal-dialog modal-sm text-center">
