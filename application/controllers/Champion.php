@@ -50,7 +50,7 @@ class Champion extends CI_Controller
         $data['error'] = EXIT_ERROR;
         $data['msj']   = null;
         try {
-            $id     = $_GET['cotizacion'];
+            $id     = $_POST['cotizacion'];
             $datos  = $this->M_Solicitud->getDetallesCotizacion($id);
             $data['detalles'] = $datos;
             $idRol  = $this->session->userdata('id_rol');

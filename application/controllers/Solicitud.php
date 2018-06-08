@@ -22,6 +22,23 @@ class Solicitud extends CI_Controller {
 			$option .= '<option value=" '.$key->id_mayorista.' ">'.$key->noMayorista.'</option>';
 		}
 		$data['option'] = $option;
+		$idUser = $this->session->userdata('Id_user');
+		$obtenerOrdenes = $this->M_Solicitud->getLastOrders($idUser);
+		$html = null;
+		$puntosEngage = 0;
+		foreach ($obtenerOrdenes as $key) {
+			$html .= '<tr>
+					      <td class="text-center">'.$key->pais.'</td>
+                          <td class="text-center">'.$key->documento.'</td>
+                          <td class="text-center">'.$key->fecha.'</td>
+                          <td class="text-center"> '.$key->puntos_cotizados.' </td>
+                          <td class="text-center"> '.$key->puntos_facturados.' </td>
+                          <td class="text-center"> '.$key->puntos_total.' </td> 
+                      </tr>';
+          	$puntosEngage += $key->puntos_total;
+		}
+		$data['html'] = $html;
+		$data['puntosGeneral'] = $puntosEngage;
 		$this->load->view('v_solicitud', $data);
 	}
 

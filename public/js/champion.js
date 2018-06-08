@@ -4,7 +4,7 @@ function getDetails(cotizacion) {
 	$.ajax({
 		data  : { cotizacion : cotizacion },
 		url   : 'champion/getDetalles',
-		post : 'POST'
+		type : 'POST'
 	}).done(function(data){
 		try{
         	data = JSON.parse(data);
@@ -65,7 +65,7 @@ function openModal(){
 	$.ajax({
 		data : { },
 		url  : 'champion/comboMayoristas',
-		post : 'POST'
+		type : 'POST'
 	}).done(function(data){
 		data = JSON.parse(data);
 		if(data.error == 0 ){
@@ -127,7 +127,7 @@ function drawChartDonut() {
 	$.ajax({
 		data : {},
 		url  : 'champion/getDatosGraficosCanales',
-		post : 'POST'
+		type : 'POST'
 	}).done(function(data) {
 		data = JSON.parse(data);
 		var arr = $.parseJSON(data.datos);
@@ -159,7 +159,7 @@ function drawChart() {
 	$.ajax({
 		data : { },
 		url  : 'champion/getDatosGraficoCotiza',
-		post : 'POST'
+		type : 'POST'
 	}).done(function(data) {
 		data = JSON.parse(data);
 		var arr = $.parseJSON(data.datos);

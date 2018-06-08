@@ -46,12 +46,124 @@
                         <label for="password">Contrase&ntilde;a</label>
                         <input type="password" id="password" onkeyup="verificarDatos(event);">
                     </div>
-                    <div class="col-xs-12 mdl-card__actions text-right">
-                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" onclick="ingresar()">Login</button>
+                    <div class="col-xs-12 mdl-label">
+                        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="remember">
+                            <input type="checkbox" id="remember" class="mdl-checkbox__input">
+                            <span class="mdl-checkbox__label">Remember me</span>
+                        </label>
                     </div>
+
+                    <div>
+                        <div class="col-xs-12 mdl-card__actions text-left" onclick="openModalRecuperar()">
+                            <span>¿Olvidaste tu contraseña?</span>
+                        </div>
+                        <div class="col-xs-12 mdl-card__actions text-left" onclick="openModalCambiar()">
+                            <span>Cambiar contraseña</span>
+                        </div>
+                        <div class="col-xs-12 mdl-card__actions text-left" onclick="openModalCrear()">
+                            <span >Registrarse</span>
+                        </div>
+                        <div class="col-xs-12 mdl-card__actions text-right">
+                            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" onclick="ingresar()">Login</button>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </section>
+
+        <!-- MODAL RECUPERAR CONTRASEÑA -->
+        <div class="modal fade" id="recuperaContrasena" tabindex="-1" role="dialog" aria-labelledby="simpleModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+            <div class="modal-dialog modal-sm text-center">
+                <div class="modal-content">
+                    <div class="mdl-card">
+                        <div class="mdl-card__supporting-text">
+                            <h3>RECUPERAR CONTRASE&Ntilde;A</h3>
+                            <p class="text-left">Comp&aacute;rtenos tu correo y en breve te enviaremos un correo con tu contrase&ntilde;a</p>
+                            <div class="col-xs-12 form-group">
+                                <!-- <label for="usuarioRecupera">Usuario</label> -->
+                                <input type="text" placeholder="Usuario" id="usuarioRecupera" onkeyup="verificarDatos(event);">
+                            </div>
+                        </div> 
+                        <div class="mdl-card__actions">
+                            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" data-dismiss="modal">Cancelar</button>
+                            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" onclick="recuperar()" >Aceptar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!--MODAL CAMBIO CONTRASEÑA -->
+        <div class="modal fade" id="cambioContrasena" tabindex="-1" role="dialog" aria-labelledby="simpleModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+            <div class="modal-dialog modal-sm text-center">
+                <div class="modal-content">
+                    <div class="mdl-card">
+                        <div class="mdl-card__supporting-text">
+                            <h2>CAMBIAR CONTRASE&Ntilde;A</h2>
+                            <div class="col-xs-12 form-group js-input">
+                                <label for="usuario">Usuario</label>
+                                <input type="text" id="usuarioCambio" onkeyup="verificarDatos(event);">
+                            </div>
+                            <div class="col-xs-12 form-group js-input">
+                                <label for="password">Nueva contrase&ntilde;a</label>
+                                <input type="password" id="newPassword" onkeyup="verificarDatos(event);">
+                            </div>
+                            <div class="col-xs-12 form-group js-input">
+                                <label for="confirmPassword">Confirmar contrase&ntilde;a</label>
+                                <input type="confirmPassword" id="confirmPassword" onkeyup="verificarDatos(event);">
+                            </div>
+                        </div> 
+                        <div class="mdl-card__actions">
+                            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" data-dismiss="modal">Cancelar</button>
+                            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" onclick="cambiar()">Aceptar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--MODAL REGISTRAR NUEVO USUARIO -->
+        <div class="modal fade" id="registroUsuario" tabindex="-1" role="dialog" aria-labelledby="simpleModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+            <div class="modal-dialog modal-md text-center">
+                <div class="modal-content">
+                    <div class="mdl-card">
+                        <div class="mdl-card__supporting-text">
+                            <h2>REGISTRAR USUARIO</h2>
+                            <div class="form-group col-xs-12 p-0">
+                                <input type="text" class="form-control" id="nombre" placeholder="Nombre" onchange="validarCampos()">
+                            </div>
+                            <div class="form-group col-xs-12 p-0">
+                                <input type="text" class="form-control" id="apellidos" placeholder="Apellidos" onchange="validarCampos()">
+                            </div>
+                            <div class="form-group col-xs-12 p-0">
+                                <input type="text" class="form-control" id="canal" placeholder="Canal" onchange="validarCampos()">
+                            </div>
+                            <div class="form-group col-xs-12 p-0">
+                                <input type="text" class="form-control" id="pais" placeholder="Pais" onchange="validarCampos()">
+                            </div>
+                            <div class="form-group col-xs-12 p-0">
+                                <input type="email" class="form-control" id="email" placeholder="Email" onchange="validarCampos()">
+                            </div>
+                            <div class="form-group col-xs-12 p-0">
+                                <input type="text" class="form-control" id="movil" placeholder="M&oacute;vil" onchange="validarCampos()">
+                            </div>
+                            <div class="form-group col-xs-12 p-0">
+                                <input type="password" class="form-control" id="pass" placeholder="Contrase&ntilde;a" onchange="validarCampos()">
+                            </div>
+                            <div class="form-group col-xs-12 p-0">
+                                <input type="password" class="form-control" id="passRep" placeholder="Repetir contrase&ntilde;" onchange="validarCampos()">
+                            </div>
+                        </div> 
+                        <div class="mdl-card__actions">
+                            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" data-dismiss="modal">Cancelar</button>
+                            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" onclick="registrar()">Aceptar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- <section class>
             <div class="header">
                 <div class="mdl-container row">

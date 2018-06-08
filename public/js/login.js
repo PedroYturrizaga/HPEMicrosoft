@@ -1,75 +1,80 @@
 function ingresar(){
 	var usuario  = $('#usuario').val();
 	var password = $('#password').val();
-  if($('#remember').is(':checked') == true){
-    sessionStorage.setItem('CHECK', '1');
-    sessionStorage.setItem('USERNAME', usuario);
-    sessionStorage.setItem('PASS', password);
-  }else{
-    sessionStorage.setItem('CHECK', '0');
-  }
-	if(usuario == null || usuario == ''){
-    msj('error', 'Ingrese su usuario');
-    return;
-  }
+    if($('#remember').is(':checked') == true){
+        sessionStorage.setItem('CHECK', '1');
+        sessionStorage.setItem('USERNAME', usuario);
+        sessionStorage.setItem('PASS', password);
+    }else{
+        sessionStorage.setItem('CHECK', '0');
+    }
+    if(usuario == null || usuario == ''){
+        msj('error', 'Ingrese su usuario');
+        return;
+    }
 	if(password == null || password == ''){
-    msj('error', 'Ingrese su contraseña');
+        msj('error', 'Ingrese su contraseña');
 		return;
 	}
+    if (!validateEmail(usuario)){
+        msj('error', 'El formato de usuario ingresado es incorrecto');
+        return;
+    }
 	$.ajax({
 		data : {usuario  : usuario,
-				    password : password},
+				password : password},
 		url  : 'Login/ingresar',
 		type : 'POST'
 	}).done(function(data){
 		try{
-        data = JSON.parse(data);
-        if(data.error == 0){
-        	$('#usuario').val("");
-        	$('#password').val("");
-          console.log(data);
-          if(data.rol == 1) {
-            location.href = 'Solicitud';
-          } else if(data.rol == 0) {
-            location.href = 'Champion';
-          }
-        }else {
-          if(data.pass == null || data.pass == '') {
-            msj('error', 'alguno de sus datos son incorrectos');
-          }else {
-            msj('error', data.pass);
-          }
-        	return;
+            data = JSON.parse(data);
+            console.log(data.pass);
+            if(data.error == 0){
+            	$('#usuario').val("");
+            	$('#password').val("");
+                if(data.rol == 1) {
+                    location.href = 'Solicitud';
+                } else if(data.rol == 0) {
+                    location.href = 'Champion';
+                }
+            }else {
+                if(data.pass == null || data.pass == '') {
+                    msj('error', 'alguno de sus datos son incorrectos');
+                }else {
+                    toastr.clear();
+                    msj('error', data.pass);
+                }
+            	return;
+            }
+        }catch(err){
+            msj('error',err.message);
         }
-      }catch(err){
-        msj('error',err.message);
-      }
 	});
 }
 $("#showpass").click(function(){
 	$(this).find('i').toggleClass("mdi-remove_red_eye mdi-visibility_off");
     var input = $(this).parent().find('.mdl-textfield__input');
     if (input.attr("type") == "password"){
-    	input.attr("type", "text");
+        input.attr("type", "text");
     }else{
-      input.attr("type", "password");
+        input.attr("type", "password");
     }
 });
 function soloLetras(e){
-    key 	     = e.keyCode || e.which;
+    key 	   = e.keyCode || e.which;
     tecla 	   = String.fromCharCode(key).toLowerCase();
     letras     = " áéíóúabcdefghijklmnñopqrstuvwxyz";
     especiales = "8-37-39-46";
     tecla_especial = false
     for(var i in especiales){
-         if(key == especiales[i]){
-             tecla_especial = true;
-             break;
-         }
-     }
-     if(letras.indexOf(tecla)==-1 && !tecla_especial){
-         return false;
-     }
+        if(key == especiales[i]){
+            tecla_especial = true;
+            break;
+        }
+    }
+    if(letras.indexOf(tecla)==-1 && !tecla_especial){
+        return false;
+    }
  }
  function valida(e){
     tecla = (document.all) ? e.keyCode : e.which;
@@ -91,19 +96,115 @@ function verificarDatos(e){
     }
 }
 function cerrarCesion(){
-  $.ajax({
-    url  : 'login/cerrarCesion',
-    type : 'POST'
-  }).done(function(data){
-    try{
-        data = JSON.parse(data);
-        if(data.error == 0){
-          location.href = 'Login';
-        }else {
-          return;
+    $.ajax({
+        url  : 'login/cerrarCesion',
+        type : 'POST'
+    }).done(function(data){
+        try{
+            data = JSON.parse(data);
+            if(data.error == 0){
+                location.href = 'Login';
+            }else {
+                return;
+            }
+        }catch(err){
+            msj('error',err.message);
         }
-      }catch(err){
-        msj('error',err.message);
-      }
-  });
+    });
+}
+
+function openModalRecuperar() {
+    modal('recuperaContrasena');
+}
+
+function openModalCambiar() {
+    modal('cambioContrasena');
+}
+
+function openModalCrear() {
+    modal('registroUsuario');
+}
+
+function recuperar() {
+    var user = $('#usuarioRecupera').val();
+    if (!validateEmail(user)){
+        msj('error', 'El formato de usuario ingresado es incorrecto');
+        return;
+    }
+    $.ajax({
+        data : { user : user },
+        url  : 'Login/sendGmail',
+        type : 'POST'
+    })
+    .done(function(data) {
+        data = JSON.parse(data);
+        console.log(data);
+        try {
+            if(data.error == 0) {
+                abrirCerrarModal('recuperaContrasena');
+            } else { 
+                toastr.clear();
+                msj('error',data.msj);
+                return; 
+            }
+        } catch (err){
+            msj('error', err.message);
+        }
+    });
+}
+
+function cambiar() {
+    $.ajax({
+        data : {},
+        url  : '',
+        type : 'POST'
+    })
+    .done(function(data) {
+        data = JSON.parse(data);
+        try {
+            if(data.error == 0) {
+                abrirCerrarModal('recuperaContrasena');
+            }
+        } catch (err){
+            msj('error', err.message);
+        }
+    });
+}
+
+function registrar() {
+    var nombre    = $('#nombre').val();
+    var apellidos = $('#apellidos').val();
+    var canal     = $('#canal').val();
+    var pais      = $('#pais').val();
+    var email     = $('#email').val();
+    var movil     = $('#movil').val();
+    var pass      = $('#pass').val();
+    var passRep   = $('#passRep').val();
+    // $.ajax({
+    //     data : { nombre    : nombre,
+    //              apellidos : apellidos,
+    //              canal     : canal,
+    //              pais      : pais,
+    //              email     : email,
+    //              movil     : movil,
+    //              pass      : pass,
+    //              passRep   : passRep },
+    //     url  : 'login/registrarUsuario',
+    //     type : 'POST'
+    // })
+    // .done(function(data) {
+    //     data = JSON.parse(data);
+    //     console.log(data);
+    //     try {
+    //         if(data.error == 0) {
+    //             abrirCerrarModal('recuperaContrasena');
+    //         } else { 
+    //             toastr.clear();
+    //             msj('error',data.msj);
+    //             return; 
+    //         }
+    //     } catch (err){
+    //         msj('error', err.message);
+    //     }
+    // });
 }

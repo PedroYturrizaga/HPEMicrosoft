@@ -168,12 +168,12 @@
                                         <th>Total</th>
                                     </tr>
                                 </thead >
-                                <tbody id="body"></tbody>
+                                <tbody id="body"> <?php echo $html ?> </tbody>
                             </table>
                         </div>
                         <div class="js-puntaje__puntos">
                             <p class="title-formulario">Puntos Engage & Grow acumulados</h2>
-                            <span id="puntosTrimestral"></span>
+                            <span id="puntosTrimestral"> <?php echo $puntosGeneral ?></span>
                         </div>
                     </div>
                 </div>

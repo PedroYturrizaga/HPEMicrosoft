@@ -33,13 +33,13 @@ class Login extends CI_Controller {
                                          'Id_user' => $username[0]->id_mayorista,
                                          'id_rol'  => $username[0]->id_rol);
                         $this->session->set_userdata($session);
+                        $data['rol'] = $username[0]->id_rol;
                         $data['error'] = EXIT_SUCCESS;
                     }else {
                         $data['pass'] = 'Contraseña incorrecta';
                     }
                 }
             }
-            $data['rol'] = $username[0]->id_rol;
         }catch(Exception $e) {
            $data['msj'] = $e->getMessage();
         }
@@ -57,5 +57,91 @@ class Login extends CI_Controller {
             $data['msj'] = $e->getMessage();
         }
         echo json_encode($data);
+    }
+
+    function sendGmail(){
+        $data['error'] = EXIT_ERROR;
+        $data['msj']   = null;
+        try {
+            $usuario  = $this->input->post('user');
+            $username = $this->M_Login->verificaUsuario($usuario);
+            if(sizeof($username) == 0){
+                $data['error'] = EXIT_ERROR;
+                $data['msj']   = 'Usuario no registrado';
+            }else{
+                $this->load->library("email");
+                $configGmail = array('protocol'  => 'smtp',
+                                     'smtp_host' => 'smtpout.secureserver.net',
+                                     'smtp_port' => 3535,
+                                     'smtp_user' => 'info@marketinghpe.com',
+                                     'smtp_pass' => 'hpeinfo18',
+                                     'mailtype'  => 'html',
+                                     'charset'   => 'utf-8',
+                                     'newline'   => "\r\n");
+                $this->email->initialize($configGmail);
+                $this->email->from('info@marketinghpe.com');
+                $this->email->to('pyf136@gmail.com');//maria-alejandra.prieto@hpe.com
+                $this->email->subject('HPE Microsoft - recuperación de contraseña');
+                $texto = '<!DOCTYPE html>
+                            <html>
+                                <body>
+                                    <table width="500px" cellpadding="0" cellspacing="0" align="center" style="border: solid 1px #ccc;">
+                                        <tr>
+                                            <td>
+                                                <table width="500" cellspacing="0" cellpadding="0" border="0" align="center" style="background-color: #415564;padding: 10px 20px;">
+                                                    <tr>
+                                                        <td>
+                                                            <table>
+                                                                <tr>
+                                                                    <td><img src="http://test.brainblue.com/HPE_promo_made_simple/public/img/logo/logo_header.png" width="120" alt="alternative text" border="0" style="display: block;"></td>
+                                                                    <td></td>
+                                                                </tr>
+                                                            </table>
+                                                        </td>
+                                                        <td>
+                                                            <table cellspacing="0" cellpadding="0" border="0" align="right">
+                                                                <tr>
+                                                                    <td><font style="font-family: arial;color: #FFFFFF;font-weight: 600;">http://test.brainblue.com/HPE_promo_made_simple/public/img/logo/microsoft-logo.png</font></td>
+                                                                </tr>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <table width="400" cellspacing="0" cellpadding="0" border="0" align="center" style="padding: 30px 0">
+                                                    <tr>
+                                                        <td style="text-align: center;padding: 0;margin: 0;"><font style="font-family: arial;color: #000000;font-size: 18px;font-weight: 600">Recuperar contrase&ntilde;a</font></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="padding: 20px 0;">
+                                                            <p>Sr(a) '.$username[0]->noMayorista.':</p>
+                                                            <p>Su contrase&ntilde;a es '.$username[0]->pass.'. </p>
+                                                            <br>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="text-align: center;padding-bottom: 20px"><a href="http://localhost/HPEMicrosoft/Login" target="_blank" style="font-family: arial;color: #00B388;font-size: 14px; text-decoration: underline;font-weight: 600;">Regresar al portal</a></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="text-align: center;"><font style="font-family: arial;color: #D3D3D3;font-size: 12px;">&copy;2018 Hewlett Packard Enterprise Development LP</font></td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </body>
+                            </html>';
+                $this->email->message($texto);
+                $this->email->send();
+                $data['error'] = EXIT_SUCCESS;
+            }
+        }catch (Exception $e){
+            $data['msj'] = $e->getMessage();
+        }
+        echo json_encode($data);
+        // return json_encode(array_map('utf8_encode', $data));
     }
 }
