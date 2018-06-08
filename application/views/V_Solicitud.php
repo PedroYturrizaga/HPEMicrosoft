@@ -11,7 +11,7 @@
     <meta name="language"               content="es">
     <meta name="theme-color"            content="#000000">
     <title>Registro de Cotizaciones HPE</title>
-    <link rel="shortcut icon" href="<?php echo RUTA_IMG?>favicon.png">
+    <link rel="shortcut icon" href="<?php echo RUTA_IMG?>logo/favicon.ico">
     <link rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>toaster/toastr.min.css?v=<?php echo time();?>">
     <link rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>bootstrap-select/css/bootstrap-select.min.css?v=<?php echo time();?>">
     <link rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>bootstrap/bootstrap.min.css?v=<?php echo time();?>">
@@ -50,31 +50,30 @@
             <section id="section-cotizacion" class="js-section js-section--menu">
                 <div class="js-container">
                     <h2 class="js-title">Nuevo ingreso</h2>
-                    <div class="col-sm-12 col-xs-12" id="solicitud">
+                    <div class="col-sm-12 col-xs-12">
                         <div class="col-sm-6 col-xs-12"> 
-                            <div class="form-group col-xs-12 p-0">
-                                <!-- <label for="apellido">Nombre</label> -->
-                                <input type="text" class="form-control" id="Nombre" placeholder="Nombre del vendedor" onchange="validarCampos()">
+                            <div class="col-xs-12 js-input">
+                                <label for="Nombre">Nombre del Vendedor</label>
+                                <input type="text" id="Nombre" onchange="validarCampos()">
                             </div>
-                            <div class="form-group col-xs-12 p-0">
-                                <!-- <label for="email">Email</label> -->
-                                <input type="email" class="form-control" id="email" placeholder="Email" onchange="validarCampos()">
+                            <div class="col-xs-12 js-input">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" onchange="validarCampos()">
                             </div>
-                            <!-- Simple Select -->
-                            <div class="form-group col-xs-12 p-0">
+                            <div class="col-xs-12 js-input js-select">
                                 <select name="noMayorista" id="noMayorista"> 
                                     <?php echo $option ?>
                                 </select>
                             </div>
-                            <div class="form-group col-xs-12 p-0">
-                                <!-- <label for="correo">Confirmar email</label> -->
-                                <input type="text" class="form-control" id="canal" placeholder="Canal al que cotiza" onchange="validarCampos()">
+                            <div class="col-xs-12 js-input">
+                                <label for="canal">Canal al que cotiza</label>
+                                <input type="text" id="canal" onchange="validarCampos()">
                             </div>
-                            <div class="form-group col-xs-12 p-0">
-                                <!-- <label for="correo">Confirmar email</label> -->
-                                <input type="text" class="form-control" id="pais" placeholder="Pais" onchange="validarCampos()">
+                            <div class="col-xs-12 js-input">
+                                <label for="pais">Pais</label>
+                                <input type="text" id="pais" onchange="validarCampos()">
                             </div>
-                            <div class="form-group col-xs-12 p-0">
+                            <div class="col-xs-12">
                                 <!-- <label for="correo">Confirmar email</label> -->
                                 <label> Tipo Documento:</label>
                                 <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="radioCotizacion">
@@ -88,8 +87,9 @@
                             </div>
                         </div>
                         <div class="col-sm-6 col-xs-12">
-                            <div class="form-group col-xs-12 p-0">
-                            <input type="text" class="form-control" id="numFactura" placeholder="# Factura" onchange="validarCampos()">
+                            <div class="col-xs-12 js-input">
+                                <label for="numFactura"># Factura</label>
+                                <input type="text" id="numFactura" onchange="validarCampos()">
                             </div>
                             <div class="form-group col-xs-12 p-0">
                                 <div class="form-group">
@@ -103,9 +103,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group col-xs-12 p-0">
-                                <!-- <label for="rol">Rol</label> -->
-                                <input type="text" class="form-control" id="monto" placeholder="Monto" onchange="validarCampos()">
+                            <div class="col-xs-12 js-input">
+                                <label for="monto">Monto</label>
+                                <input type="text" id="monto" onchange="validarCampos()">
                             </div>
                             <h2 class="title-formulario">Productos</h2>
                             <table id="tbProductos" >

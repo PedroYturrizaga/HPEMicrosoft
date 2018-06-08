@@ -195,20 +195,45 @@ label
 	z-index -5
 .js-input
 	padding 7px 20px
-	height 75px
+	height 72px
 	margin 0
-	border 1px solid rgba(0, 0, 0, 0.15)
+	border 1px solid rgba(0,0,0,0.15)
 	background-color #FFFFFF
 	margin-bottom -1px
+	color #333333
+	margin 5px 0
+	&.js-select
+		padding 0
+		height 100%
+		.bootstrap-select
+			.dropdown-toggle
+				padding 14px 24px
+				border-radius 0
+				box-shadow none
+				background-color transparent
+			.dropdown-menu
+				background-color rgba(248, 248, 248, 0.95)
+				border-radius 0
+				margin 0 
+				padding 0
+				&.open
+					margin 0
+					padding 0
+					li
+						a
+							padding 6px 20px
+							&:hover
+								background-color rgba(221,221,221,0.5)
 	label
 		font-family $light
-		color #000000
+		color #666666
 		cursor pointer
 	input
 		display block
 		height 36px
 		width 100%
 		border none
+		font-size 16px
 		&:focus
 			outline 0
 	&.input-focused
@@ -221,6 +246,7 @@ label
 			selectTransparent()
 			&:focus
 				outline: 0 !important
+			
 .js-terminos
 	h3
 		color $default
