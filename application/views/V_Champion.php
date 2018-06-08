@@ -39,7 +39,7 @@
         <div class="js-container">
             <div class="js-user m-t-50">
                 <div class="js-user--left">
-                    <p>Bienvenido(a) </p>
+                    <p>Bienvenido(a) <?php echo $nombre?> </p> 
                 </div>
                 <div class="js-user--right">
                     <button type="button" name="boton" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect js-button" onclick="openModal();" >Nueva Oportunidad</button>

@@ -8,6 +8,7 @@ class Champion extends CI_Controller
 		parent::__construct();
         $this->load->helper("url");//BORRAR CACHÉ DE LA PÁGINA
         $this->load->model('M_Solicitud');
+        $this->load->model('M_Login');
         $this->output->set_header('Last-Modified:'.gmdate('D, d M Y H:i:s').'GMT');
         $this->output->set_header('Cache-Control: no-store, no-cache, must-revalidate');
         $this->output->set_header('Cache-Control: post-check=0, pre-check=0',false);
@@ -15,7 +16,8 @@ class Champion extends CI_Controller
 	}
 
 	public function index (){
-		$data['nombre'] = '';
+        $nombre = $this->M_Login->verificaUsuario( $this->session->userdata('usuario') );
+		$data['nombre'] = $nombre[0]->noMayorista;
 		$datos  = $this->M_Solicitud->getCanalMasUsado();
         $datos2 = $this->M_Solicitud->getLastCotizaciones();
 		$html   = ' ';
