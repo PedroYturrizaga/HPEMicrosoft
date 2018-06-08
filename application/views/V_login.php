@@ -24,7 +24,7 @@
         <link rel="stylesheet"    href="<?php echo RUTA_CSS?>style.css?v=<?php echo time();?>">
     </head>
     <body>
-        <div class="js-header">
+        <div class="js-header js-header--login">
             <div class="js-header--left">
                 <img class="js-partner" src="<?php echo RUTA_IMG?>logo/hpe-logo.svg">
                 <img src="<?php echo RUTA_IMG?>logo/microsoft-logo.png">
@@ -46,28 +46,26 @@
                         <label for="password">Contrase&ntilde;a</label>
                         <input type="password" id="password" onkeyup="verificarDatos(event);">
                     </div>
-                    <div class="col-xs-12 mdl-label">
-                        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="remember">
-                            <input type="checkbox" id="remember" class="mdl-checkbox__input">
-                            <span class="mdl-checkbox__label">Remember me</span>
-                        </label>
+                    <div class="col-xs-12 p-0">
+                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect js-button js-button--login" onclick="ingresar()">Login</button>
                     </div>
-
-                    <div>
-                        <div class="col-xs-12 mdl-card__actions text-left" onclick="openModalRecuperar()">
-                            <span>¿Olvidaste tu contraseña?</span>
+                    <div class="col-xs-12 js-middle">
+                        <div class="js-middle--left">
+                            <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="remember">
+                                <input type="checkbox" id="remember" class="mdl-checkbox__input">
+                                <span class="mdl-checkbox__label">Remember me</span>
+                            </label>
                         </div>
-                        <!-- <div class="col-xs-12 mdl-card__actions text-left" onclick="openModalCambiar()">
-                            <span>Cambiar contraseña</span>
-                        </div>
-                        <div class="col-xs-12 mdl-card__actions text-left" onclick="openModalCrear()">
-                            <span >Registrarse</span>
-                        </div> -->
-                        <div class="col-xs-12 mdl-card__actions text-right">
-                            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect js-button" onclick="ingresar()">Login</button>
+                        <div class="js-middle--right">
+                            <a onclick="openModalRecuperar()">¿Olvidaste tu contrase&ntilde;a?</a>
                         </div>
                     </div>
-
+                    <!-- <div class="col-xs-12 mdl-card__actions text-left" onclick="openModalCambiar()">
+                        <span>Cambiar contraseña</span>
+                    </div>
+                    <div class="col-xs-12 mdl-card__actions text-left" onclick="openModalCrear()">
+                        <span >Registrarse</span>
+                    </div> -->
                 </div>
             </div>
         </section>

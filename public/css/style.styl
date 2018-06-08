@@ -180,6 +180,9 @@ label
 		background-color #FFFFFF
 		color #000000
 		box-shadow 1px 2px 3px rgba(0,0,0,.2)
+	&.js-header--login
+		color #000000
+		padding 35px
 .js-container
 	transitionMaxWidth()
 	width 100%
@@ -288,6 +291,9 @@ label
 	&.js-button--default
 		background-color transparent !important
 		color #000000
+	&.js-button--login
+		width 100%
+		margin 20px 0
 .js-user
 	flexCenter()
 	.js-user--left
@@ -300,6 +306,20 @@ label
 		flexCenter()
 		justify-content flex-end
 		width 100%
+.js-middle
+	flexCenter()
+	.js-middle--left
+		justify-content flex-start
+		width 100%
+	.js-middle--right
+		justify-content flex-end
+		width 100%
+		font-size 18px
+		text-align right
+		a
+			color #000000
+			text-decoration none
+			cursor pointer
 .js-terminos
 	h3
 		color $default
