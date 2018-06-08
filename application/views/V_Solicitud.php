@@ -28,7 +28,7 @@
 <body>
     <div class="js-header js-relative">
         <div class="js-header--left">
-            <img src="<?php echo RUTA_IMG?>logo/hpe-logo.svg">
+            <img class="js-partner" src="<?php echo RUTA_IMG?>logo/hpe-logo.svg">
             <img src="<?php echo RUTA_IMG?>logo/microsoft-logo.png">
         </div>
         <div class="js-header--right">
