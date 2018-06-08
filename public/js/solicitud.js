@@ -257,7 +257,6 @@ function goToMenu(id){
 	var idLink    = $('#'+id);
 	var idSection = $('#section-'+id)
 	$('.mdl-navigation__link').removeClass('active');
-	// idSection.addClass('class_name')
 	$('.js-section--menu').addClass('animated fadeOut');
 	idSection.removeClass('animated fadeOut');
 	idSection.addClass('animated fadeIn');
