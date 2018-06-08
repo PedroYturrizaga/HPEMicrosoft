@@ -37,7 +37,7 @@
     </div>
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer">
         <div class="mdl-layout__drawer">
-            <span class="mdl-layout-title">¿Qu&eacute; deseas hacer</span>
+            <span class="mdl-layout-title">¿Qu&eacute; deseas hacer&#63;</span>
             <nav class="mdl-navigation">
                 <a id="cotizacion" class="mdl-navigation__link active" onclick="goToMenu(this.id)">Ingresar una nueva cotizaci&oacute;n</a>
                 <a id="puntaje" class="mdl-navigation__link" onclick="goToMenu(this.id)">Ver puntaje acumulado</a>
