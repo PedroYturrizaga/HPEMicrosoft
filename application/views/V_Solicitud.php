@@ -73,9 +73,9 @@
                                 <label for="pais">Pais</label>
                                 <input type="text" id="pais" onchange="validarCampos()">
                             </div>
-                            <div class="col-xs-12">
-                                <label> Tipo Documento:</label>
-                                <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="radioCotizacion">
+                            <div class="col-xs-12 js-input js-radio">
+                                <label>Tipo Documento:</label>
+                                <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect j" for="radioCotizacion">
                                     <input type="radio" id="radioCotizacion" class="mdl-radio__button" name="option1" value="1" onchange="validarCampos()">
                                     <span class="mdl-radio__label">Cotizaci&oacute;n</span>
                                 </label>
@@ -102,7 +102,6 @@
                                 <label for="monto">Monto</label>
                                 <input type="text" id="monto" onchange="validarCampos()">
                             </div>
-                            <h2 class="title-formulario">Productos</h2>
                             <table id="tbProductos" >
                                 <thead>
                                     <tr>
@@ -134,9 +133,9 @@
                                     </tr>
                                 </tbody>
                             </table>
-                            <div class="mdl-register col-xs-12 p-0">
-                                <button type="button" name="boton" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" onclick="registrar()">Registrar Oportunidad</button>
-                            </div>
+                        </div>
+                        <div class="col-xs-12">
+                            <button type="button" name="boton" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect js-button" onclick="registrar()">Registrar Oportunidad</button>
                         </div>
                     </div>
                 </div>

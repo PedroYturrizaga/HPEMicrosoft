@@ -11,44 +11,43 @@
     <meta name="language"               content="es">
     <meta name="theme-color"            content="#000000">
     <title>Registro de Cotizaciones HPE</title>
-    <link rel="shortcut icon" href="<?php echo RUTA_IMG?>favicon.png">
+    <link rel="shortcut icon" href="<?php echo RUTA_IMG?>logo/favicon.ico">
     <link rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>toaster/toastr.min.css?v=<?php echo time();?>">
     <link rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>bootstrap-select/css/bootstrap-select.min.css?v=<?php echo time();?>">
     <link rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>bootstrap/bootstrap.min.css?v=<?php echo time();?>">
     <link rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>mdl/material.min.css?v=<?php echo time();?>">
     <link rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>datetimepicker/css/bootstrap-material-datetimepicker.css?v=<?php echo time();?>">
     <link rel="stylesheet"    href="<?php echo RUTA_FONTS?>font-awesome.min.css?v=<?php echo time();?>">
+    <link rel="stylesheet"    href="<?php echo RUTA_FONTS?>metric.css?v=<?php echo time();?>">
     <link rel="stylesheet"    href="<?php echo RUTA_FONTS?>material-icons.css?v=<?php echo time();?>">
-    <!-- <link rel="stylesheet"    href="<?php echo RUTA_FONTS?>roboto.css?v=<?php echo time();?>"> -->
     <link rel="stylesheet"    href="<?php echo RUTA_CSS?>m-p.min.css?v=<?php echo time();?>">
-    <link rel="stylesheet"    href="<?php echo RUTA_CSS?>index.css?v=<?php echo time();?>">
+    <!-- <link rel="stylesheet"    href="<?php echo RUTA_CSS?>index.css?v=<?php echo time();?>"> -->
+    <link rel="stylesheet"    href="<?php echo RUTA_CSS?>style.css?v=<?php echo time();?>">
 </head>
 <body>
-    <section id="principal">
-        <div class="container">
+    <div class="js-header js-relative">
+        <div class="js-header--left">
+            <img class="js-partner" src="<?php echo RUTA_IMG?>logo/hpe-logo.svg">
+            <img src="<?php echo RUTA_IMG?>logo/microsoft-logo.png">
+        </div>
+        <div class="js-header--right">
+            <p>Registro de Oportunidades Centroam&eacute;rica</p>
+            <a onclick="cerrarSesion()">Cerrar Sesi&oacute;n</a>
+        </div>
+    </div>
+    <section id="principal" class="js-section">
+        <div class="js-container">
             <div class="row">
-                <div class="header">
-                    <div class="header-imagen inline">
-                        <!-- <img src="<?php echo RUTA_IMG?>logo.png"> -->
-                    </div>
-                    <div class="header-contenido inline">
-                        <p>Registro de Oportunidades Centroam&eacute;rica</p>
-                    </div>
-                </div>
-
                 <div class="formulario col-sm-12 col-xs-12 m-t-20">
                     <div class="text-right">
                         <button type="button" name="boton" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" onclick="openModal();" >Nueva Oportunidad</button>
                     </div>
                 </div>
-
                 <div class="formulario col-sm-12 col-xs-12 m-t-20">
-					<!-- GRAFICOS -->
 					<div class="col-sm-4 col-xs-12"> 
                         <div id="venta" style="width: 350px; height: 250px;"></div>
                         <div id="puntaje" style="width: 350px; height: 250px;"></div>
 					</div>
-                    <!-- TOP CANALES CON MAS IMPORTE -->
                     <div class="col-sm-8 col-xs-12">
                         <div class="col-sm-12 col-xs-12"> 
                             <h3>Top 3 canales en importes facturados</h3>

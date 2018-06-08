@@ -17,21 +17,6 @@
     box-shadow: none;
     border: 1px solid #C6C9CA;
 }
-.mdl-input .mdl-icon{
-    float: left;
-    max-width: 45px;
-    border: 1px solid #C6C9CA;
-    height: 50px;
-    width: 100%;
-    text-align: center;
-}
-.mdl-input .mdl-icon button{
-    margin-top: 8px;
-}
-.mdl-input .form-control{
-    float: left;
-    max-width: calc(100% - 45px);
-}
 .placeholder-static .form-control{
 	padding-left: 50px;
 }

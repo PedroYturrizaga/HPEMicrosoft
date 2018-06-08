@@ -146,7 +146,7 @@ function drawChartDonut() {
 				fontSize: 18,
 				bold: true,
 			},
-			colors: ['#2AD2C9', '#FF8D6D', '#614767', '#5F7A76'], //, '#425563'. '#80746E', '#C6C9CA']
+			colors: ['#2AD2C9', '#FF8D6D', '#614767', '#5F7A76','#56C5D0'], //, '#425563'. '#80746E', '#C6C9CA']
 			legend : 'bottom'
 	    };
 
@@ -178,7 +178,7 @@ function drawChart() {
 				fontSize: 18,
 				bold: true,
 			},
-			colors: ['#2AD2C9', '#FF8D6D', '#614767', '#5F7A76'], //, '#425563'. '#80746E', '#C6C9CA']
+			colors: ['#2AD2C9', '#FF8D6D', '#614767', '#5F7A76','#56C5D0'], //, '#425563'. '#80746E', '#C6C9CA']
 			legend : 'bottom'
         };
 

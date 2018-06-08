@@ -209,6 +209,18 @@ label
 			width 100%
 			max-width 36px
 			text-align center
+	&.js-radio
+		height 100%
+		.mdl-radio
+			width 100%
+			.mdl-radio__inner-circle
+				background $default
+			&.is-checked
+				.mdl-radio__outer-circle
+					border 2px solid $default
+			.mdl-radio__ripple-container 
+				.mdl-ripple
+					background $default
 	&.js-select
 		padding 0
 		height 100%
@@ -253,7 +265,16 @@ label
 			selectTransparent()
 			&:focus
 				outline: 0 !important
-			
+.js-button
+	margin 10px 0
+	text-transform initial
+	font-family $medium
+	color #FFFFFF
+	background-color $default !important
+	border-radius 0
+	font-size 18px
+	&:hover
+		box-shadow 0px 0px 0px 2px $default
 .js-terminos
 	h3
 		color $default
