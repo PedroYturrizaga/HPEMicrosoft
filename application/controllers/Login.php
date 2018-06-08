@@ -52,6 +52,7 @@ class Login extends CI_Controller {
         try {
             $this->session->unset_userdata('usuario');
             $this->session->unset_userdata('Id_user');
+            $this->session->unset_userdata('id_rol');
             $data['error'] = EXIT_SUCCESS;
         } catch (Exception $e){
             $data['msj'] = $e->getMessage();

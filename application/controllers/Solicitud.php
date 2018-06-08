@@ -15,7 +15,6 @@ class Solicitud extends CI_Controller {
 
 	public function index (){
 		$idRol = $this->session->userdata('id_rol');
-
 		$datos = $this->M_Solicitud->getMayoristas($idRol);
 		$option = ' ';
 		foreach ($datos as $key) {

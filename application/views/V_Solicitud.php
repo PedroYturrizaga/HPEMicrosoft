@@ -33,6 +33,7 @@
         </div>
         <div class="js-header--right">
             <p>Registro de Oportunidades Centroam&eacute;rica</p>
+            <a onclick="cerrarSesion()">Cerrar Sesi&oacute;n</a>
         </div>
     </div>
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer">
