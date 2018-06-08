@@ -113,6 +113,12 @@ label
 .js-section
 	position relative;
 	padding 40px 20px;
+.js-section--menu
+	absolute()
+	&.fadeIn
+		z-index 5
+	&.fadeOut
+		z-index 0
 .js-title
 	width 100%
 	margin 10px 0
@@ -171,6 +177,9 @@ label
 .js-opacity-done
 	opacity 0
 	z-index -5
+	&.fadeIn
+		z-index 5
+		opacity 1
 .js-input
 	padding 7px 20px
 	height 75px
