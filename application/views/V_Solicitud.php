@@ -149,7 +149,7 @@
                 <div class="js-container">
                     <h2 class="js-title">&Uacute;ltimos 4 ingresos</h2>
                     <div class="js-puntaje js-flex">
-                        <div class="table-responsive">
+                        <div class="js-puntaje__table table-responsive">
                             <table id="tbUltimosIngresos" class="table">
                                 <thead>
                                     <tr>
