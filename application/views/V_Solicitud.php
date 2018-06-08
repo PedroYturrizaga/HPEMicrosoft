@@ -42,7 +42,7 @@
                 <a id="cotizacion" class="mdl-navigation__link active" onclick="goToMenu(this.id)">Ingresar una nueva cotizaci&oacute;n</a>
                 <a id="puntaje" class="mdl-navigation__link" onclick="goToMenu(this.id)">Ver puntaje acumulado</a>
                 <a id="terminos" class="mdl-navigation__link" onclick="goToMenu(this.id)">T&eacute;rminos y Condiciones</a>
-                <a id="champion" class="mdl-navigation__link" onclick="goToMenu(this.id)" ="">Escribir al Champion</a>
+                <!-- <a id="champion" class="mdl-navigation__link" onclick="goToMenu(this.id)" ="">Escribir al Champion</a> -->
             </nav>
         </div>
         <main class="mdl-layout__content">
@@ -205,11 +205,11 @@
                     </div>
                 </div>
             </section>
-            <section id="section-champion" class="js-section js-section--menu js-opacity-done">
+            <!-- <section id="section-champion" class="js-section js-section--menu js-opacity-done">
                 <div class="js-container">
                     <h2 class="js-title">Escr&iacute;benos</h2>
                 </div>
-            </section>
+            </section> -->
         </main>
     </div>
     <!--MODAL-->
