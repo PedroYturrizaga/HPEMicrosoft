@@ -153,6 +153,28 @@
             <section id="section-terminos" class="js-section js-section--menu js-opacity-done">
                 <div class="js-container">
                     <h2 class="js-title">T&eacute;rminos y condiciones generales</h2>
+                    <div class="js-terminos">
+                        <h3>Premios:</h3>
+                        <ul>
+                            <li>
+                                <span>Licencias Standard:</span>
+                                <p>50 puntos ENGAGE&GROW por cada cotizacion + 200 puntos adicionales por cierre de la oportunidad al mayorista</p>
+                                <p>El reseller gana otros 250 puntos por venta cerrada.</p>
+                            </li>
+                            <li>
+                                <span>Licencias de DataCenter:</span>
+                                <p>100 puntos ENGAGE&GROW por cada cotizacion + 300 puntos adicionales por cierre de la oportunidad al mayorista.</p>
+                                <p>El reseller gana otros 400 puntos por venta cerrada.</p>
+                            </li>
+                        </ul>
+                        <h3>T&eacute;rminos & Condiciones</h3>
+                        <ul>
+                            <li>Solo se pueden hacer 4 cotizaciones por resellers por trimestre.</li>
+                            <li>Las ventas valen aún cuando no hayan sido cotizadas.</li>
+                            <li>Las cotizaciones valen aún cuando no se cierre la venta.</li>
+                            <li>Cantidad límite de puntos disponibles para esta campaña: 40.000 puntos.</li>
+                        </ul>
+                    </div>
                 </div>
             </section>
             <section id="section-champion" class="js-section js-section--menu js-opacity-done">
