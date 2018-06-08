@@ -74,7 +74,6 @@
                                 <input type="text" id="pais" onchange="validarCampos()">
                             </div>
                             <div class="col-xs-12">
-                                <!-- <label for="correo">Confirmar email</label> -->
                                 <label> Tipo Documento:</label>
                                 <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="radioCotizacion">
                                     <input type="radio" id="radioCotizacion" class="mdl-radio__button" name="option1" value="1" onchange="validarCampos()">
@@ -91,16 +90,12 @@
                                 <label for="numFactura"># Factura</label>
                                 <input type="text" id="numFactura" onchange="validarCampos()">
                             </div>
-                            <div class="form-group col-xs-12 p-0">
-                                <div class="form-group">
-                                    <div class="mdl-input">
-                                        <div class="mdl-icon">
-                                            <button type="button" class="mdl-button mdl-js-button mdl-button--icon">
-                                                <i class="mdi mdi-date_range"></i>
-                                            </button>
-                                        </div>
-                                        <input class="form-control" type="text" id="fecha" name="fecha" maxlength="10" placeholder="dd/mm/aaaa" value="" style="pointer-events: none">
-                                    </div>
+                            <div class="col-xs-12 js-input js-date js-flex">
+                                <input type="text" id="fecha" name="fecha" maxlength="10" placeholder="dd/mm/aaaa" value="" style="pointer-events: none">
+                                <div class="js-icon">
+                                    <button type="button" class="mdl-button mdl-js-button mdl-button--icon">
+                                        <i class="mdi mdi-date_range"></i>
+                                    </button>
                                 </div>
                             </div>
                             <div class="col-xs-12 js-input">
@@ -250,7 +245,7 @@
         } else {
             $('select').selectpicker();
         }
-        initButtonCalendarDaysRange('fecha','01/11/2017','31/10/2018');
+        initButtonCalendarDaysMaxToday('fecha');
         initMaskInputs('fecha');
     </script>
 </body>
