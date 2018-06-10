@@ -47,10 +47,15 @@
             </nav>
         </div>
         <main class="mdl-layout__content">
+            <div class="js-user">
+                <div class="js-user--left">
+                    <p>Bienvenido(a) <?php echo $nombre?> </p> 
+                </div>
+            </div>
             <section id="section-cotizacion" class="js-section js-section--menu">
                 <div class="js-container">
                     <h2 class="js-title">Nuevo ingreso</h2>
-                    <div class="col-sm-12 col-xs-12">
+                    <div class="col-xs-12 p-0">
                         <div class="col-sm-6 col-xs-12"> 
                             <div class="col-xs-12 js-input">
                                 <label for="Nombre">Nombre del Vendedor</label>

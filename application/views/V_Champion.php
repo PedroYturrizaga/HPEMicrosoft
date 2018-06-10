@@ -37,7 +37,7 @@
     </div>
     <section id="principal" class="js-section">
         <div class="js-container">
-            <div class="js-user m-t-50">
+            <div class="js-user m-t-30">
                 <div class="js-user--left">
                     <p>Bienvenido(a) <?php echo $nombre?> </p> 
                 </div>
@@ -94,9 +94,11 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="mdl-card">
+                    <div class="mdl-card__title">
+                        <h2 class="title-formulario">Detalles de Oportunidad</h2>
+                    </div>
                     <div class="mdl-card__supporting-text">
                         <div class="col-sm-6 col-xs-12"> 
-                            <h2 class="title-formulario">Detalles del ingreso</h2>
                             <div class="col-xs-12 js-input">
                                 <label for="Nombre">Nombre del Vendedor</label>
                                 <input type="text" id="Nombre">
@@ -141,8 +143,8 @@
                                 </div>
                             </div>
                             <div class="col-xs-12 js-input">
-                                <label for="rol">Rol</label>
-                                <input type="text" id="monto" placeholder="Monto">
+                                <label for="monto">Monto</label>
+                                <input type="text" id="monto">
                             </div>
                             <h2 class="title-formulario">Productos</h2>
                             <table id="tbProductos" >

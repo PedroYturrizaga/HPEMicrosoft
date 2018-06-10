@@ -115,6 +115,7 @@ label
 	padding 40px 20px;
 .js-section--menu
 	absolute()
+	margin-top 10px
 	&.fadeIn
 		z-index 5
 		opacity 1
@@ -296,6 +297,7 @@ label
 		margin 20px 0
 .js-user
 	flexCenter()
+	padding 20px
 	.js-user--left
 		flexCenter()
 		justify-content flex-start
@@ -369,8 +371,11 @@ label
 		p
 			font-size 16px
 			line-height 18px
-.mdl-card__supporting-text
-	width 100%
+	.mdl-card__supporting-text
+		width 100%
+	.mdl-card__actions
+		padding 16px
+		text-align right
 .mdl-layout__container
 	position fixed
 	.mdl-layout__drawer
