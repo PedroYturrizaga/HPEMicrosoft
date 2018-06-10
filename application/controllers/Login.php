@@ -31,7 +31,8 @@ class Login extends CI_Controller {
                     if($password == $username[0]->pass){
                         $session = array('usuario' => $usuario,  
                                          'Id_user' => $username[0]->id_mayorista,
-                                         'id_rol'  => $username[0]->id_rol);
+                                         'id_rol'  => $username[0]->id_rol,
+                                         'pais'    => $username[0]->pais);
                         $this->session->set_userdata($session);
                         $data['rol'] = $username[0]->id_rol;
                         $data['error'] = EXIT_SUCCESS;

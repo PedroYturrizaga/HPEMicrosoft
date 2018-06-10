@@ -249,6 +249,9 @@
         } else {
             $('select').selectpicker();
         }
+        var pais = <?php echo "'".$pais."'"?>;
+        console.log(pais);
+        $('#pais').val(pais);
         initButtonCalendarDaysMaxToday('fecha');
         initMaskInputs('fecha');
     </script>

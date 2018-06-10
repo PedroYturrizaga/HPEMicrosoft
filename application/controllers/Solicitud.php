@@ -18,6 +18,7 @@ class Solicitud extends CI_Controller {
 		$nombre = $this->M_Login->verificaUsuario( $this->session->userdata('usuario') );
 		$data['nombre'] = $nombre[0]->noMayorista;
 		$idRol  = $this->session->userdata('id_rol');
+		$data['pais'] = $this->session->userdata('pais');
 		$datos  = $this->M_Solicitud->getMayoristas($idRol);
 		$option = ' ';
 		foreach ($datos as $key) {

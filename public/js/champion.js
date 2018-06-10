@@ -92,6 +92,8 @@ function openModal(){
 			$('#puntosCAL').css('display','block');
 			$('#noMayorista').html(data.option);
 			$('#noMayorista').selectpicker('refresh');
+			$('#pais').val(data.pais);
+			console.log(data.pais);
 			componentHandler.upgradeAllRegistered();
 			modal('modalDetalles');		
 		} else { return; }
@@ -130,28 +132,30 @@ function drawChartDonut() {
 		type : 'POST'
 	}).done(function(data) {
 		data = JSON.parse(data);
-		var arr = $.parseJSON(data.datos);
-		arr.splice(0, 0, ["pais", "ventas"]);
-		var data = google.visualization.arrayToDataTable( arr );
+		if((data.datos).length > 2 ) {
+			var arr = $.parseJSON(data.datos);
+			arr.splice(0, 0, ["pais", "ventas"]);
+			var data = google.visualization.arrayToDataTable( arr );
 
-	    var options = {
-			title: 'Venta por paises',
-			pieHole: 0.6,
-			pieSliceTextStyle: {
-				color: 'black',
-			},
-			titleTextStyle : { 
-				color: 'black',
-				// fontName: <string>,
-				fontSize: 18,
-				bold: true,
-			},
-			colors: ['#2AD2C9', '#FF8D6D', '#614767', '#5F7A76','#56C5D0'], //, '#425563'. '#80746E', '#C6C9CA']
-			legend : 'bottom'
-	    };
+		    var options = {
+				title: 'Venta por paises',
+				pieHole: 0.6,
+				pieSliceTextStyle: {
+					color: 'black',
+				},
+				titleTextStyle : { 
+					color: 'black',
+					// fontName: <string>,
+					fontSize: 18,
+					bold: true,
+				},
+				colors: ['#2AD2C9', '#FF8D6D', '#614767', '#5F7A76','#56C5D0'], //, '#425563'. '#80746E', '#C6C9CA']
+				legend : 'bottom'
+		    };
 
-	    var chart = new google.visualization.PieChart(document.getElementById('venta'));
-	    chart.draw(data, options);
+		    var chart = new google.visualization.PieChart(document.getElementById('venta'));
+		    chart.draw(data, options);
+		}
 	});
 }
 
@@ -162,28 +166,30 @@ function drawChart() {
 		type : 'POST'
 	}).done(function(data) {
 		data = JSON.parse(data);
-		var arr = $.parseJSON(data.datos);
-		arr.splice(0, 0, ["pais", "puntaje"]);
-		var data = google.visualization.arrayToDataTable( arr );
+		if((data.datos).length > 2 ) {
+			var arr = $.parseJSON(data.datos);
+			arr.splice(0, 0, ["pais", "puntaje"]);
+			var data = google.visualization.arrayToDataTable( arr );
 
-        var options = {
-        	title: 'Puntaje entregado',
-			pieHole: 0.6,
-			pieSliceTextStyle: {
-				color: 'black',
-			},
-			titleTextStyle : { 
-				color: 'black',
-				// fontName: <string>,
-				fontSize: 18,
-				bold: true,
-			},
-			colors: ['#2AD2C9', '#FF8D6D', '#614767', '#5F7A76','#56C5D0'], //, '#425563'. '#80746E', '#C6C9CA']
-			legend : 'bottom'
-        };
+	        var options = {
+	        	title: 'Puntaje entregado',
+				pieHole: 0.6,
+				pieSliceTextStyle: {
+					color: 'black',
+				},
+				titleTextStyle : { 
+					color: 'black',
+					// fontName: <string>,
+					fontSize: 18,
+					bold: true,
+				},
+				colors: ['#2AD2C9', '#FF8D6D', '#614767', '#5F7A76','#56C5D0'], //, '#425563'. '#80746E', '#C6C9CA']
+				legend : 'bottom'
+	        };
 
-        var chart = new google.visualization.PieChart(document.getElementById('puntaje'));
-        chart.draw(data, options);
+	        var chart = new google.visualization.PieChart(document.getElementById('puntaje'));
+	        chart.draw(data, options);
+		}
 	});
 }
 

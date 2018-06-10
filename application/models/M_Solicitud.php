@@ -86,13 +86,14 @@ class M_Solicitud extends CI_Model {
 	   	return $result->result();
 	}
 
-	function getCanalMasUsado () {
+	function getCanalMasUsado ($pais) {
 		$sql = "SELECT COUNT(canal) AS cantidad_canal,
 					   canal AS no_canal, 
 					   no_vendedor, 
 					   pais, 
 					   SUM(monto) AS importe
 				  FROM tb_cotizacion
+				 WHERE pais LIKE '".$pais."'
 			  GROUP BY LOWER(canal)
 			  ORDER BY cantidad_canal DESC, importe DESC
 			  	 LIMIT 3";
@@ -100,34 +101,37 @@ class M_Solicitud extends CI_Model {
 		return $result->result();
 	}
 
-	function getLastCotizaciones() {
+	function getLastCotizaciones($pais) {
 		$sql = "SELECT id_cotizacion,
 					   email,
 				       no_vendedor,
 				       canal,
 				       pais,
-				       fecha
+				       date_format(fecha, '%d/%m/%Y') AS fecha
 				  FROM tb_cotizacion
+				 WHERE pais LIKE '".$pais."'
 			  ORDER BY id_cotizacion DESC
 				 LIMIT 10";
 		$result = $this->db->query($sql);
 		return $result->result();
 	}
 
-	function getDatosGraficosCanales(){
+	function getDatosGraficosCanales($pais){
 		$sql = "SELECT pais, 
 					   SUM(monto) AS importe
 				  FROM tb_cotizacion
+				 WHERE pais LIKE '".$pais."'
 			  GROUP BY pais
 			  ORDER BY importe DESC";
 		$result = $this->db->query($sql);
 		return $result->result();
 	}
 
-	function getDatosGraficoCotiza() {
+	function getDatosGraficoCotiza($pais) {
 		$sql = "SELECT pais, 
 					   SUM(puntos_cotizados+puntos_cerrados) AS puntos_entregados 
-				  FROM tb_cotizacion 
+				  FROM tb_cotizacion
+				 WHERE pais LIKE '".$pais."' 
 			  GROUP BY pais 
 			  ORDER BY puntos_entregados DESC";
 		$result = $this->db->query($sql);

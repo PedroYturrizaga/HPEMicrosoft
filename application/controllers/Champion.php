@@ -16,9 +16,10 @@ class Champion extends CI_Controller{
 
 	public function index (){
         $nombre = $this->M_Login->verificaUsuario( $this->session->userdata('usuario') );
+        $pais  = $this->session->userdata('pais');
 		$data['nombre'] = $nombre[0]->noMayorista;
-		$datos  = $this->M_Solicitud->getCanalMasUsado();
-        $datos2 = $this->M_Solicitud->getLastCotizaciones();
+		$datos  = $this->M_Solicitud->getCanalMasUsado($pais);
+        $datos2 = $this->M_Solicitud->getLastCotizaciones($pais);
 		$html   = ' ';
 		$html2  = ' ';
 		foreach ($datos as $key) {
@@ -75,6 +76,7 @@ class Champion extends CI_Controller{
         $data['error'] = EXIT_ERROR;
         $data['msj']   = null;
         try {
+            $pais   = $this->session->userdata('pais');
             $idRol  = $this->session->userdata('id_rol');
             $datos2 = $this->M_Solicitud->getMayoristas($idRol);
             $option = ' ';
@@ -82,7 +84,8 @@ class Champion extends CI_Controller{
                 $option .= '<option value=" '.$key->id_mayorista.' ">'.$key->noMayorista.'</option>';
             }
             $data['option'] = $option;
-            $data['error'] = EXIT_SUCCESS;
+            $data['pais']   = $pais;
+            $data['error']  = EXIT_SUCCESS;
         } catch (Exception $ex){
             $data['msj'] = $ex->getMessage();
         }
@@ -94,7 +97,8 @@ class Champion extends CI_Controller{
         $data['error'] = EXIT_ERROR;
         $data['msj']   = null;
         try {
-            $datos = $this->M_Solicitud->getDatosGraficosCanales();
+            $pais  = $this->session->userdata('pais');
+            $datos = $this->M_Solicitud->getDatosGraficosCanales($pais);
             $array = [];
             foreach ($datos as $key) {
                 array_push($array, [$key->pais, intval($key->importe) ]);
@@ -111,7 +115,8 @@ class Champion extends CI_Controller{
         $data['error'] = EXIT_ERROR;
         $data['msj']   = null;
         try {
-            $datos = $this->M_Solicitud->getDatosGraficoCotiza();
+            $pais  = $this->session->userdata('pais');
+            $datos = $this->M_Solicitud->getDatosGraficoCotiza($pais);
             $array = [];
             foreach ($datos as $key) {
                 array_push($array, [$key->pais, intval($key->puntos_entregados) ]);
