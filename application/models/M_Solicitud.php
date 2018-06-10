@@ -116,22 +116,20 @@ class M_Solicitud extends CI_Model {
 		return $result->result();
 	}
 
-	function getDatosGraficosCanales($pais){
+	function getDatosGraficosCanales(){
 		$sql = "SELECT pais, 
 					   SUM(monto) AS importe
 				  FROM tb_cotizacion
-				 WHERE pais LIKE '".$pais."'
 			  GROUP BY pais
 			  ORDER BY importe DESC";
 		$result = $this->db->query($sql);
 		return $result->result();
 	}
 
-	function getDatosGraficoCotiza($pais) {
+	function getDatosGraficoCotiza() {
 		$sql = "SELECT pais, 
 					   SUM(puntos_cotizados+puntos_cerrados) AS puntos_entregados 
 				  FROM tb_cotizacion
-				 WHERE pais LIKE '".$pais."' 
 			  GROUP BY pais 
 			  ORDER BY puntos_entregados DESC";
 		$result = $this->db->query($sql);

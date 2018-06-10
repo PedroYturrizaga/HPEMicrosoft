@@ -97,8 +97,7 @@ class Champion extends CI_Controller{
         $data['error'] = EXIT_ERROR;
         $data['msj']   = null;
         try {
-            $pais  = $this->session->userdata('pais');
-            $datos = $this->M_Solicitud->getDatosGraficosCanales($pais);
+            $datos = $this->M_Solicitud->getDatosGraficosCanales();
             $array = [];
             foreach ($datos as $key) {
                 array_push($array, [$key->pais, intval($key->importe) ]);
@@ -115,8 +114,7 @@ class Champion extends CI_Controller{
         $data['error'] = EXIT_ERROR;
         $data['msj']   = null;
         try {
-            $pais  = $this->session->userdata('pais');
-            $datos = $this->M_Solicitud->getDatosGraficoCotiza($pais);
+            $datos = $this->M_Solicitud->getDatosGraficoCotiza();
             $array = [];
             foreach ($datos as $key) {
                 array_push($array, [$key->pais, intval($key->puntos_entregados) ]);
