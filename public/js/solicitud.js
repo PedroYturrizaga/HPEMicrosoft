@@ -142,10 +142,15 @@ function registrar() {
 function subirFactura(){
 	$("#archivo").trigger("click");
 }
-$( "#archivo" ).change(function() {
-	$('#btnSubirFact').text('Cargado');
-	$('#btnSubirFact').css('background-color','#5CB85C');
-	$('#btnSubirFact').css('color','#FFFFFF');
+$("#archivo").change(function(e) {
+	var files = e.target.files,
+	    filesLength = files.length;
+	for (var i = 0; i < filesLength ; i++) {
+		var f = files[i]
+		var archivo = (f.name).replace(" ","");
+		nombre = archivo;
+	}
+	$('#archivoDocumento').val(nombre);
 });
 
 function agregarDatos(){
