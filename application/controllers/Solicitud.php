@@ -111,6 +111,36 @@ class Solicitud extends CI_Controller {
 	                      </tr>';
 	          	$puntosEngage += $key->puntos_total;
 			}
+
+			$pais2  = $this->session->userdata('pais');
+			$html2  = '';
+			$htmlCanales = '';
+			$datos  = $this->M_Solicitud->getCanalMasUsado($pais, $idVendedor);
+			$datos2 = $this->M_Solicitud->getLastCotizaciones($pais2, $idVendedor);
+			foreach ($datos2 as $key) {
+        		$html2 .= '<tr>
+        			           <td>'.$key->canal.'</td>
+        			           <td>'.$key->no_vendedor.'</td>
+        			           <td>'.$key->pais.'</td>
+        			           <td>'.$key->fecha.'</td>
+                               <td class="text-center">
+                                   <button class="mdl-button mdl-js-button mdl-button--icon" onclick="getDetails('.$key->id_cotizacion.');">
+                                       <i class="mdi mdi-visibility"> </i>
+                                   </button>
+                               </td>
+        			       </tr>';
+        	}
+
+			foreach ($datos as $key) {
+				$htmlCanales .= '<tr>
+						      	     <td>'.$key->no_canal.'</td>
+	                                 <td>'.$key->no_vendedor.'</td>
+	                                 <td>'.$key->pais.'</td>
+	                                 <td class="text-right">'.$key->importe.'</td>
+	                             </tr>';
+	        }
+        	$data['bodyCanales'] = $htmlCanales;
+        	$data['bodyCotizaciones'] = $html2;
 			$data['html'] = $html;
 			$data['puntosGeneral'] = $puntosEngage;
 			$data['error'] = EXIT_SUCCESS;

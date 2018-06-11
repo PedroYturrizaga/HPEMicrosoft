@@ -17,7 +17,6 @@ function registrar() {
 	var cotizacion  = $('#radioCotizacion').is(':checked');
 	var tipoDoc		= null;
 	var puntos      = 0;
-	console.log(idMayorista);
 	if($('#puntosWSEE').text() != " " || $('#puntosWSSE').text() != " ") {
 		puntos += 50; 
 	}
@@ -124,6 +123,8 @@ function registrar() {
         		modal('ModalQuestion');
         		$('#bodyPuntaje').html(data.html);
         		$('#puntajeGeneral').html(data.puntosGeneral);
+        		$('#bodyUltimaCotizacion').html(data.bodyCotizaciones);
+        		$('#bodyCanales').html(data.bodyCanales);
 				limpiarCampos();
         	} else { return; }
       } catch (err){
