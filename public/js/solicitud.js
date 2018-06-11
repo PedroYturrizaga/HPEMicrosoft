@@ -135,7 +135,7 @@ function registrar() {
 }
 
 function subirFactura(){
-  	$( "#archivo" ).trigger( "click" );
+	$("#archivo").trigger("click");
 }
 $( "#archivo" ).change(function() {
 	$('#btnSubirFact').text('Cargado');
@@ -160,6 +160,7 @@ var datos = new FormData();
         processData:false,
       }).done(function(respuesta){
         msj('error', respuesta.mensaje);
+        limpiarCampos();
         setTimeout(function(){ location.href = 'Solicitud'; }, 1500);
     });
 }

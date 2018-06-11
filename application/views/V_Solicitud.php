@@ -111,6 +111,14 @@
                                 <label for="monto">Monto</label>
                                 <input type="text" id="monto" onchange="validarCampos()">
                             </div>
+                            <div class="col-xs-12 js-input js-file js-flex">
+                                <input type="text" id="fecha" name="fecha" maxlength="10" placeholder="dd/mm/aaaa" value="" style="pointer-events: none">
+                                <div class="js-icon">
+                                    <button type="button" class="mdl-button mdl-js-button mdl-button--icon" onclick="subirFactura()">
+                                        <i class="mdi mdi-backup"></i>
+                                    </button>
+                                </div>
+                            </div>
                             <div class="js-table col-xs-12">
                                 <h2>Productos</h2>
                                 <div class="table-responsive">
@@ -241,6 +249,10 @@
             </div>
         </div>
     </div>
+    <form id="frmArchivo" method="post" style="display: none;">
+        <input id="archivo" type="file" name="archivo" />
+        <input type="hidden" name="MAX_FILE_SIZE" value="2000000"/>
+    </form>
 	<script src="<?php echo RUTA_JS?>jquery-3.2.1.min.js?v=<?php echo time();?>"></script>
 	<script src="<?php echo RUTA_JS?>jquery-1.11.2.min.js?v=<?php echo time();?>"></script>
 	<script src="<?php echo RUTA_PLUGINS?>bootstrap/bootstrap.min.js?v=<?php echo time();?>"></script>
