@@ -30,17 +30,14 @@ class M_Solicitud extends CI_Model {
 		return array("error" => EXIT_SUCCESS, "msj"=> MSJ_INS, "id_cotizacion"=> $sql);
 	}
 
-	function getMayoristas($idRol) {
-		if($idRol == 1) {
-			$sql = "SELECT * 
-					  FROM tb_mayorista
-					 WHERE id_rol <> 0
-				  ORDER BY noMayorista ASC";
-		} else if ($idRol == 0) {
-			$sql = "SELECT * 
-					  FROM tb_mayorista
-				  ORDER BY noMayorista ASC";
-		}
+	function getMayoristas($pais) {
+		$sql = "SELECT v.id_mayorista,
+					   m.mayorista
+				  FROM tb_mayorista m, tb_vendedores v
+				 WHERE v.id_rol <> 0
+				   AND m.pais LIKE '".$pais."'
+			  GROUP BY mayorista
+			  ORDER BY mayorista ASC";
 		$result = $this->db->query($sql);
 		return $result->result();
 	}
@@ -72,16 +69,18 @@ class M_Solicitud extends CI_Model {
 					   c.nu_cotizacion, 
 					   c.fecha, 
 					   c.monto, 
-					   m.noMayorista, 
+					   m.mayorista, 
 					   p.no_producto, 
 					   p.cantidad 
 				  FROM tb_producto p, 
 				       tb_cotizacion c, 
-				       tb_mayorista m 
+				       tb_vendedores v, 
+                       tb_mayorista m
 				 WHERE c.id_cotizacion = ".$idCotizacion." 
 				   AND c.id_cotizacion = p._id_cotizacion 
 				   AND p.cantidad <> 0 
-				   AND c._id_mayorista = m.id_mayorista";
+				   AND c.mayorista = m.mayorista
+                   GROUP BY p.no_producto";
 	   	$result = $this->db->query($sql);
 	   	return $result->result();
 	}

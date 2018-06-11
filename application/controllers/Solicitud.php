@@ -17,12 +17,11 @@ class Solicitud extends CI_Controller {
 	public function index (){
 		$nombre = $this->M_Login->verificaUsuario( $this->session->userdata('usuario') );
 		$data['nombre'] = $nombre[0]->noMayorista;
-		$idRol  = $this->session->userdata('id_rol');
-		$data['pais'] = $this->session->userdata('pais');
-		$datos  = $this->M_Solicitud->getMayoristas($idRol);
+		$pais  = $this->session->userdata('pais');
+		$datos = $this->M_Solicitud->getMayoristas($pais);
 		$option = ' ';
 		foreach ($datos as $key) {
-			$option .= '<option value=" '.$key->id_mayorista.' ">'.$key->noMayorista.'</option>';
+			$option .= '<option value=" '.$key->mayorista.' ">'.$key->mayorista.'</option>';
 		}
 		$data['option'] = $option;
 		$idUser = $this->session->userdata('Id_user');

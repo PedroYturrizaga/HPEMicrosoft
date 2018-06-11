@@ -55,12 +55,12 @@ class Champion extends CI_Controller{
             $id     = $_POST['cotizacion'];
             $datos  = $this->M_Solicitud->getDetallesCotizacion($id);
             $data['detalles'] = $datos;
-            $idRol  = $this->session->userdata('id_rol');
-            $datos2 = $this->M_Solicitud->getMayoristas($idRol);
+            $pais   = $this->session->userdata('pais');
+            $datos2 = $this->M_Solicitud->getMayoristas($pais);
             $option = ' ';
             foreach ($datos2 as $key) {
-                if($datos[0]->noMayorista == $key->noMayorista) {
-                    $option = '<option value=" '.$key->id_mayorista.' " class="selected">'.$key->noMayorista.'</option>';
+                if($datos[0]->mayorista == $key->mayorista) {
+                    $option = '<option value=" '.$key->mayorista.' " class="selected">'.$key->mayorista.'</option>';
                 }          
             }
             $data['option'] = $option;
@@ -77,11 +77,10 @@ class Champion extends CI_Controller{
         $data['msj']   = null;
         try {
             $pais   = $this->session->userdata('pais');
-            $idRol  = $this->session->userdata('id_rol');
-            $datos2 = $this->M_Solicitud->getMayoristas($idRol);
+            $datos2 = $this->M_Solicitud->getMayoristas($pais);
             $option = ' ';
             foreach ($datos2 as $key) {
-                $option .= '<option value=" '.$key->id_mayorista.' ">'.$key->noMayorista.'</option>';
+                $option .= '<option value=" '.$key->id_mayorista.' ">'.$key->mayorista.'</option>';
             }
             $data['option'] = $option;
             $data['pais']   = $pais;
