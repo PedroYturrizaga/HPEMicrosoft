@@ -157,7 +157,7 @@
                             </div>
                         </div>
                         <div class="col-xs-12">
-                            <button type="button" name="boton" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect js-button" onclick="registrar()">Registrar Oportunidad</button>
+                            <button type="button" name="boton" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect js-button" onclick="agregarDatos(); registrar();">Registrar Oportunidad</button>
                         </div>
                     </div>
                 </div>
