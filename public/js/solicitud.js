@@ -18,7 +18,12 @@ function registrar() {
 	var tipoDoc		= null;
 	var puntos      = 0;
 
-
+	factura = $('#archivo')[0].files[0];
+	console.log(factura);
+	if(factura == undefined){
+		msj('error', 'Seleccione una factura');
+		return;
+	}
 	if($('#puntosWSEE').text() != " " || $('#puntosWSSE').text() != " ") {
 		puntos += 50; 
 	}
@@ -145,24 +150,24 @@ $( "#archivo" ).change(function() {
 
 function agregarDatos(){
 var datos = new FormData();
-  factura = $('#archivo')[0].files[0];
-  if(factura == undefined){
-    msj('error', 'Seleccione una factura');
-    return;
-  }
-    datos.append('archivo',$('#archivo')[0].files[0]);
-     $.ajax({
-        type:"post",
-        dataType:"json",
-        url:"solicitud/cargarFact",
-        contentType:false,
-        data:datos,
-        processData:false,
-      }).done(function(respuesta){
-        msj('error', respuesta.mensaje);
-        limpiarCampos();
-        setTimeout(function(){ location.href = 'Solicitud'; }, 1500);
-    });
+	factura = $('#archivo')[0].files[0];
+	if(factura == undefined){
+		msj('error', 'Seleccione una factura');
+		return;
+	}
+	datos.append('archivo',$('#archivo')[0].files[0]);
+	$.ajax({
+		type:"post",
+		dataType:"json",
+		url:"solicitud/cargarFact",
+		contentType:false,
+		data:datos,
+		processData:false,
+	}).done(function(respuesta){
+		msj('error', respuesta.mensaje);
+		limpiarCampos();
+		setTimeout(function(){ location.href = 'Solicitud'; }, 1500);
+	});
 }
 
 function limpiarCampos(){

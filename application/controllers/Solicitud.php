@@ -166,9 +166,6 @@ class Solicitud extends CI_Controller {
             $archivotmp = $_FILES['archivo']['tmp_name'];
             $namearch = $_FILES['archivo']['name'];
             $nuevo = explode(".",$namearch);
-            // print_r('tipo:::: '.$tipo);
-
-            // print_r('archivotmp:::: '.$archivotmp);
             if($tamanio > '2000000'){
                 $respuesta->mensaje = 'El tamaño de su pdf debe ser menor';
             }else {
