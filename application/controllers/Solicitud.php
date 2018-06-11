@@ -100,7 +100,7 @@ class Solicitud extends CI_Controller {
 															$cantidadWSDE,
 															$cantidadCAL) );
 			$datoInsertCotizacion = $this->M_Solicitud->insertarCotizacion($arrayInsertCotizacion, 'tb_cotizacion', $arrayInsertProducto, 'tb_producto');
-
+			$this->session->set_userdata(array('id_cotizacion' => $datoInsertCotizacion['id_cotizacion'] ));
 			$obtenerOrdenes = $this->M_Solicitud->getLastOrders($idVendedor);
 			$html = null;
 			$puntosEngage = 0;
@@ -153,5 +153,39 @@ class Solicitud extends CI_Controller {
 			$data['msj'] = $e->getMessage();
 		}
 		echo json_encode($data);
-	} 
+	}
+
+	function cargarFact(){
+        $respuesta = new stdClass();
+        $respuesta->mensaje = "";
+        if(count($_FILES) == 0){
+            $respuesta->mensaje = 'Seleccione su factura';
+        }else {
+            $tipo = $_FILES['archivo']['type']; 
+            $tamanio = $_FILES['archivo']['size']; 
+            $archivotmp = $_FILES['archivo']['tmp_name'];
+            $namearch = $_FILES['archivo']['name'];
+            $nuevo = explode(".",$namearch);
+            // print_r('tipo:::: '.$tipo);
+
+            // print_r('archivotmp:::: '.$archivotmp);
+            if($tamanio > '2000000'){
+                $respuesta->mensaje = 'El tamaño de su pdf debe ser menor';
+            }else {
+                if($nuevo[1] == 'pdf' || $nuevo[1] == 'jpg'){
+                    $target = getcwd().DIRECTORY_SEPARATOR.'public'.DIRECTORY_SEPARATOR.'archivos'.DIRECTORY_SEPARATOR.'1'.basename($_FILES['archivo']['name']);
+                    if(move_uploaded_file($archivotmp, $target) ){
+                       $arrUpdt = array('documento' => $namearch);
+                       $this->M_solicitud->updateDatos($arrUpdt, $this->session->userdata('id_cotizacion'), 'cotizacion');
+                       $respuesta->mensaje = 'Su factura se subió correctamente';
+                    } else {
+                       $respuesta->mensaje = 'Hubo un problema en la subida de su factura';
+                    }
+                }else {
+                    $respuesta->mensaje = 'El formato de la factura es incorrecto';
+                }
+            }
+            echo json_encode($respuesta);
+        }
+    }
 }

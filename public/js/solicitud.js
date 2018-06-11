@@ -17,6 +17,8 @@ function registrar() {
 	var cotizacion  = $('#radioCotizacion').is(':checked');
 	var tipoDoc		= null;
 	var puntos      = 0;
+
+
 	if($('#puntosWSEE').text() != " " || $('#puntosWSSE').text() != " ") {
 		puntos += 50; 
 	}
@@ -113,7 +115,7 @@ function registrar() {
 				  cantidadWSSE: cantidadWSSE ,
 				  cantidadWSDE: cantidadWSDE,
 				  cantidadCAL : cantidadCAL,
-				  puntos 	  : puntos },
+				  puntos 	  : puntos},
 		url   : 'solicitud/registrar',
 		type  : 'POST'
 	}).done(function(data){
@@ -125,12 +127,42 @@ function registrar() {
         		$('#puntajeGeneral').html(data.puntosGeneral);
         		$('#bodyUltimaCotizacion').html(data.bodyCotizaciones);
         		$('#bodyCanales').html(data.bodyCanales);
-				limpiarCampos();
         	} else { return; }
       } catch (err){
         msj('error',err.message);
       }
 	});
+}
+
+function subirFactura(){
+  	$( "#archivo" ).trigger( "click" );
+}
+$( "#archivo" ).change(function() {
+	$('#btnSubirFact').text('Cargado');
+	$('#btnSubirFact').css('background-color','#5CB85C');
+	$('#btnSubirFact').css('color','#FFFFFF');
+});
+
+function agregarDatos(){
+var datos = new FormData();
+  factura = $('#archivo')[0].files[0];
+  if(factura == undefined){
+    msj('error', 'Seleccione una factura');
+    return;
+  }
+    datos.append('archivo',$('#archivo')[0].files[0]);
+     $.ajax({
+        type:"post",
+        dataType:"json",
+        url:"solicitud/cargarFact",
+        contentType:false,
+        data:datos,
+        processData:false,
+      }).done(function(respuesta){
+        msj('error', respuesta.mensaje);
+        limpiarCampos();
+        setTimeout(function(){ location.href = 'Solicitud'; }, 1500);
+    });
 }
 
 function limpiarCampos(){

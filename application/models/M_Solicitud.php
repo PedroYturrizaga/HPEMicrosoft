@@ -26,9 +26,17 @@ class M_Solicitud extends CI_Model {
             throw new Exception('Error al insertar');
             $data['error'] = EXIT_ERROR;
 		}
-
 		return array("error" => EXIT_SUCCESS, "msj"=> MSJ_INS, "id_cotizacion"=> $sql);
 	}
+
+	function updateDatos($arrayData, $id, $tabla){
+        $this->db->where('id_cotizacion'  , $id);
+        $this->db->update($tabla, $arrayData);
+        if ($this->db->trans_status() == false) {
+            throw new Exception('No se pudo actualizar los datos');
+        }
+        return array('error' => EXIT_SUCCESS,'msj' => MSJ_UPT);
+    }
 
 	function getMayoristas($idVendedor) {
 		$sql = "SELECT v.id_vendedor,

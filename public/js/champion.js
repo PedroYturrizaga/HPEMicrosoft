@@ -94,6 +94,16 @@ function limpiarCampos() {
 	$('#puntosCAL').val('');
 }
 
+function subirFactura(){
+  $( "#archivo" ).trigger( "click" );
+}
+
+$( "#archivo" ).change(function() {
+  $('#btnSubirFact').text('Cargado');
+  $('#btnSubirFact').css('background-color','#5CB85C');
+  $('#btnSubirFact').css('color','#FFFFFF');
+});
+
 function drawChartDonut() {
 	var pais = null;
 	var importe = null;
@@ -164,3 +174,6 @@ function drawChart() {
 	});
 }
 
+function descargar() {
+
+}

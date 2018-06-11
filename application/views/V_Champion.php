@@ -45,6 +45,10 @@
                 <div class="js-user--right">
                     <button type="button" name="boton" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect js-button" onclick="openModal();" >Nueva Oportunidad</button>
                 </div>
+                <?php } else { ?>
+                <div class="js-user--right">
+                    <button type="button" name="boton" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect js-button" onclick="descargar();" >Descargar Excel</button>
+                </div>
                 <?php } ?>
             </div>
             <div class="formulario col-sm-12 col-xs-12 m-t-20">
@@ -152,6 +156,9 @@
                                 <label for="monto">Monto</label>
                                 <input class="js-disabled" type="text" id="monto">
                             </div>
+                            <div class="mdl-input factura">
+                                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect button-select" onclick="subirFactura()" id="btnSubirFact">Seleccionar Archivo</button>
+                            </div>
                             <div class="js-table col-xs-12">
                                 <h2 class="title-formulario">Productos</h2>
                                 <div class="table-responsive">
@@ -195,12 +202,19 @@
                     </div>
                     <div class="mdl-card__actions" id="registrar">                         
                         <button type="button" name="boton" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect js-button js-button--default" data-dismiss="modal">Cancelar</button>
-                        <button type="button" name="boton" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect js-button" onclick="registrar()">Registrar Oportunidad</button>
+                        <button type="button" name="boton" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect js-button"   onclick="agregarDatos(); ">Registrar Oportunidad</button> 
+                        <!-- onclick="agregarDatos(); registrar();">Registrar Oportunidad</button> -->
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <form id="frmArchivo" method="post" style="display: none;">
+        <input id="archivo" type="file" name="archivo" />
+        <input type="hidden" name="MAX_FILE_SIZE" value="2000000"/>
+        <input class="boton" type="submit" name="enviar" value="Importar" style="display: none" />
+    </form>
 
 	<script src="<?php echo RUTA_JS?>jquery-3.2.1.min.js?v=<?php echo time();?>"></script>
 	<script src="<?php echo RUTA_JS?>jquery-1.11.2.min.js?v=<?php echo time();?>"></script>
