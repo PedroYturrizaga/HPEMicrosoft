@@ -278,6 +278,7 @@
             $('#tableCanales').DataTable( {
                 searching : false,
                 dom: 'Bfrtip',
+                paging: false,
                 language:{
                     "emptyTable":     "Aucune donnée disponible",
                     "info" : ''
