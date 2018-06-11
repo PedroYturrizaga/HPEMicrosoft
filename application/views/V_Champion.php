@@ -122,7 +122,7 @@
                                 <input type="text"  id="pais">
                             </div>
                             <div class="col-xs-12 js-input js-radio">
-                                <label> Tipo Documento:</label>
+                                <label> Tipo de documento:</label>
                                 <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="radioCotizacion" id="cotizacion">
                                     <input type="radio" id="radioCotizacion" class="mdl-radio__button" name="option1" value="1">
                                     <span class="mdl-radio__label">Cotizaci&oacute;n</span>
@@ -135,7 +135,8 @@
                         </div>
                         <div class="col-sm-6 col-xs-12">
                             <div class="col-xs-12 js-input">
-                                <input type="text"id="numFactura" placeholder="# Factura">
+                                <label for="numFactura"># de documento</label>
+                                <input type="text"id="numFactura" >
                             </div>
                             <div class="col-xs-12 js-input js-date js-flex">
                                 <input type="text" id="fecha" name="fecha" maxlength="10" placeholder="dd/mm/aaaa" value="" style="pointer-events: none">
@@ -149,37 +150,39 @@
                                 <label for="monto">Monto</label>
                                 <input type="text" id="monto">
                             </div>
-                            <h2 class="title-formulario">Productos</h2>
-                            <table id="tbProductos" >
-                                <thead>
-                                    <tr>
-                                        <th>Licencia Microsoft</th>
-                                        <th>Unidades</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td id="product1">Windows Server Essentials Edition</td>
-                                        <td><input type="text" id="cantidadWSEE" name="cantidadWSEE" onchange="calcularWSEE()"/></td>
-                                        <td> <span id="puntosWSEE"> </span> </td>
-                                    </tr>
-                                    <tr>
-                                        <td id="product2">Windows Server Standard Edition</td>
-                                        <td><input type="text" id="cantidadWSSE" name="cantidadWSSE" onchange="calcularWSSE()"/></td>
-                                        <td> <span id="puntosWSSE"> </span> </td>
-                                    </tr>
-                                    <tr>
-                                        <td id="product3">Windows Server Datacenter Edition</td>
-                                        <td><input type="text" id="cantidadWSDE" name="cantidadWSDE" onchange="calcularWSDE()"/></td>
-                                        <td> <span id="puntosWSDE"> </span> </td>
-                                    </tr>
-                                    <tr>
-                                        <td id="product4">CALs</td>
-                                        <td><input type="text" id="cantidadCAL" name="cantidadCAL" onchange="calcularCAL()"/></td>
-                                        <td> <span id="puntosCAL"> </span> </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                            <div class="js-table col-xs-12">
+                                <h2 class="title-formulario">Productos</h2>
+                                <table id="tbProductos" >
+                                    <thead>
+                                        <tr>
+                                            <th>Licencia Microsoft</th>
+                                            <th>Unidades</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td id="product1">Windows Server Essentials Edition</td>
+                                            <td><input type="text" id="cantidadWSEE" name="cantidadWSEE" onchange="calcularWSEE()"/></td>
+                                            <td> <span id="puntosWSEE"> </span> </td>
+                                        </tr>
+                                        <tr>
+                                            <td id="product2">Windows Server Standard Edition</td>
+                                            <td><input type="text" id="cantidadWSSE" name="cantidadWSSE" onchange="calcularWSSE()"/></td>
+                                            <td> <span id="puntosWSSE"> </span> </td>
+                                        </tr>
+                                        <tr>
+                                            <td id="product3">Windows Server Datacenter Edition</td>
+                                            <td><input type="text" id="cantidadWSDE" name="cantidadWSDE" onchange="calcularWSDE()"/></td>
+                                            <td> <span id="puntosWSDE"> </span> </td>
+                                        </tr>
+                                        <tr>
+                                            <td id="product4">CALs</td>
+                                            <td><input type="text" id="cantidadCAL" name="cantidadCAL" onchange="calcularCAL()"/></td>
+                                            <td> <span id="puntosCAL"> </span> </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div> 
                     <div class="mdl-card__actions" id="aceptar">                         

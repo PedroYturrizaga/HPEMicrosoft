@@ -67,7 +67,7 @@ class M_Solicitud extends CI_Model {
 					   c.canal, 
 					   c.tipo_documento, 
 					   c.nu_cotizacion, 
-					   c.fecha, 
+					   date_format(c.fecha, '%d/%m/%Y') AS fecha, 
 					   c.monto, 
 					   m.mayorista, 
 					   p.no_producto, 
