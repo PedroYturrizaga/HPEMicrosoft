@@ -105,19 +105,19 @@
                     <div class="mdl-card__supporting-text">
                         <div class="col-sm-6 col-xs-12"> 
                             <div class="col-xs-12 js-input">
+                                <label for="canal">Canal al que cotiza</label>
+                                <input class="js-disabled" type="text" id="canal">
+                            </div>
+                            <div class="col-xs-12 js-input">
                                 <label for="Nombre">Nombre del Vendedor</label>
                                 <input class="js-disabled" type="text" id="Nombre">
                             </div>
                             <div class="col-xs-12 js-input">
-                                <label for="email">Email</label>
+                                <label for="email">Email donde ser&aacute;n asignados los puntos de Engage & Grow</label>
                                 <input class="js-disabled" type="email" id="email">
                             </div>
                             <div class="col-xs-12 js-input js-select">
                                 <select name="noMayorista" id="noMayorista" class="selectpicker js-disabled"></select>
-                            </div>
-                            <div class="col-xs-12 js-input">
-                                <label for="canal">Canal al que cotiza</label>
-                                <input class="js-disabled" type="text" id="canal">
                             </div>
                             <div class="col-xs-12 js-input">
                                 <label for="pais">Pais</label>

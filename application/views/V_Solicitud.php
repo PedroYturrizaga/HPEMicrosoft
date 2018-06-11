@@ -58,21 +58,21 @@
                     <div class="col-xs-12 p-0">
                         <div class="col-sm-6 col-xs-12"> 
                             <div class="col-xs-12 js-input">
+                                <label for="canal">Canal al que cotiza</label>
+                                <input type="text" id="canal" onchange="validarCampos()">
+                            </div>
+                            <div class="col-xs-12 js-input">
                                 <label for="Nombre">Nombre del Vendedor</label>
                                 <input type="text" id="Nombre" onchange="validarCampos()">
                             </div>
                             <div class="col-xs-12 js-input">
-                                <label for="email">Email</label>
+                                <label for="email">Email donde ser&aacute;n asignados los puntos de Engage & Grow</label>
                                 <input type="email" id="email" onchange="validarCampos()">
                             </div>
                             <div class="col-xs-12 js-input js-select">
                                 <select name="noMayorista" id="noMayorista"> 
                                     <?php echo $option ?>
                                 </select>
-                            </div>
-                            <div class="col-xs-12 js-input">
-                                <label for="canal">Canal al que cotiza</label>
-                                <input type="text" id="canal" onchange="validarCampos()">
                             </div>
                             <div class="col-xs-12 js-input">
                                 <label for="pais">Pais</label>
