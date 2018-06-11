@@ -14,7 +14,11 @@
     <link rel="shortcut icon" href="<?php echo RUTA_IMG?>logo/favicon.ico">
     <link rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>toaster/toastr.min.css?v=<?php echo time();?>">
     <link rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>bootstrap-select/css/bootstrap-select.min.css?v=<?php echo time();?>">
+<<<<<<< HEAD
     <link rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>bootstrap/css/bootstrap.min.css?v=<?php echo time();?>"> 
+=======
+    <link rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>bootstrap/bootstrap.min.css?v=<?php echo time();?>">
+>>>>>>> 5a2be653b1773e2e8a370eb2b733b4ff67348a8d
     <link rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>mdl/material.min.css?v=<?php echo time();?>">
     <link rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>datetimepicker/css/bootstrap-material-datetimepicker.css?v=<?php echo time();?>">
     <link rel="stylesheet"    href="<?php echo RUTA_FONTS?>font-awesome.min.css?v=<?php echo time();?>">
@@ -23,6 +27,8 @@
     <link rel="stylesheet"    href="<?php echo RUTA_CSS?>m-p.min.css?v=<?php echo time();?>">
     <link rel="stylesheet"    href="<?php echo RUTA_CSS?>index.css?v=<?php echo time();?>">
     <link rel="stylesheet"    href="<?php echo RUTA_CSS?>style.css?v=<?php echo time();?>">
+    <link rel="stylesheet"    href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css">
+    <link rel="stylesheet"    href="https://cdn.datatables.net/buttons/1.5.1/css/buttons.bootstrap.min.css">
 </head>
 <body>
     <div class="js-header js-fixed">
@@ -60,7 +66,7 @@
                     <div class="js-table"> 
                         <h2>Top 3 canales en importes facturados</h2>
                         <div class="table-responsive">
-                            <table class="table">
+                            <table class="table" id="tableCanales">
                                 <thead>
                                     <tr>
                                         <th>Nombre canal</th>
@@ -78,7 +84,7 @@
                     <div class="js-table">
                     	<h2>&Uacute;ltimas 10 cotizaciones </h2>
                         <div class="table-responsive">
-                            <table class="table">
+                            <table class="table" id="tableCotizacion">
                                 <thead>
                                     <tr>
                                         <th>Nombre canal</th>
@@ -237,7 +243,7 @@
     </form>
 	<script src="<?php echo RUTA_JS?>jquery-3.2.1.min.js?v=<?php echo time();?>"></script>
 	<script src="<?php echo RUTA_JS?>jquery-1.11.2.min.js?v=<?php echo time();?>"></script>
-	<script src="<?php echo RUTA_PLUGINS?>bootstrap/js/bootstrap.min.js?v=<?php echo time();?>"></script>
+	<script src="<?php echo RUTA_PLUGINS?>bootstrap/bootstrap.min.js?v=<?php echo time();?>"></script>
 	<script src="<?php echo RUTA_PLUGINS?>bootstrap-select/js/bootstrap-select.min.js?v=<?php echo time();?>"></script>
 	<script src="<?php echo RUTA_PLUGINS?>bootstrap-select/js/i18n/defaults-es_ES.min.js?v=<?php echo time();?>"></script>
 	<script src="<?php echo RUTA_PLUGINS?>mdl/material.min.js?v=<?php echo time();?>"></script>
@@ -250,6 +256,16 @@
     <script src="<?php echo RUTA_JS?>jsmenu.js?v=<?php echo time();?>"></script>
     <script src="<?php echo RUTA_JS?>champion.js?v=<?php echo time();?>"></script>
     <script src="<?php echo RUTA_JS?>solicitud.js?v=<?php echo time();?>"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.1/js/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.colVis.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.flash.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.html5.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.print.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.5/jszip.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
     <script type="text/javascript">
     	if( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ) {
         	$('select').selectpicker('mobile');
@@ -258,16 +274,39 @@
         }
         initButtonCalendarDaysMaxToday('fecha');
         initMaskInputs('fecha');
+        google.charts.load("current", {packages:["corechart"]});
+        google.charts.setOnLoadCallback(drawChartDonut);
+        google.charts.setOnLoadCallback(drawChart);
+        
+        $(document).ready(function() {
+            $('#tableCanales').DataTable( {
+                searching : false,
+                dom: 'Bfrtip',
+                language:{
+                    "emptyTable":     "Aucune donnée disponible",
+                    "info" : ''
+                },
+                buttons: [
+                    {
+                        extend:'excel',
+                        text: 'Exportar a Excel'
+                    }
+                ]
+            });
+            $('#tableCotizacion').DataTable( {
+                searching : false,
+                dom: 'Bfrtip',
+                language:{
+                    "emptyTable":     "Aucune donnée disponible",
+                    "info" : ''
+                },
+                buttons: [
+                    {
+                        extend:'excel',
+                        text: 'Exportar a Excel'
+                    }
+                ]
+            });
+        });
     </script>
-
-    <script type="text/javascript">
-      google.charts.load("current", {packages:["corechart"]});
-      google.charts.setOnLoadCallback(drawChartDonut);
-    </script>
-
-    <script type="text/javascript">
-      google.charts.load('current', {'packages':['corechart']});
-      google.charts.setOnLoadCallback(drawChart);
-    </script>
-
 </body>
