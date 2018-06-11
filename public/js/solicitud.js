@@ -160,7 +160,6 @@ var datos = new FormData();
         processData:false,
       }).done(function(respuesta){
         msj('error', respuesta.mensaje);
-        limpiarCampos();
         setTimeout(function(){ location.href = 'Solicitud'; }, 1500);
     });
 }
