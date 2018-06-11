@@ -24,18 +24,18 @@ class Champion extends CI_Controller{
 		$html2  = ' ';
 		foreach ($datos as $key) {
 			$html .= '<tr>
-					      <td class="text-center">'.$key->no_canal.'</td>
-                          <td class="text-center">'.$key->no_vendedor.'</td>
-                          <td class="text-center">'.$key->pais.'</td>
-                          <td class="text-center">'.$key->importe.'</td>
+					      <td>'.$key->no_canal.'</td>
+                          <td>'.$key->no_vendedor.'</td>
+                          <td>'.$key->pais.'</td>
+                          <td class="text-right">'.$key->importe.'</td>
                       </tr>';
         }
         foreach ($datos2 as $key) {
         	$html2 .= '<tr>
-        			       <td class="text-center">'.$key->canal.'</td>
-        			       <td class="text-center">'.$key->no_vendedor.'</td>
-        			       <td class="text-center">'.$key->pais.'</td>
-        			       <td class="text-center">'.$key->fecha.'</td>
+        			       <td>'.$key->canal.'</td>
+        			       <td>'.$key->no_vendedor.'</td>
+        			       <td>'.$key->pais.'</td>
+        			       <td>'.$key->fecha.'</td>
                            <td class="text-center">
                                <button class="mdl-button mdl-js-button mdl-button--icon" onclick="getDetails('.$key->id_cotizacion.');">
                                    <i class="mdi mdi-visibility"> </i>

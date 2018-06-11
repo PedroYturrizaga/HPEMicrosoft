@@ -358,6 +358,34 @@ label
 			font-family $medium
 			padding 30px 0
 			display block
+.js-table--champion
+	h2
+		font-size 30px
+		line-height 32px
+		font-family $medium
+/*TABLE*/
+table
+	&>tbody
+		&>tr
+			&>td
+				color #000000
+				padding 7px 10px !important
+				line-height 16px !important
+				vertical-align middle !important
+				button
+					height 28px !important
+					min-width 28px !important
+					width 28px !important
+					i
+						font-size 18px !important
+	&>thead
+		&>tr
+			&>th
+				color #000000
+				font-weight 100 !important
+				font-size 16px
+				border-top none !important
+				border-bottom 2px solid $default !important
 /*MATERIAL*/
 .mdl-card
 	width 100%
@@ -394,6 +422,7 @@ label
 					background-color #384854
 				&.active
 					background-color #384854
+					pointer-events none
 /*SCROLL*/
 ::-webkit-scrollbar
 	width 6px
@@ -404,20 +433,4 @@ label
 ::-webkit-scrollbar-thumb
 	background-color #AAAAAA
 	border-radius 10px
-/*TABLE*/
-table
-	&>tbody
-		&>tr
-			&>td
-				color #000000
-				padding 10px !important
-				line-height 16px !important
-	&>thead
-		&>tr
-			&>th
-				color #000000
-				font-weight 100 !important
-				font-size 16px
-				border-top none !important
-				border-bottom 2px solid $default !important
 			

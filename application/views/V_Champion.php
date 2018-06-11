@@ -51,39 +51,42 @@
                     <div id="puntaje" style="width: 350px; height: 250px;"></div>
 				</div>
                 <div class="col-sm-8 col-xs-12">
-                    <div class="col-sm-12 col-xs-12"> 
-                        <h3>Top 3 canales en importes facturados</h3>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Nombre canal</th>
-                                    <th>Nombre vendedor</th>
-                                    <th>Pais</th>
-                                    <th>Importe</th>
-                                </tr>
-                            </thead>
-                            <tbody id="bodyCanales">
-                                <?php echo $bodyCanales?>
-                            </tbody>
-                        </table>
+                    <div class="js-table--champion"> 
+                        <h2>Top 3 canales en importes facturados</h2>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Nombre canal</th>
+                                        <th>Nombre vendedor</th>
+                                        <th>Pais</th>
+                                        <th class="text-right">Importe</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="bodyCanales">
+                                    <?php echo $bodyCanales?>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
-                    
-                    <div class="col-sm-8 col-xs-12">
-                    	<h3>&Uacute;ltimas 10 cotizaciones </h3>
-                        <table >
-                            <thead>
-                                <tr>
-                                    <th>Nombre canal</th>
-                                    <th>Nombre vendedor</th>
-                                    <th>Pais</th>
-                                    <th>Fecha</th>
-                                    <th>Ver m&aacute;s</th>
-                                </tr>
-                            </thead>
-                            <tbody id="bodyUltimaCotizacion">
-                                <?php echo $bodyCotizaciones?>
-                            </tbody>
-                        </table>
+                    <div class="js-table--champion">
+                    	<h2>&Uacute;ltimas 10 cotizaciones </h2>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Nombre canal</th>
+                                        <th>Nombre vendedor</th>
+                                        <th>Pais</th>
+                                        <th>Fecha</th>
+                                        <th class="text-center">Ver m&aacute;s</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="bodyUltimaCotizacion">
+                                    <?php echo $bodyCotizaciones?>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
