@@ -17,40 +17,41 @@ class Champion extends CI_Controller{
 	public function index (){
         if($this->session->userdata('usuario') == null){
             header("location: Login");
+        } else {
+            $nombre = $this->M_Login->verificaUsuario( $this->session->userdata('usuario') );
+            $pais   = $this->session->userdata('pais');
+            $idUser = $this->session->userdata('Id_user');
+            $data['nombre'] = $nombre[0]->no_vendedor;
+            $datos  = $this->M_Solicitud->getCanalMasUsado($pais, $idUser);
+            $datos2 = $this->M_Solicitud->getLastCotizaciones($pais, $idUser);
+            $html   = ' ';
+            $html2  = ' ';
+            foreach ($datos as $key) {
+                $html .= '<tr>
+                              <td>'.$key->no_canal.'</td>
+                              <td>'.$key->no_vendedor.'</td>
+                              <td>'.$key->pais.'</td>
+                              <td class="text-right">'.$key->importe.'</td>
+                          </tr>';
+            }
+            foreach ($datos2 as $key) {
+                $html2 .= '<tr>
+                               <td>'.$key->canal.'</td>
+                               <td>'.$key->no_vendedor.'</td>
+                               <td>'.$key->pais.'</td>
+                               <td>'.$key->fecha.'</td>
+                               <td class="text-center">
+                                   <button class="mdl-button mdl-js-button mdl-button--icon" onclick="getDetails('.$key->id_cotizacion.');">
+                                       <i class="mdi mdi-visibility"> </i>
+                                   </button>
+                               </td>
+                             </tr>';
+            }
+            $data['bodyCanales'] = $html;
+            $data['bodyCotizaciones'] = $html2;
+            $data['pais'] = $pais;
+            $this->load->view('v_champion', $data);
         }
-        $nombre = $this->M_Login->verificaUsuario( $this->session->userdata('usuario') );
-        $pais   = $this->session->userdata('pais');
-        $idUser = $this->session->userdata('Id_user');
-		$data['nombre'] = $nombre[0]->no_vendedor;
-		$datos  = $this->M_Solicitud->getCanalMasUsado($pais, $idUser);
-        $datos2 = $this->M_Solicitud->getLastCotizaciones($pais, $idUser);
-		$html   = ' ';
-		$html2  = ' ';
-		foreach ($datos as $key) {
-			$html .= '<tr>
-					      <td>'.$key->no_canal.'</td>
-                          <td>'.$key->no_vendedor.'</td>
-                          <td>'.$key->pais.'</td>
-                          <td class="text-right">'.$key->importe.'</td>
-                      </tr>';
-        }
-        foreach ($datos2 as $key) {
-        	$html2 .= '<tr>
-        			       <td>'.$key->canal.'</td>
-        			       <td>'.$key->no_vendedor.'</td>
-        			       <td>'.$key->pais.'</td>
-        			       <td>'.$key->fecha.'</td>
-                           <td class="text-center">
-                               <button class="mdl-button mdl-js-button mdl-button--icon" onclick="getDetails('.$key->id_cotizacion.');">
-                                   <i class="mdi mdi-visibility"> </i>
-                               </button>
-                           </td>
-        			     </tr>';
-        }
-        $data['bodyCanales'] = $html;
-        $data['bodyCotizaciones'] = $html2;
-        $data['pais'] = $pais;
-		$this->load->view('v_champion', $data);
 	}
 
     function getDetalles() {

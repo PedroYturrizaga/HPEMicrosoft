@@ -17,35 +17,36 @@ class Solicitud extends CI_Controller {
 	public function index (){
         if($this->session->userdata('usuario') == null){
             header("location: Login");
+        } else {
+        	$nombre = $this->M_Login->verificaUsuario( $this->session->userdata('usuario') );
+			$data['nombre'] = $nombre[0]->no_vendedor;
+			$pais   = $this->session->userdata('pais');
+			$idUser = $this->session->userdata('Id_user');
+	        $datos  = $this->M_Solicitud->getMayoristas($idUser);
+			$option = ' ';
+			foreach ($datos as $key) {
+				$option .= '<option value="'.$key->mayorista.'">'.$key->mayorista.'</option>';
+			}
+			$data['option'] = $option;
+			$obtenerOrdenes = $this->M_Solicitud->getLastOrders($idUser);
+			$html = null;
+			$puntosEngage = 0;
+			foreach ($obtenerOrdenes as $key) {
+				$html .= '<tr>
+						      <td class="text-left">'.$key->pais.'</td>
+	                          <td class="text-left">'.$key->documento.'</td>
+	                          <td class="text-left">'.$key->fecha.'</td>
+	                          <td class="text-center"> '.$key->puntos_cotizados.' </td>
+	                          <td class="text-center"> '.$key->puntos_facturados.' </td>
+	                          <td class="text-center"> '.$key->puntos_total.' </td> 
+	                      </tr>';
+	          	$puntosEngage += $key->puntos_total;
+			}
+			$data['html'] = $html;
+			$data['pais'] = $pais;
+			$data['puntosGeneral'] = $puntosEngage;
+			$this->load->view('v_solicitud', $data);
         }
-		$nombre = $this->M_Login->verificaUsuario( $this->session->userdata('usuario') );
-		$data['nombre'] = $nombre[0]->no_vendedor;
-		$pais   = $this->session->userdata('pais');
-		$idUser = $this->session->userdata('Id_user');
-        $datos  = $this->M_Solicitud->getMayoristas($idUser);
-		$option = ' ';
-		foreach ($datos as $key) {
-			$option .= '<option value="'.$key->mayorista.'">'.$key->mayorista.'</option>';
-		}
-		$data['option'] = $option;
-		$obtenerOrdenes = $this->M_Solicitud->getLastOrders($idUser);
-		$html = null;
-		$puntosEngage = 0;
-		foreach ($obtenerOrdenes as $key) {
-			$html .= '<tr>
-					      <td class="text-left">'.$key->pais.'</td>
-                          <td class="text-left">'.$key->documento.'</td>
-                          <td class="text-left">'.$key->fecha.'</td>
-                          <td class="text-center"> '.$key->puntos_cotizados.' </td>
-                          <td class="text-center"> '.$key->puntos_facturados.' </td>
-                          <td class="text-center"> '.$key->puntos_total.' </td> 
-                      </tr>';
-          	$puntosEngage += $key->puntos_total;
-		}
-		$data['html'] = $html;
-		$data['pais'] = $pais;
-		$data['puntosGeneral'] = $puntosEngage;
-		$this->load->view('v_solicitud', $data);
 	}
 
 	function registrar(){
