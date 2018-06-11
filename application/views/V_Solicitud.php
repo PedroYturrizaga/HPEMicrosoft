@@ -243,7 +243,7 @@
                         <small>Team HPE - Microsoft</small>
                     </div> 
                     <div class="mdl-card__actions">                         
-                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect js-button" data-dismiss="modal">Aceptar</button>
+                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect js-button" data-dismiss="modal">Aceptar</button> 
                     </div>
                 </div>
             </div>
