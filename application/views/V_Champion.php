@@ -223,7 +223,7 @@
                     <div class="mdl-card__title">
                         <h2>Documento</h2>
                     </div>
-                    <div class="mdl-card__supporting-text">
+                    <div class="mdl-card__supporting-text" id="imgDocumento">
                         
                     </div> 
                     <div class="mdl-card__actions">                         

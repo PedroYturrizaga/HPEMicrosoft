@@ -44,7 +44,7 @@ class Champion extends CI_Controller{
                                    <button class="mdl-button mdl-js-button mdl-button--icon" onclick="getDetails('.$key->id_cotizacion.');">
                                        <i class="mdi mdi-visibility"> </i>
                                    </button>
-                                   <button class="mdl-button mdl-js-button mdl-button--icon" onclick="openModalDocuemento()">
+                                   <button class="mdl-button mdl-js-button mdl-button--icon" onclick="openModalDocuemento('.$key->id_cotizacion.')">
                                        <i class="mdi mdi-collections"> </i>
                                    </button>
                                </td>
@@ -129,6 +129,20 @@ class Champion extends CI_Controller{
                 array_push($array, [$key->pais, intval($key->puntos_entregados) ]);
             }
             $data['datos'] = json_encode($array);
+        }
+        catch (Exception $ex){
+            $data['msj'] = $ex->getMessage();
+        }
+        echo json_encode($data);
+    }
+
+    function muestraDocumento() {
+        $data['error'] = EXIT_ERROR;
+        $data['msj']   = null;
+        try {
+            $id  = $this->input->post('id');
+            $data['imagen'] = $this->M_Solicitud->getDocumento($id);
+            $data['error'] = EXIT_SUCCESS;
         }
         catch (Exception $ex){
             $data['msj'] = $ex->getMessage();

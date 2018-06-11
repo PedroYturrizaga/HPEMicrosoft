@@ -109,6 +109,21 @@ $("#archivo").change(function(e) {
 	$('#archivoDocumento').val(nombre);
 });
 
+function openModalDocuemento (id) {
+	var id = id;
+	$.ajax({
+		data : { id : id},
+		url  : 'champion/muestraDocumento',
+		type : 'POST'
+	}).done(function(data){
+		data = JSON.parse(data);
+		if(data.error == 0 ){
+			$('#imgDocumento').html(data.imagen);
+			modal('modalDocumento');		
+		} else { return; }
+	});
+}
+
 function drawChartDonut() {
 	var pais = null;
 	var importe = null;
@@ -177,8 +192,4 @@ function drawChart() {
 	        chart.draw(data, options);
 		}
 	});
-}
-
-function descargar() {
-
 }

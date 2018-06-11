@@ -175,4 +175,12 @@ class M_Solicitud extends CI_Model {
 		return $result->result();
 	}
 
+	function getDocumento($id){
+		$sql    = "SELECT documento 
+					 FROM tb_cotizacion
+					WHERE id_cotizacion = ".$id."";
+		$result = $this->db->query($sql);
+		return $result->result();
+	}
+
 }
