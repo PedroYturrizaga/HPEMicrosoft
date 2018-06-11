@@ -219,8 +219,8 @@
                     <div class="mdl-card__title">
                         <h2>Documento</h2>
                     </div>
-                    <div class="mdl-card__supporting-text" id="imgDocumento">
-                        
+                    <div class="mdl-card__supporting-text">
+                        <img  id="imgDocumento" src="">
                     </div> 
                     <div class="mdl-card__actions">                         
                         <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect js-button" data-dismiss="modal">Cerrar</button>
