@@ -44,6 +44,9 @@ class Champion extends CI_Controller{
                                    <button class="mdl-button mdl-js-button mdl-button--icon" onclick="getDetails('.$key->id_cotizacion.');">
                                        <i class="mdi mdi-visibility"> </i>
                                    </button>
+                                   <button class="mdl-button mdl-js-button mdl-button--icon" onclick="openModalDocuemento()">
+                                       <i class="mdi mdi-collections"> </i>
+                                   </button>
                                </td>
                              </tr>';
             }

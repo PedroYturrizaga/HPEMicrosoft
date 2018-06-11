@@ -47,11 +47,15 @@
             </nav>
         </div>
         <main class="mdl-layout__content">
-            <div class="js-user">
-                <div class="js-user--left">
-                    <p>Bienvenido(a) <?php echo $nombre?> </p> 
+            <section class="js-section p-t-20">
+                <div class="js-container">
+                    <div class="js-user p-0">
+                        <div class="js-user--left">
+                            <p>Bienvenido(a) <?php echo $nombre?> </p> 
+                        </div>
+                    </div>
                 </div>
-            </div>
+            </section>
             <section id="section-cotizacion" class="js-section js-section--menu">
                 <div class="js-container">
                     <h2 class="js-title">Nuevo ingreso</h2>
