@@ -115,29 +115,29 @@
                                             <tr>
                                                 <th>Licencia Microsoft</th>
                                                 <th class="text-right col-xs-2">Unidades</th>
-                                                <th class="text-right">Puntos</th>
+                                                <th class="text-right col-xs-2">Puntos</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
                                                 <td id="product1">Windows Server Essentials Edition</td>
-                                                <td class="text-right col-xs-2 js-table--input"><input type="text" id="cantidadWSEE" name="cantidadWSEE" onchange="calcularWSEE()" /></td>
-                                                <td class="text-right js-table--input"><span id="puntosWSEE"></span></td>
+                                                <td class="text-right col-xs-2 js-table--input"><input type="text" id="cantidadWSEE" name="cantidadWSEE" autocomplete="off" onchange="calcularWSEE()" /></td>
+                                                <td class="text-right col-xs-2 js-table--input"><span id="puntosWSEE"></span></td>
                                             </tr>
                                             <tr>
                                                 <td id="product2">Windows Server Standard Edition</td>
-                                                <td class="text-right col-xs-2 js-table--input"><input type="text" id="cantidadWSSE" name="cantidadWSSE" onchange="calcularWSSE()"/></td>
-                                                <td class="text-right js-table--input"><span id="puntosWSSE"></span></td>
+                                                <td class="text-right col-xs-2 js-table--input"><input type="text" id="cantidadWSSE" name="cantidadWSSE" autocomplete="off" onchange="calcularWSSE()"/></td>
+                                                <td class="text-right col-xs-2 js-table--input"><span id="puntosWSSE"></span></td>
                                             </tr>
                                             <tr>
                                                 <td id="product3">Windows Server Datacenter Edition</td>
-                                                <td class="text-right col-xs-2 js-table--input"><input type="text" id="cantidadWSDE" name="cantidadWSDE" onchange="calcularWSDE()"/></td>
-                                                <td class="text-right js-table--input"><span id="puntosWSDE"></span></td>
+                                                <td class="text-right col-xs-2 js-table--input"><input type="text" id="cantidadWSDE" name="cantidadWSDE" autocomplete="off" onchange="calcularWSDE()"/></td>
+                                                <td class="text-right col-xs-2 js-table--input"><span id="puntosWSDE"></span></td>
                                             </tr>
                                             <tr>
                                                 <td id="product4">CALs</td>
-                                                <td class="text-right col-xs-2 js-table--input"><input type="text" id="cantidadCAL" name="cantidadCAL" onchange="calcularCAL()"/></td>
-                                                <td class="text-right js-table--input"><span id="puntosCAL"></span></td>
+                                                <td class="text-right col-xs-2 js-table--input"><input type="text" id="cantidadCAL" name="cantidadCAL" autocomplete="off" onchange="calcularCAL()"/></td>
+                                                <td class="text-right col-xs-2 js-table--input"><span id="puntosCAL"></span></td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -257,7 +257,6 @@
             $('select').selectpicker();
         }
         var pais = <?php echo "'".$pais."'"?>;
-        console.log(pais);
         $('#pais').val(pais);
         initButtonCalendarDaysMaxToday('fecha');
         initMaskInputs('fecha');

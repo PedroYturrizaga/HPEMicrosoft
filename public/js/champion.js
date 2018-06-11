@@ -47,11 +47,7 @@ function getDetails(cotizacion) {
 				$('#aceptar').css('display', 'block');
 				$('#registrar').css('display', 'none');
 				$('#cancelar').css('display', 'none');
-				$('#puntosWSEE').css('display','none');
-				$('#puntosWSSE').css('display','none');
-				$('#puntosWSDE').css('display','none');
-				$('#puntosCAL').css('display','none');
-
+				$('.js-none').css('display','none');
         		modal('modalDetalles');
         	} else { return; }
       } catch (err){
@@ -86,10 +82,7 @@ function openModal(){
 			$('#aceptar').css('display', 'none');
 			$('#registrar').css('display', 'block');
 			$('#cancelar').css('display', 'block');
-			$('#puntosWSEE').css('display','block');
-			$('#puntosWSSE').css('display','block');
-			$('#puntosWSDE').css('display','block');
-			$('#puntosCAL').css('display','block');
+			$('.js-none').css('display', 'table-cell');
 			$('#noMayorista').html(data.option);
 			$('#noMayorista').selectpicker('refresh');
 			$('#pais').val(data.pais);
