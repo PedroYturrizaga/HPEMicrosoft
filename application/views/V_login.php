@@ -37,7 +37,7 @@
             <div class="js-fondo--login"></div>
             <div class="js-container js-flex">
                 <div class="js-login">
-                    <h2>Acceso a Herramienta</h2>
+                    <h2>Acceso a la Herramienta</h2>
                     <div class="col-xs-12 js-input m-0">
                         <label for="usuario">Usuario</label>
                         <input type="text" id="usuario" onkeyup="verificarDatos(event);">
