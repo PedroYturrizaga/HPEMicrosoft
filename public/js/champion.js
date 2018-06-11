@@ -30,24 +30,13 @@ function getDetails(cotizacion) {
         				$('#cantidadCAL').val(data.detalles[i]['cantidad']);
         			}
         		}
-        		$('#Nombre').prop('disabled', true);
-				$('#email').prop('disabled', true);
-				$('#noMayorista').prop('disabled', true);
-				$('#canal').prop('disabled', true);
-				$('#pais').prop('disabled', true);
-				$('#facturacion').prop('disabled', true);
-				$('#cotizacion').prop('disabled', true);
-				$('#numFactura').prop('disabled', true);
-				$('#fecha').prop('disabled', true);
-				$('#monto').prop('disabled', true);
-				$('#cantidadWSEE').prop('disabled', true);
-				$('#cantidadWSSE').prop('disabled', true);
-				$('#cantidadWSDE').prop('disabled', true);
-				$('#cantidadCAL').prop('disabled', true);
+        		$('#cotizacion').addClass('js-events-none');
+        		$('#facturacion').addClass('js-events-none');
+				$('.js-disabled').prop('disabled', true);
+				$('.js-none').css('display','none');
 				$('#aceptar').css('display', 'block');
 				$('#registrar').css('display', 'none');
 				$('#cancelar').css('display', 'none');
-				$('.js-none').css('display','none');
         		modal('modalDetalles');
         	} else { return; }
       } catch (err){
@@ -65,24 +54,13 @@ function openModal(){
 	}).done(function(data){
 		data = JSON.parse(data);
 		if(data.error == 0 ){
-    		$('#Nombre').prop('disabled', false);
-			$('#email').prop('disabled', false);
-			$('#noMayorista').prop('disabled', false);
-			$('#canal').prop('disabled', false);
-			$('#pais').prop('disabled', false);
-			$('#facturacion').prop('disabled', false);
-			$('#cotizacion').prop('disabled', false);
-			$('#numFactura').prop('disabled', false);
-			$('#fecha').prop('disabled', false);
-			$('#monto').prop('disabled', false);
-			$('#cantidadWSEE').prop('disabled', false);
-			$('#cantidadWSSE').prop('disabled', false);
-			$('#cantidadWSDE').prop('disabled', false);
-			$('#cantidadCAL').prop('disabled', false);
+			$('#cotizacion').removeClass('js-events-none');
+    		$('#facturacion').removeClass('js-events-none');
+			$('.js-disabled').prop('disabled', false);
+			$('.js-none').css('display', 'table-cell');
 			$('#aceptar').css('display', 'none');
 			$('#registrar').css('display', 'block');
 			$('#cancelar').css('display', 'block');
-			$('.js-none').css('display', 'table-cell');
 			$('#noMayorista').html(data.option);
 			$('#noMayorista').selectpicker('refresh');
 			$('#pais').val(data.pais);

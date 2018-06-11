@@ -92,7 +92,7 @@
                         </div>
                         <div class="col-sm-6 col-xs-12">
                             <div class="col-xs-12 js-input">
-                                <label for="numFactura"># Factura</label>
+                                <label for="numFactura"># de Documento</label>
                                 <input type="text" id="numFactura" onchange="validarCampos()">
                             </div>
                             <div class="col-xs-12 js-input js-date js-flex">
@@ -169,7 +169,7 @@
                                         <th>Documento</th>
                                         <th>Fecha</th>
                                         <th class="text-center">Cotizado</th>
-                                        <th class="text-center">Cerrado</th>
+                                        <th class="text-center">Facturado</th>
                                         <th>Total</th>
                                     </tr>
                                 </thead >

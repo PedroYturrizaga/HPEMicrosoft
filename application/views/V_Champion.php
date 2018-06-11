@@ -106,22 +106,22 @@
                         <div class="col-sm-6 col-xs-12"> 
                             <div class="col-xs-12 js-input">
                                 <label for="Nombre">Nombre del Vendedor</label>
-                                <input type="text" id="Nombre">
+                                <input class="js-disabled" type="text" id="Nombre">
                             </div>
                             <div class="col-xs-12 js-input">
                                 <label for="email">Email</label>
-                                <input type="email" id="email">
+                                <input class="js-disabled" type="email" id="email">
                             </div>
                             <div class="col-xs-12 js-input js-select">
-                                <select name="noMayorista" id="noMayorista" class="selectpicker"></select>
+                                <select name="noMayorista" id="noMayorista" class="selectpicker js-disabled"></select>
                             </div>
                             <div class="col-xs-12 js-input">
                                 <label for="canal">Canal al que cotiza</label>
-                                <input type="text" id="canal">
+                                <input class="js-disabled" type="text" id="canal">
                             </div>
                             <div class="col-xs-12 js-input">
                                 <label for="pais">Pais</label>
-                                <input type="text"  id="pais">
+                                <input class="js-disabled" type="text"  id="pais">
                             </div>
                             <div class="col-xs-12 js-input js-radio">
                                 <label> Tipo de documento:</label>
@@ -137,20 +137,20 @@
                         </div>
                         <div class="col-sm-6 col-xs-12">
                             <div class="col-xs-12 js-input">
-                                <label for="numFactura"># de documento</label>
-                                <input type="text"id="numFactura" >
+                                <label for="numFactura"># de Documento</label>
+                                <input class="js-disabled" type="text"id="numFactura" >
                             </div>
                             <div class="col-xs-12 js-input js-date js-flex">
-                                <input type="text" id="fecha" name="fecha" maxlength="10" placeholder="dd/mm/aaaa" value="" style="pointer-events: none">
+                                <input class="js-disabled" type="text" id="fecha" name="fecha" maxlength="10" placeholder="dd/mm/aaaa" value="" style="pointer-events: none">
                                 <div class="js-icon">
-                                    <button type="button" class="mdl-button mdl-js-button mdl-button--icon">
+                                    <button type="button" class="mdl-button mdl-js-button mdl-button--icon js-disabled">
                                         <i class="mdi mdi-date_range"></i>
                                     </button>
                                 </div>
                             </div>
                             <div class="col-xs-12 js-input">
                                 <label for="monto">Monto</label>
-                                <input type="text" id="monto">
+                                <input class="js-disabled" type="text" id="monto">
                             </div>
                             <div class="js-table col-xs-12">
                                 <h2 class="title-formulario">Productos</h2>
@@ -166,22 +166,22 @@
                                         <tbody>
                                             <tr>
                                                 <td id="product1">Windows Server Essentials Edition</td>
-                                                <td class="text-right col-xs-2 js-table--input"><input type="text" id="cantidadWSEE" name="cantidadWSEE" autocomplete="off" onchange="calcularWSEE()"/></td>
+                                                <td class="text-right col-xs-2 js-table--input"><input class="js-disabled" type="text" id="cantidadWSEE" name="cantidadWSEE" autocomplete="off" onchange="calcularWSEE()"/></td>
                                                 <td class="text-right col-xs-2 js-table--input js-none"><span id="puntosWSEE"></span></td>
                                             </tr>
                                             <tr>
                                                 <td id="product2">Windows Server Standard Edition</td>
-                                                <td class="text-right col-xs-2 js-table--input"><input type="text" id="cantidadWSSE" name="cantidadWSSE" autocomplete="off" onchange="calcularWSSE()"/></td>
+                                                <td class="text-right col-xs-2 js-table--input"><input class="js-disabled" type="text" id="cantidadWSSE" name="cantidadWSSE" autocomplete="off" onchange="calcularWSSE()"/></td>
                                                 <td class="text-right col-xs-2 js-table--input js-none"><span id="puntosWSSE"></span></td>
                                             </tr>
                                             <tr>
                                                 <td id="product3">Windows Server Datacenter Edition</td>
-                                                <td class="text-right col-xs-2 js-table--input"><input type="text" id="cantidadWSDE" name="cantidadWSDE" autocomplete="off" onchange="calcularWSDE()"/></td>
+                                                <td class="text-right col-xs-2 js-table--input"><input class="js-disabled" type="text" id="cantidadWSDE" name="cantidadWSDE" autocomplete="off" onchange="calcularWSDE()"/></td>
                                                 <td class="text-right col-xs-2 js-table--input js-none"><span id="puntosWSDE"></span></td>
                                             </tr>
                                             <tr>
                                                 <td id="product4">CALs</td>
-                                                <td class="text-right col-xs-2 js-table--input"><input type="text" id="cantidadCAL" name="cantidadCAL" autocomplete="off" onchange="calcularCAL()"/></td>
+                                                <td class="text-right col-xs-2 js-table--input"><input class="js-disabled type="text" id="cantidadCAL" name="cantidadCAL" autocomplete="off" onchange="calcularCAL()"/></td>
                                                 <td class="text-right col-xs-2 js-table--input js-none"><span id="puntosCAL"></span></td>
                                             </tr>
                                         </tbody>
