@@ -107,37 +107,42 @@
                                 <label for="monto">Monto</label>
                                 <input type="text" id="monto" onchange="validarCampos()">
                             </div>
-                            <table id="tbProductos" >
-                                <thead>
-                                    <tr>
-                                        <th>Licencia Microsoft</th>
-                                        <th>Unidades</th>
-                                        <th>Puntos</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td id="product1">Windows Server Essentials Edition</td>
-                                        <td><input type="text" id="cantidadWSEE" name="cantidadWSEE" onchange="calcularWSEE()" /></td>
-                                        <td> <span id="puntosWSEE"> </span> </td>
-                                    </tr>
-                                    <tr>
-                                        <td id="product2">Windows Server Standard Edition</td>
-                                        <td><input type="text" id="cantidadWSSE" name="cantidadWSSE" onchange="calcularWSSE()"/></td>
-                                        <td> <span id="puntosWSSE"> </span> </td>
-                                    </tr>
-                                    <tr>
-                                        <td id="product3">Windows Server Datacenter Edition</td>
-                                        <td><input type="text" id="cantidadWSDE" name="cantidadWSDE" onchange="calcularWSDE()"/></td>
-                                        <td> <span id="puntosWSDE"> </span> </td>
-                                    </tr>
-                                    <tr>
-                                        <td id="product4">CALs</td>
-                                        <td><input type="text" id="cantidadCAL" name="cantidadCAL" onchange="calcularCAL()"/></td>
-                                        <td> <span id="puntosCAL"> </span> </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                            <div class="js-table col-xs-12">
+                                <h2>Productos</h2>
+                                <div class="table-responsive">
+                                    <table id="tbProductos" class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Licencia Microsoft</th>
+                                                <th class="text-right">Unidades</th>
+                                                <th class="text-right">Puntos</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td id="product1">Windows Server Essentials Edition</td>
+                                                <td class="text-right"><input type="text" id="cantidadWSEE" name="cantidadWSEE" onchange="calcularWSEE()" /></td>
+                                                <td class="text-right"><span id="puntosWSEE"></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td id="product2">Windows Server Standard Edition</td>
+                                                <td class="text-right"><input type="text" id="cantidadWSSE" name="cantidadWSSE" onchange="calcularWSSE()"/></td>
+                                                <td class="text-right"><span id="puntosWSSE"></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td id="product3">Windows Server Datacenter Edition</td>
+                                                <td class="text-right"><input type="text" id="cantidadWSDE" name="cantidadWSDE" onchange="calcularWSDE()"/></td>
+                                                <td class="text-right"><span id="puntosWSDE"></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td id="product4">CALs</td>
+                                                <td class="text-right"><input type="text" id="cantidadCAL" name="cantidadCAL" onchange="calcularCAL()"/></td>
+                                                <td class="text-right"><span id="puntosCAL"></span></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
                         <div class="col-xs-12">
                             <button type="button" name="boton" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect js-button" onclick="registrar()">Registrar Oportunidad</button>

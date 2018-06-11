@@ -51,7 +51,7 @@
                     <div id="puntaje" style="width: 350px; height: 250px;"></div>
 				</div>
                 <div class="col-sm-8 col-xs-12">
-                    <div class="js-table--champion"> 
+                    <div class="js-table"> 
                         <h2>Top 3 canales en importes facturados</h2>
                         <div class="table-responsive">
                             <table class="table">
@@ -69,7 +69,7 @@
                             </table>
                         </div>
                     </div>
-                    <div class="js-table--champion">
+                    <div class="js-table">
                     	<h2>&Uacute;ltimas 10 cotizaciones </h2>
                         <div class="table-responsive">
                             <table class="table">
