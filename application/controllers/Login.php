@@ -30,7 +30,7 @@ class Login extends CI_Controller {
                 if(strtolower($username[0]->usuario) == strtolower($usuario)){
                     if($password == $username[0]->pass){
                         $session = array('usuario' => $usuario,  
-                                         'Id_user' => $username[0]->id_mayorista,
+                                         'Id_user' => $username[0]->id_vendedor,
                                          'id_rol'  => $username[0]->id_rol,
                                          'pais'    => $username[0]->pais);
                         $this->session->set_userdata($session);
@@ -148,7 +148,7 @@ class Login extends CI_Controller {
                                                     </tr>
                                                     <tr>
                                                         <td style="padding: 20px 0;">
-                                                            <p>Sr(a) '.$username[0]->noMayorista.':</p>
+                                                            <p>Sr(a) '.$username[0]->no_vendedor.':</p>
                                                             <p>Su contrase&ntilde;a es '.$username[0]->pass.'. </p>
                                                             <br>
                                                         </td>

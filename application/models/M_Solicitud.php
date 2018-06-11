@@ -30,12 +30,12 @@ class M_Solicitud extends CI_Model {
 		return array("error" => EXIT_SUCCESS, "msj"=> MSJ_INS, "id_cotizacion"=> $sql);
 	}
 
-	function getMayoristas($pais) {
-		$sql = "SELECT v.id_mayorista,
+	function getMayoristas($idVendedor) {
+		$sql = "SELECT v.id_vendedor,
 					   m.mayorista
 				  FROM tb_mayorista m, tb_vendedores v
-				 WHERE v.id_rol <> 0
-				   AND m.pais LIKE '".$pais."'
+				 WHERE v.id_vendedor = ".$idVendedor."
+                  AND m.id_mayorista = v._id_mayorista
 			  GROUP BY mayorista
 			  ORDER BY mayorista ASC";
 		$result = $this->db->query($sql);
@@ -51,7 +51,7 @@ class M_Solicitud extends CI_Model {
 			       	 SUM(puntos_cerrados) AS puntos_facturados,
 			       	 SUM(puntos_cerrados + puntos_cotizados) AS puntos_total
 			   	FROM tb_cotizacion 
-			   WHERE _id_mayorista = ".$idUser."
+			   WHERE _id_vendedor = ".$idUser."
  			GROUP BY id_cotizacion
 			ORDER BY id_cotizacion DESC
 			   LIMIT 4";
@@ -79,13 +79,13 @@ class M_Solicitud extends CI_Model {
 				 WHERE c.id_cotizacion = ".$idCotizacion." 
 				   AND c.id_cotizacion = p._id_cotizacion 
 				   AND p.cantidad <> 0 
-				   AND c.mayorista = m.mayorista
+				   AND trim(c.mayorista) = trim(m.mayorista)
                    GROUP BY p.no_producto";
 	   	$result = $this->db->query($sql);
 	   	return $result->result();
 	}
 
-	function getCanalMasUsado ($pais) {
+	function getCanalMasUsado ($pais, $idUser) {
 		$sql = "SELECT COUNT(canal) AS cantidad_canal,
 					   canal AS no_canal, 
 					   no_vendedor, 
@@ -93,6 +93,10 @@ class M_Solicitud extends CI_Model {
 					   SUM(monto) AS importe
 				  FROM tb_cotizacion
 				 WHERE pais LIKE '".$pais."'
+				   AND mayorista LIKE (SELECT m.mayorista 
+                                         FROM tb_mayorista m, tb_vendedores v 
+                                        WHERE v.id_vendedor = ".$idUser."
+                                          AND v._id_mayorista = m.id_mayorista)
 			  GROUP BY LOWER(canal)
 			  ORDER BY cantidad_canal DESC, importe DESC
 			  	 LIMIT 3";
@@ -100,7 +104,7 @@ class M_Solicitud extends CI_Model {
 		return $result->result();
 	}
 
-	function getLastCotizaciones($pais) {
+	function getLastCotizaciones($pais, $idUser) {
 		$sql = "SELECT id_cotizacion,
 					   email,
 				       no_vendedor,
@@ -109,6 +113,10 @@ class M_Solicitud extends CI_Model {
 				       date_format(fecha, '%d/%m/%Y') AS fecha
 				  FROM tb_cotizacion
 				 WHERE pais LIKE '".$pais."'
+				   AND mayorista LIKE (SELECT m.mayorista 
+                                          FROM tb_mayorista m, tb_vendedores v 
+                                         WHERE v.id_vendedor = ".$idUser."
+                                           AND v._id_mayorista = m.id_mayorista) 
 			  ORDER BY id_cotizacion DESC
 				 LIMIT 10";
 		$result = $this->db->query($sql);

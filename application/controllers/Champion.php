@@ -16,10 +16,11 @@ class Champion extends CI_Controller{
 
 	public function index (){
         $nombre = $this->M_Login->verificaUsuario( $this->session->userdata('usuario') );
-        $pais  = $this->session->userdata('pais');
-		$data['nombre'] = $nombre[0]->noMayorista;
-		$datos  = $this->M_Solicitud->getCanalMasUsado($pais);
-        $datos2 = $this->M_Solicitud->getLastCotizaciones($pais);
+        $pais   = $this->session->userdata('pais');
+        $idUser = $this->session->userdata('Id_user');
+		$data['nombre'] = $nombre[0]->no_vendedor;
+		$datos  = $this->M_Solicitud->getCanalMasUsado($pais, $idUser);
+        $datos2 = $this->M_Solicitud->getLastCotizaciones($pais, $idUser);
 		$html   = ' ';
 		$html2  = ' ';
 		foreach ($datos as $key) {
@@ -55,13 +56,13 @@ class Champion extends CI_Controller{
             $id     = $_POST['cotizacion'];
             $datos  = $this->M_Solicitud->getDetallesCotizacion($id);
             $data['detalles'] = $datos;
-            $pais   = $this->session->userdata('pais');
-            $datos2 = $this->M_Solicitud->getMayoristas($pais);
+            $idVendedor = $this->session->userdata('Id_user');
+            $datos2 = $this->M_Solicitud->getMayoristas($idVendedor);
             $option = ' ';
             foreach ($datos2 as $key) {
                 if($datos[0]->mayorista == $key->mayorista) {
-                    $option = '<option value=" '.$key->mayorista.' " class="selected">'.$key->mayorista.'</option>';
-                }          
+                    $option = '<option value="'.$key->mayorista.'" class="selected">'.$key->mayorista.'</option>';
+                }
             }
             $data['option'] = $option;
             $data['error'] = EXIT_SUCCESS;
@@ -76,11 +77,12 @@ class Champion extends CI_Controller{
         $data['error'] = EXIT_ERROR;
         $data['msj']   = null;
         try {
-            $pais   = $this->session->userdata('pais');
-            $datos2 = $this->M_Solicitud->getMayoristas($pais);
+            $pais = $this->session->userdata('pais');
+            $idVendedor = $this->session->userdata('Id_user');
+            $datos2 = $this->M_Solicitud->getMayoristas($idVendedor);
             $option = ' ';
             foreach ($datos2 as $key) {
-                $option .= '<option value=" '.$key->id_mayorista.' ">'.$key->mayorista.'</option>';
+                $option .= '<option value="'.$key->mayorista.'">'.$key->mayorista.'</option>';
             }
             $data['option'] = $option;
             $data['pais']   = $pais;
