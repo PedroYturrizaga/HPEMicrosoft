@@ -98,6 +98,11 @@
             </div>
         </div>
     </section>
+    <form id="frmArchivo" method="post" style="display: none;">
+        <input id="archivo" type="file" name="archivo" />
+        <input type="hidden" name="MAX_FILE_SIZE" value="2000000"/>
+        <input class="boton" type="submit" name="enviar" value="Importar" style="display: none" />
+    </form>
     <!--MODAL-->
     <div class="modal fade" id="modalDetalles" tabindex="-1" role="dialog" aria-labelledby="simpleModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
         <div class="modal-dialog modal-lg">
@@ -209,13 +214,23 @@
             </div>
         </div>
     </div>
-
-    <form id="frmArchivo" method="post" style="display: none;">
-        <input id="archivo" type="file" name="archivo" />
-        <input type="hidden" name="MAX_FILE_SIZE" value="2000000"/>
-        <input class="boton" type="submit" name="enviar" value="Importar" style="display: none" />
-    </form>
-
+    <div class="modal fade" id="modalDocumento" tabindex="-1" role="dialog" aria-labelledby="simpleModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog modal-md">
+            <div class="modal-content">
+                <div class="mdl-card">
+                    <div class="mdl-card__title">
+                        <h2>Documento</h2>
+                    </div>
+                    <div class="mdl-card__supporting-text">
+                        
+                    </div> 
+                    <div class="mdl-card__actions">                         
+                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect js-button" data-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 	<script src="<?php echo RUTA_JS?>jquery-3.2.1.min.js?v=<?php echo time();?>"></script>
 	<script src="<?php echo RUTA_JS?>jquery-1.11.2.min.js?v=<?php echo time();?>"></script>
 	<script src="<?php echo RUTA_PLUGINS?>bootstrap/bootstrap.min.js?v=<?php echo time();?>"></script>
