@@ -159,9 +159,9 @@
                                 <input class="js-disabled" type="text" id="monto">
                             </div>
                             <div class="col-xs-12 js-input js-file js-flex">
-                                <input type="text" id="fecha" name="fecha" maxlength="10" placeholder="dd/mm/aaaa" value="" style="pointer-events: none">
+                                <input class="js-disabled" type="text" id="archivoDocumento" name="archivoDocumento" maxlength="10" placeholder="Suba su factura en imagen o pdf" style="pointer-events: none">
                                 <div class="js-icon">
-                                    <button type="button" class="mdl-button mdl-js-button mdl-button--icon" onclick="subirFactura()">
+                                    <button type="button" class="mdl-button mdl-js-button mdl-button--icon js-disabled" onclick="subirFactura()">
                                         <i class="mdi mdi-backup"></i>
                                     </button>
                                 </div>
