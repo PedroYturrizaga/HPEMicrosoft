@@ -114,29 +114,29 @@
                                         <thead>
                                             <tr>
                                                 <th>Licencia Microsoft</th>
-                                                <th class="text-right">Unidades</th>
+                                                <th class="text-right col-xs-2">Unidades</th>
                                                 <th class="text-right">Puntos</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
                                                 <td id="product1">Windows Server Essentials Edition</td>
-                                                <td class="text-right"><input type="text" id="cantidadWSEE" name="cantidadWSEE" onchange="calcularWSEE()" /></td>
+                                                <td class="text-right col-xs-2"><input type="text" id="cantidadWSEE" name="cantidadWSEE" onchange="calcularWSEE()" /></td>
                                                 <td class="text-right"><span id="puntosWSEE"></span></td>
                                             </tr>
                                             <tr>
                                                 <td id="product2">Windows Server Standard Edition</td>
-                                                <td class="text-right"><input type="text" id="cantidadWSSE" name="cantidadWSSE" onchange="calcularWSSE()"/></td>
+                                                <td class="text-right col-xs-2"><input type="text" id="cantidadWSSE" name="cantidadWSSE" onchange="calcularWSSE()"/></td>
                                                 <td class="text-right"><span id="puntosWSSE"></span></td>
                                             </tr>
                                             <tr>
                                                 <td id="product3">Windows Server Datacenter Edition</td>
-                                                <td class="text-right"><input type="text" id="cantidadWSDE" name="cantidadWSDE" onchange="calcularWSDE()"/></td>
+                                                <td class="text-right col-xs-2"><input type="text" id="cantidadWSDE" name="cantidadWSDE" onchange="calcularWSDE()"/></td>
                                                 <td class="text-right"><span id="puntosWSDE"></span></td>
                                             </tr>
                                             <tr>
                                                 <td id="product4">CALs</td>
-                                                <td class="text-right"><input type="text" id="cantidadCAL" name="cantidadCAL" onchange="calcularCAL()"/></td>
+                                                <td class="text-right col-xs-2"><input type="text" id="cantidadCAL" name="cantidadCAL" onchange="calcularCAL()"/></td>
                                                 <td class="text-right"><span id="puntosCAL"></span></td>
                                             </tr>
                                         </tbody>
