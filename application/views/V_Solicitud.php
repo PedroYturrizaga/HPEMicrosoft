@@ -219,17 +219,19 @@
     </div>
     <!--MODAL-->
     <div class="modal fade" id="ModalQuestion" tabindex="-1" role="dialog" aria-labelledby="simpleModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
-        <div class="modal-dialog modal-sm text-center">
+        <div class="modal-dialog modal-sm">
             <div class="modal-content">
                 <div class="mdl-card">
-                    <div class="mdl-card__supporting-text">
-                        <h2>PERFECTO&#33;</h2>
-                        <h2>Tu registro ha sido enviado satisfactoriamente.</h2>
+                    <div class="mdl-card__title p-b-0">
+                        <h2>LISTO&#33;</h2>
+                    </div>
+                    <div class="mdl-card__supporting-text p-t-0 p-b-0">
+                        <h3>Tu registro ha sido enviado satisfactoriamente.</h3>
                         <p>Nos pondremos en contacto contigo a la brevedad</p>
-                        <small>Equipo HPE Latinoamerica</small>
+                        <small>Team HPE - Microsoft</small>
                     </div> 
                     <div class="mdl-card__actions">                         
-                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" data-dismiss="modal">Aceptar</button>
+                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect js-button" data-dismiss="modal">Aceptar</button>
                     </div>
                 </div>
             </div>
