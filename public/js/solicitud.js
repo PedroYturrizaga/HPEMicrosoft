@@ -161,7 +161,7 @@ var datos = new FormData();
       }).done(function(respuesta){
         msj('error', respuesta.mensaje);
         limpiarCampos();
-        setTimeout(function(){ location.href = 'Solicitud'; }, 1500);
+        // setTimeout(function(){ location.href = 'Solicitud'; }, 1500);
     });
 }
 
