@@ -112,7 +112,7 @@
                                 <input type="text" id="monto" onchange="validarCampos()">
                             </div>
                             <div class="col-xs-12 js-input js-file js-flex">
-                                <input type="text" id="archivoDocumento" placeholder="Seleccione una imagen o pdf" name="archivoDocumento" disabled>
+                                <input type="text" id="archivoDocumento" placeholder="Suba su factura en imagen o pdf" name="archivoDocumento" disabled>
                                 <div class="js-icon">
                                     <button type="button" class="mdl-button mdl-js-button mdl-button--icon" onclick="subirFactura()">
                                         <i class="mdi mdi-backup"></i>
