@@ -15,6 +15,9 @@ class Champion extends CI_Controller{
 	}
 
 	public function index (){
+        if($this->session->userdata('usuario') == null){
+            header("location: Login");
+        }
         $nombre = $this->M_Login->verificaUsuario( $this->session->userdata('usuario') );
         $pais   = $this->session->userdata('pais');
         $idUser = $this->session->userdata('Id_user');
@@ -46,6 +49,7 @@ class Champion extends CI_Controller{
         }
         $data['bodyCanales'] = $html;
         $data['bodyCotizaciones'] = $html2;
+        $data['pais'] = $pais;
 		$this->load->view('v_champion', $data);
 	}
 

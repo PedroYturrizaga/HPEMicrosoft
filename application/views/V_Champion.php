@@ -41,9 +41,11 @@
                 <div class="js-user--left">
                     <p>Bienvenido(a) <?php echo $nombre?> </p> 
                 </div>
+                <?php if($pais != ''){ ?>
                 <div class="js-user--right">
                     <button type="button" name="boton" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect js-button" onclick="openModal();" >Nueva Oportunidad</button>
                 </div>
+                <?php } ?>
             </div>
             <div class="formulario col-sm-12 col-xs-12 m-t-20">
 				<div class="col-sm-4 col-xs-12"> 

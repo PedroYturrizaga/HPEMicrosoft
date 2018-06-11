@@ -85,40 +85,64 @@ class M_Solicitud extends CI_Model {
 	   	return $result->result();
 	}
 
-	function getCanalMasUsado ($pais, $idUser) {
-		$sql = "SELECT COUNT(canal) AS cantidad_canal,
-					   canal AS no_canal, 
-					   no_vendedor, 
-					   pais, 
-					   SUM(monto) AS importe
-				  FROM tb_cotizacion
-				 WHERE pais LIKE '".$pais."'
-				   AND mayorista LIKE (SELECT m.mayorista 
-                                         FROM tb_mayorista m, tb_vendedores v 
-                                        WHERE v.id_vendedor = ".$idUser."
-                                          AND v._id_mayorista = m.id_mayorista)
-			  GROUP BY LOWER(canal)
-			  ORDER BY cantidad_canal DESC, importe DESC
-			  	 LIMIT 3";
+	function getCanalMasUsado ($pais, $idUser) {	
+		if($pais == '') {
+			$sql = "SELECT COUNT(canal) AS cantidad_canal,
+						   canal AS no_canal, 
+						   no_vendedor, 
+						   pais, 
+						   SUM(monto) AS importe
+					  FROM tb_cotizacion
+				  GROUP BY LOWER(canal)
+				  ORDER BY cantidad_canal DESC, importe DESC
+				  	 LIMIT 3";
+		} else {
+			$sql = "SELECT COUNT(canal) AS cantidad_canal,
+						   canal AS no_canal, 
+						   no_vendedor, 
+						   pais, 
+						   SUM(monto) AS importe
+					  FROM tb_cotizacion
+					 WHERE pais LIKE '".$pais."'
+					   AND mayorista LIKE (SELECT m.mayorista 
+	                                         FROM tb_mayorista m, tb_vendedores v 
+	                                        WHERE v.id_vendedor = ".$idUser."
+	                                          AND v._id_mayorista = m.id_mayorista)
+				  GROUP BY LOWER(canal)
+				  ORDER BY cantidad_canal DESC, importe DESC
+				  	 LIMIT 3";
+		}
 		$result = $this->db->query($sql);
 		return $result->result();
 	}
 
 	function getLastCotizaciones($pais, $idUser) {
-		$sql = "SELECT id_cotizacion,
-					   email,
-				       no_vendedor,
-				       canal,
-				       pais,
-				       date_format(fecha, '%d/%m/%Y') AS fecha
-				  FROM tb_cotizacion
-				 WHERE pais LIKE '".$pais."'
-				   AND mayorista LIKE (SELECT m.mayorista 
-                                          FROM tb_mayorista m, tb_vendedores v 
-                                         WHERE v.id_vendedor = ".$idUser."
-                                           AND v._id_mayorista = m.id_mayorista) 
-			  ORDER BY id_cotizacion DESC
-				 LIMIT 10";
+		if($pais == '') {
+			$sql = "SELECT id_cotizacion,
+						   email,
+					       no_vendedor,
+					       canal,
+					       pais,
+					       date_format(fecha, '%d/%m/%Y') AS fecha
+					  FROM tb_cotizacion
+				  ORDER BY id_cotizacion DESC
+					 LIMIT 10";
+		} else {
+			$sql = "SELECT id_cotizacion,
+						   email,
+					       no_vendedor,
+					       canal,
+					       pais,
+					       date_format(fecha, '%d/%m/%Y') AS fecha
+					  FROM tb_cotizacion
+					 WHERE pais LIKE '".$pais."'
+					   AND mayorista LIKE (SELECT m.mayorista 
+	                                          FROM tb_mayorista m, tb_vendedores v 
+	                                         WHERE v.id_vendedor = ".$idUser."
+	                                           AND v._id_mayorista = m.id_mayorista) 
+				  ORDER BY id_cotizacion DESC
+					 LIMIT 10";
+		}
 		$result = $this->db->query($sql);
 		return $result->result();
 	}
