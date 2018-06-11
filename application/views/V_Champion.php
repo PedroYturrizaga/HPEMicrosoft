@@ -23,6 +23,8 @@
     <link rel="stylesheet"    href="<?php echo RUTA_CSS?>m-p.min.css?v=<?php echo time();?>">
     <link rel="stylesheet"    href="<?php echo RUTA_CSS?>index.css?v=<?php echo time();?>">
     <link rel="stylesheet"    href="<?php echo RUTA_CSS?>style.css?v=<?php echo time();?>">
+    <link rel="stylesheet"    href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css">
+    <link rel="stylesheet"    href="https://cdn.datatables.net/buttons/1.5.1/css/buttons.bootstrap.min.css">
 </head>
 <body>
     <div class="js-header js-fixed">
@@ -60,7 +62,7 @@
                     <div class="js-table"> 
                         <h2>Top 3 canales en importes facturados</h2>
                         <div class="table-responsive">
-                            <table class="table">
+                            <table class="table" id="tableCanales">
                                 <thead>
                                     <tr>
                                         <th>Nombre canal</th>
@@ -78,7 +80,7 @@
                     <div class="js-table">
                     	<h2>&Uacute;ltimas 10 cotizaciones </h2>
                         <div class="table-responsive">
-                            <table class="table">
+                            <table class="table" id="tableCotizacion">
                                 <thead>
                                     <tr>
                                         <th>Nombre canal</th>
@@ -250,6 +252,16 @@
     <script src="<?php echo RUTA_JS?>jsmenu.js?v=<?php echo time();?>"></script>
     <script src="<?php echo RUTA_JS?>champion.js?v=<?php echo time();?>"></script>
     <script src="<?php echo RUTA_JS?>solicitud.js?v=<?php echo time();?>"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.1/js/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.colVis.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.flash.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.html5.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.print.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.5/jszip.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
     <script type="text/javascript">
     	if( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ) {
         	$('select').selectpicker('mobile');
@@ -258,16 +270,40 @@
         }
         initButtonCalendarDaysMaxToday('fecha');
         initMaskInputs('fecha');
+        google.charts.load("current", {packages:["corechart"]});
+        google.charts.setOnLoadCallback(drawChartDonut);
+        google.charts.setOnLoadCallback(drawChart);
+        
+        $(document).ready(function() {
+            $('#tableCanales').DataTable( {
+                searching : false,
+                dom: 'Bfrtip',
+                language:{
+                    "emptyTable":     "Aucune donnée disponible",
+                    "info" : ''
+                },
+                buttons: [
+                    {
+                        extend:'excel',
+                        text: 'Exportar a Excel'
+                    }
+                ]
+            });
+            $('#tableCotizacion').DataTable( {
+                searching : false,
+                dom: 'Bfrtip',
+                language:{
+                    "emptyTable":     "Aucune donnée disponible",
+                    "info" : ''
+                },
+                buttons: [
+                    {
+                        extend:'excel',
+                        text: 'Exportar a Excel',
+                        position : 'right'
+                    }
+                ]
+            });
+        });
     </script>
-
-    <script type="text/javascript">
-      google.charts.load("current", {packages:["corechart"]});
-      google.charts.setOnLoadCallback(drawChartDonut);
-    </script>
-
-    <script type="text/javascript">
-      google.charts.load('current', {'packages':['corechart']});
-      google.charts.setOnLoadCallback(drawChart);
-    </script>
-
 </body>
