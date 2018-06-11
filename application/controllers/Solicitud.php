@@ -15,6 +15,9 @@ class Solicitud extends CI_Controller {
 	}
 
 	public function index (){
+        if($this->session->userdata('usuario') == null){
+            header("location: Login");
+        }
 		$nombre = $this->M_Login->verificaUsuario( $this->session->userdata('usuario') );
 		$data['nombre'] = $nombre[0]->no_vendedor;
 		$pais   = $this->session->userdata('pais');
