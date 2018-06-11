@@ -98,11 +98,6 @@
             </div>
         </div>
     </section>
-    <form id="frmArchivo" method="post" style="display: none;">
-        <input id="archivo" type="file" name="archivo" />
-        <input type="hidden" name="MAX_FILE_SIZE" value="2000000"/>
-        <input class="boton" type="submit" name="enviar" value="Importar" style="display: none" />
-    </form>
     <!--MODAL-->
     <div class="modal fade" id="modalDetalles" tabindex="-1" role="dialog" aria-labelledby="simpleModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
         <div class="modal-dialog modal-lg">
@@ -161,8 +156,13 @@
                                 <label for="monto">Monto</label>
                                 <input class="js-disabled" type="text" id="monto">
                             </div>
-                            <div class="mdl-input factura">
-                                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect button-select" onclick="subirFactura()" id="btnSubirFact">Seleccionar Archivo</button>
+                            <div class="col-xs-12 js-input js-file js-flex">
+                                <input type="text" id="fecha" name="fecha" maxlength="10" placeholder="dd/mm/aaaa" value="" style="pointer-events: none">
+                                <div class="js-icon">
+                                    <button type="button" class="mdl-button mdl-js-button mdl-button--icon" onclick="subirFactura()">
+                                        <i class="mdi mdi-backup"></i>
+                                    </button>
+                                </div>
                             </div>
                             <div class="js-table col-xs-12">
                                 <h2 class="title-formulario">Productos</h2>
@@ -231,6 +231,10 @@
             </div>
         </div>
     </div>
+    <form id="frmArchivo" method="post" style="display: none;">
+        <input id="archivo" type="file" name="archivo" />
+        <input type="hidden" name="MAX_FILE_SIZE" value="2000000"/>
+    </form>
 	<script src="<?php echo RUTA_JS?>jquery-3.2.1.min.js?v=<?php echo time();?>"></script>
 	<script src="<?php echo RUTA_JS?>jquery-1.11.2.min.js?v=<?php echo time();?>"></script>
 	<script src="<?php echo RUTA_PLUGINS?>bootstrap/bootstrap.min.js?v=<?php echo time();?>"></script>

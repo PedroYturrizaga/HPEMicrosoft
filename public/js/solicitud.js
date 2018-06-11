@@ -18,7 +18,12 @@ function registrar() {
 	var tipoDoc		= null;
 	var puntos      = 0;
 
-
+	factura = $('#archivo')[0].files[0];
+	console.log(factura);
+	if(factura == undefined){
+		msj('error', 'Seleccione una factura');
+		return;
+	}
 	if($('#puntosWSEE').text() != " " || $('#puntosWSSE').text() != " ") {
 		puntos += 50; 
 	}
