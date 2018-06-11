@@ -47,10 +47,6 @@
                 <div class="js-user--right">
                     <button type="button" name="boton" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect js-button" onclick="openModal();" >Nueva Oportunidad</button>
                 </div>
-                <?php } else { ?>
-                <div class="js-user--right">
-                    <button type="button" name="boton" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect js-button" onclick="descargar();" >Descargar Excel</button>
-                </div>
                 <?php } ?>
             </div>
             <div class="formulario col-sm-12 col-xs-12 m-t-20">
@@ -273,38 +269,40 @@
         google.charts.load("current", {packages:["corechart"]});
         google.charts.setOnLoadCallback(drawChartDonut);
         google.charts.setOnLoadCallback(drawChart);
-        
-        $(document).ready(function() {
-            $('#tableCanales').DataTable( {
-                searching : false,
-                dom: 'Bfrtip',
-                paging: false,
-                language:{
-                    "emptyTable":     "Aucune donnée disponible",
-                    "info" : ''
-                },
-                buttons: [
-                    {
-                        extend:'excel',
-                        text: 'Exportar a Excel'
-                    }
-                ]
+        var pais = <?php echo "'".$pais."'"?>;
+        if (pais == '') {
+            $(document).ready(function() {
+                $('#tableCanales').DataTable( {
+                    searching : false,
+                    dom: 'Bfrtip',
+                    paging: false,
+                    language:{
+                        "emptyTable":     "Aucune donnée disponible",
+                        "info" : ''
+                    },
+                    buttons: [
+                        {
+                            extend:'excel',
+                            text: 'Exportar a Excel'
+                        }
+                    ]
+                });
+                $('#tableCotizacion').DataTable( {
+                    searching : false,
+                    dom: 'Bfrtip',
+                    paging: false,
+                    language:{
+                        "emptyTable":     "Aucune donnée disponible",
+                        "info" : ''
+                    },
+                    buttons: [
+                        {
+                            extend:'excel',
+                            text: 'Exportar a Excel'
+                        }
+                    ]
+                });
             });
-            $('#tableCotizacion').DataTable( {
-                searching : false,
-                dom: 'Bfrtip',
-                paging: false,
-                language:{
-                    "emptyTable":     "Aucune donnée disponible",
-                    "info" : ''
-                },
-                buttons: [
-                    {
-                        extend:'excel',
-                        text: 'Exportar a Excel'
-                    }
-                ]
-            });
-        });
+        }
     </script>
 </body>
