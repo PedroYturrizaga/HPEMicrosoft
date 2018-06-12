@@ -119,8 +119,12 @@ function openModalDocuemento (id) {
 	}).done(function(data){
 		data = JSON.parse(data);
 		if(data.error == 0 ){
-			$('#imgDocumento').attr("data", data.imagen);
-			modal('modalDocumento');		
+			if(data.imagen != "") {
+				$('#imgDocumento').attr("data", data.imagen);
+			} else {
+				$('#imgDocumento').text("IMAGEN NO ENCONTRADA");
+			}
+			modal('modalDocumento');
 		} else { return; }
 	});
 }
