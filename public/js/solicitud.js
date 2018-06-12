@@ -17,125 +17,125 @@ function registrar() {
 	var cotizacion  = $('#radioCotizacion').is(':checked');
 	var tipoDoc		= null;
 	var puntos      = 0;
+console.log(monto);
+	// factura = $('#archivo')[0].files[0];
+	// if(factura == undefined){
+	// 	msj('error', 'Seleccione una factura');
+	// 	return;
+	// }
+	// if($('#puntosWSEE').text() != " " || $('#puntosWSSE').text() != " ") {
+	// 	puntos += 50; 
+	// }
+	// if($('#puntosWSDE').text() != " " || $('#puntosCAL').text() != " ") {
+	// 	puntos += 100;
+	// }
 
-	factura = $('#archivo')[0].files[0];
-	if(factura == undefined){
-		msj('error', 'Seleccione una factura');
-		return;
-	}
-	if($('#puntosWSEE').text() != " " || $('#puntosWSSE').text() != " ") {
-		puntos += 50; 
-	}
-	if($('#puntosWSDE').text() != " " || $('#puntosCAL').text() != " ") {
-		puntos += 100;
-	}
+	// var noProducto1 = "Windows Server Essentials Edition";
+	// var cantidadWSEE= $('#cantidadWSEE').val();
 
-	var noProducto1 = "Windows Server Essentials Edition";
-	var cantidadWSEE= $('#cantidadWSEE').val();
+	// var noProducto2 = "Windows Server Standard Edition";
+	// var cantidadWSSE= $('#cantidadWSSE').val();
 
-	var noProducto2 = "Windows Server Standard Edition";
-	var cantidadWSSE= $('#cantidadWSSE').val();
+	// var noProducto3 = "Windows Server Datacenter Edition";
+	// var cantidadWSDE= $('#cantidadWSDE').val();
 
-	var noProducto3 = "Windows Server Datacenter Edition";
-	var cantidadWSDE= $('#cantidadWSDE').val();
-
-	var noProducto4 = "CALs";
-	var cantidadCAL = $('#cantidadCAL').val();
+	// var noProducto4 = "CALs";
+	// var cantidadCAL = $('#cantidadCAL').val();
 	
-	var fecha		= $('#fecha').val();
-	var newdate     = fecha.split("/").reverse().join("-");
+	// var fecha		= $('#fecha').val();
+	// var newdate     = fecha.split("/").reverse().join("-");
 	
-	if(Nombre == '' && email == '' && noMayorista == '' && canal == '' && numFactura == '' && monto == '' && fecha == '' ){
-		validarCampos();
-	}
-	if(Nombre == null || Nombre == ''){
-		$('#Nombre').css('border-color','red');
-		msj('error', 'Ingrese su nombre');
-		return;
-	}
-	if(email == null || email == ''){
-		msj('error', 'Ingrese su email');
-		$('#email').css('border-color','red');
-		return;
-	}
-	if (!validateEmail(email)){
-		msj('error', 'El formato de email ingresado es incorrecto');
-		$('#email').css('border-color','red');
-		return;
-	}else {
-		$('#email').css('border-color','#C6C9CA');
-	}
-	if(noMayorista == null || noMayorista == ''){
-		msj('error', 'seleccione el nombre del mayorista');
-		$('#noMayorista').css('border-color','red');
-		return;
-	}
-	if(canal == null || canal == ''){
-		msj('error', 'Ingrese su canal');
-		$('#canal').css('border-color','red');
-		return;
-	}
-	if(numFactura == null || numFactura == ''){
-		msj('error', 'Ingrese su número de Factura');
-		$('#numFactura').css('border-color','red');
-		return;
-	}
-	if(monto == null || monto == ''){
-		msj('error', 'Ingrese el nombre del cliente');
-		$('#cliente').css('border-color','red');
-		return;
-	}
-	if(fecha == null || fecha == ''){
-		msj('error', 'Ingrese la fecha de cierre');
-		$('#fecha').css('border-color','red');
-		return;
-	}
-	if(pais == null || pais == '') {
-		msj('error', 'Ingrese un pais');
-		$('#pais').css('border-color','red');
-		return;		
-	}
-	if(facturacion == true){
-		tipoDoc = 0;
-	}
-	if(cotizacion == true){
-		tipoDoc = 1;
-	}
-	$.ajax({
-		data  : { Nombre 	  : Nombre,
-				  email 	  : email,
-				  idMayorista : idMayorista,
-				  fecha		  : newdate,
-				  canal 	  : canal,
-				  tipoDoc 	  : tipoDoc,
-				  pais		  : pais,
-				  numFactura  : numFactura,
-				  monto		  : monto ,
-				  noProducto1 : noProducto1,
-				  noProducto2 : noProducto2 ,
-				  noProducto3 : noProducto3,
-				  noProducto4 : noProducto4 ,
-				  cantidadWSEE: cantidadWSEE,
-				  cantidadWSSE: cantidadWSSE ,
-				  cantidadWSDE: cantidadWSDE,
-				  cantidadCAL : cantidadCAL,
-				  puntos 	  : puntos},
-		url   : 'solicitud/registrar',
-		type  : 'POST'
-	}).done(function(data){
-		try{
-        	data = JSON.parse(data);
-        	if(data.error == 0){
-        		modal('ModalQuestion');
-        		$('#bodyPuntaje').html(data.html);
-        		$('#puntajeGeneral').html(data.puntosGeneral);
-        		$('#bodyUltimaCotizacion').html(data.bodyCotizaciones);
-        		$('#bodyCanales').html(data.bodyCanales);
-        	} else { return; }
-      } catch (err){
-        msj('error',err.message);
-      }
-	});
+	// if(Nombre == '' && email == '' && noMayorista == '' && canal == '' && numFactura == '' && monto == '' && fecha == '' ){
+	// 	validarCampos();
+	// }
+	// if(Nombre == null || Nombre == ''){
+	// 	$('#Nombre').css('border-color','red');
+	// 	msj('error', 'Ingrese su nombre');
+	// 	return;
+	// }
+	// if(email == null || email == ''){
+	// 	msj('error', 'Ingrese su email');
+	// 	$('#email').css('border-color','red');
+	// 	return;
+	// }
+	// if (!validateEmail(email)){
+	// 	msj('error', 'El formato de email ingresado es incorrecto');
+	// 	$('#email').css('border-color','red');
+	// 	return;
+	// }else {
+	// 	$('#email').css('border-color','#C6C9CA');
+	// }
+	// if(noMayorista == null || noMayorista == ''){
+	// 	msj('error', 'seleccione el nombre del mayorista');
+	// 	$('#noMayorista').css('border-color','red');
+	// 	return;
+	// }
+	// if(canal == null || canal == ''){
+	// 	msj('error', 'Ingrese su canal');
+	// 	$('#canal').css('border-color','red');
+	// 	return;
+	// }
+	// if(numFactura == null || numFactura == ''){
+	// 	msj('error', 'Ingrese su número de Factura');
+	// 	$('#numFactura').css('border-color','red');
+	// 	return;
+	// }
+	// if(monto == null || monto == ''){
+	// 	msj('error', 'Ingrese el nombre del cliente');
+	// 	$('#cliente').css('border-color','red');
+	// 	return;
+	// }
+	// if(fecha == null || fecha == ''){
+	// 	msj('error', 'Ingrese la fecha de cierre');
+	// 	$('#fecha').css('border-color','red');
+	// 	return;
+	// }
+	// if(pais == null || pais == '') {
+	// 	msj('error', 'Ingrese un pais');
+	// 	$('#pais').css('border-color','red');
+	// 	return;		
+	// }
+	// if(facturacion == true){
+	// 	tipoDoc = 0;
+	// }
+	// if(cotizacion == true){
+	// 	tipoDoc = 1;
+	// }
+	// $.ajax({
+	// 	data  : { Nombre 	  : Nombre,
+	// 			  email 	  : email,
+	// 			  idMayorista : idMayorista,
+	// 			  fecha		  : newdate,
+	// 			  canal 	  : canal,
+	// 			  tipoDoc 	  : tipoDoc,
+	// 			  pais		  : pais,
+	// 			  numFactura  : numFactura,
+	// 			  monto		  : monto ,
+	// 			  noProducto1 : noProducto1,
+	// 			  noProducto2 : noProducto2 ,
+	// 			  noProducto3 : noProducto3,
+	// 			  noProducto4 : noProducto4 ,
+	// 			  cantidadWSEE: cantidadWSEE,
+	// 			  cantidadWSSE: cantidadWSSE ,
+	// 			  cantidadWSDE: cantidadWSDE,
+	// 			  cantidadCAL : cantidadCAL,
+	// 			  puntos 	  : puntos},
+	// 	url   : 'solicitud/registrar',
+	// 	type  : 'POST'
+	// }).done(function(data){
+	// 	try{
+ //        	data = JSON.parse(data);
+ //        	if(data.error == 0){
+ //        		modal('ModalQuestion');
+ //        		$('#bodyPuntaje').html(data.html);
+ //        		$('#puntajeGeneral').html(data.puntosGeneral);
+ //        		$('#bodyUltimaCotizacion').html(data.bodyCotizaciones);
+ //        		$('#bodyCanales').html(data.bodyCanales);
+ //        	} else { return; }
+ //      } catch (err){
+ //        msj('error',err.message);
+ //      }
+	// });
 }
 
 function subirFactura(){
@@ -203,16 +203,16 @@ function soloLetras(e){
     especiales = "8-37-39-46";
     tecla_especial = false
     for(var i in especiales){
-         if(key == especiales[i]){
-             tecla_especial = true;
-             break;
-         }
-     }
-     if(letras.indexOf(tecla)==-1 && !tecla_especial){
-         return false;
-     }
- }
- function valida(e){
+        if(key == especiales[i]){
+            tecla_especial = true;
+            break;
+        }
+    }
+    if(letras.indexOf(tecla)==-1 && !tecla_especial){
+        return false;
+    }
+}
+function valida(e){
     tecla = (document.all) ? e.keyCode : e.which;
     if (tecla==8){
         return true;

@@ -95,7 +95,7 @@ function limpiarCampos() {
 }
 
 function subirFactura(){
-  $( "#archivo" ).trigger( "click" );
+	$( "#archivo" ).trigger( "click" );
 }
 
 $("#archivo").change(function(e) {

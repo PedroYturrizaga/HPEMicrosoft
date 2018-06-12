@@ -133,6 +133,7 @@ class M_Solicitud extends CI_Model {
 					       pais,
 					       date_format(fecha, '%d/%m/%Y') AS fecha
 					  FROM tb_cotizacion
+					   AND tipo_documento = 1
 				  ORDER BY id_cotizacion DESC
 					 LIMIT 10";
 		} else {
@@ -144,6 +145,7 @@ class M_Solicitud extends CI_Model {
 					       date_format(fecha, '%d/%m/%Y') AS fecha
 					  FROM tb_cotizacion
 					 WHERE pais LIKE '".$pais."'
+					   AND tipo_documento = 1
 					   AND mayorista LIKE (SELECT m.mayorista 
 	                                          FROM tb_mayorista m, tb_vendedores v 
 	                                         WHERE v.id_vendedor = ".$idUser."
