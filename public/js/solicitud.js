@@ -128,10 +128,6 @@ console.log(monto);
         	data = JSON.parse(data);
         	if(data.error == 0){
         		modal('ModalQuestion');
-        		$('#bodyPuntaje').html(data.html);
-        		$('#puntajeGeneral').html(data.puntosGeneral);
-        		$('#bodyUltimaCotizacion').html(data.bodyCotizaciones);
-        		$('#bodyCanales').html(data.bodyCanales);
         	} else { return; }
       } catch (err){
         msj('error',err.message);
@@ -169,7 +165,7 @@ var datos = new FormData();
         data:datos,
         processData:false,
       }).done(function(respuesta){
-      	if(data.error == 0) {
+      	if(respuesta.error == 0) {
       		modal('ModalQuestion');
       		setTimeout(function() {
 				modal('modalDetalles');

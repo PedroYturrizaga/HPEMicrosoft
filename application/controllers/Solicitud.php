@@ -156,19 +156,20 @@ class Solicitud extends CI_Controller {
 	}
 
 	function cargarFact(){
-		$data['error'] = EXIT_ERROR;
-		$data['msj']   = null;
+		$respuesta = new stdClass();
+        $respuesta->mensaje = "";
+        $respuesta->error = EXIT_ERROR;
         if(count($_FILES) == 0){
             $data['msj'] = 'Seleccione su factura';
         }else {
-            $tipo = $_FILES['archivo']['type']; 
+            $tipo = $_FILES['archivo']['type'];
             $tamanio = $_FILES['archivo']['size']; 
             $archivotmp = $_FILES['archivo']['tmp_name'];
             $namearch = $_FILES['archivo']['name'];
             $nuevo = explode(".",$namearch);
             $nombre = "";
             if($tamanio > '2000000'){
-                $data['msj'] = 'El tamaño de su pdf debe ser menor';
+                $respuesta->mensaje = 'El tamaño de su pdf debe ser menor';
             }else {
                 if($nuevo[1] == 'pdf' || $nuevo[1] == 'jpg' || $nuevo[1] == 'png'){
                 	$nombre = str_replace(" ", "_", $_FILES['archivo']['name']);
@@ -176,16 +177,16 @@ class Solicitud extends CI_Controller {
                     if(move_uploaded_file($archivotmp, $target) ){
                        $arrUpdt = array('documento' => $nombre);
                        $this->M_Solicitud->updateDatos($arrUpdt, $this->session->userdata('id_cotizacion'), 'tb_cotizacion');
-                       $data['msj'] = 'Su factura se subió correctamente';
-                       $data['error'] = EXIT_SUCCESS;
+                       $respuesta->mensaje = 'Su factura se subió correctamente';
+                       $respuesta->error = EXIT_SUCCESS;
                     } else {
-                       $data['msj'] = 'Hubo un problema en la subida de su factura';
+                       $respuesta->mensaje = 'Hubo un problema en la subida de su factura';
                     }
                 }else {
-                    $data['msj'] = 'El formato de la factura es incorrecto';
+                    $respuesta->mensaje = 'El formato de la factura es incorrecto';
                 }
             }
-            echo json_encode($data);
+            echo json_encode($respuesta);
         }
     }
 }
