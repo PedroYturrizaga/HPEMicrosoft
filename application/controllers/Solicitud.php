@@ -174,7 +174,7 @@ class Solicitud extends CI_Controller {
                 	$nombre = str_replace(" ", "_", $_FILES['archivo']['name']);
                     $target = getcwd().DIRECTORY_SEPARATOR.'public'.DIRECTORY_SEPARATOR.'archivos'.DIRECTORY_SEPARATOR.basename($nombre);
                     if(move_uploaded_file($archivotmp, $target) ){
-                       $arrUpdt = array('documento' => $namearch);
+                       $arrUpdt = array('documento' => $nombre);
                        $this->M_Solicitud->updateDatos($arrUpdt, $this->session->userdata('id_cotizacion'), 'tb_cotizacion');
                        $data['msj'] = 'Su factura se subió correctamente';
                        $data['error'] = EXIT_SUCCESS;

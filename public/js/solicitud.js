@@ -170,13 +170,9 @@ var datos = new FormData();
         processData:false,
       }).done(function(respuesta){
       	if(data.error == 0) {
-      		modal();
+      		modal('ModalQuestion');
       		setTimeout(function() {
 				modal('modalDetalles');
-	    		$('#bodyPuntaje').html(data.html);
-	    		$('#puntajeGeneral').html(data.puntosGeneral);
-	    		$('#bodyUltimaCotizacion').html(data.bodyCotizaciones);
-	    		$('#bodyCanales').html(data.bodyCanales);
 			}, 250);
       		
       	} else {
