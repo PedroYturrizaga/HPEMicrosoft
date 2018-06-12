@@ -187,7 +187,6 @@ class Solicitud extends CI_Controller {
                         $respuesta->error = EXIT_SUCCESS;
                     } else {
                        $respuesta->mensaje = 'Hubo un problema en la subida de su factura';
-                       $this->M_Solicitud->eliminaRegistro($last, 'tb_cotizacion', 'tb_producto');
                     }
                 }else {
                     $respuesta->mensaje = 'El formato de la factura es incorrecto';
