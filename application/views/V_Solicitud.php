@@ -66,11 +66,11 @@
                                 <input type="text" id="canal" onchange="validarCampos()">
                             </div>
                             <div class="col-xs-12 js-input">
-                                <label for="Nombre">Nombre del Vendedor</label>
+                                <label for="Nombre">Nombre del vendedor del canal</label>
                                 <input type="text" id="Nombre" onchange="validarCampos()">
                             </div>
                             <div class="col-xs-12 js-input">
-                                <label for="email">Email donde ser&aacute;n asignados los puntos de Engage & Grow</label>
+                                <label for="email">Email (debe ser el mismo que tiene registrado en Engage & Grow)</label>
                                 <input type="email" id="email" onchange="validarCampos()">
                             </div>
                             <div class="col-xs-12 js-input js-select">
@@ -100,7 +100,7 @@
                                 <input type="text" id="numFactura" onchange="validarCampos()">
                             </div>
                             <div class="col-xs-12 js-input js-date js-flex">
-                                <input type="text" id="fecha" name="fecha" maxlength="10" placeholder="dd/mm/aaaa" value="" style="pointer-events: none">
+                                <input type="text" id="fecha" name="fecha" maxlength="10" placeholder="Fecha del documento" value="" style="pointer-events: none">
                                 <div class="js-icon">
                                     <button type="button" class="mdl-button mdl-js-button mdl-button--icon">
                                         <i class="mdi mdi-date_range"></i>

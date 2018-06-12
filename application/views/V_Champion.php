@@ -123,7 +123,7 @@
                                 <input class="js-disabled" type="text" id="Nombre">
                             </div>
                             <div class="col-xs-12 js-input">
-                                <label for="email">Email donde ser&aacute;n asignados los puntos de Engage & Grow</label>
+                                <label for="email">Email (debe ser el mismo que tiene registrado en Engage & Grow)</label>
                                 <input class="js-disabled" type="email" id="email">
                             </div>
                             <div class="col-xs-12 js-input js-select">
