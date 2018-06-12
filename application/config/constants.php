@@ -86,12 +86,12 @@ defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest auto
 
 
 //	RECURSOS PUBLICOS
-defined('RUTA_CSS')     OR define('RUTA_CSS'    , 'http://'.(isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : null).'/HPEMicrosoft/public/css/');
-defined('RUTA_FONTS')   OR define('RUTA_FONTS'  , 'http://'.(isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : null).'/HPEMicrosoft/public/fonts/');
-// defined('RUTA_IMG')     OR define('RUTA_IMG'    , 'http://'.(isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : null).'/HPEMicrosoft/public/img/');
-defined('RUTA_ARCHIVOS')OR define('RUTA_ARCHIVOS', 'http://'.(isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : null).'/HPEMicrosoft/public/archivos/');
-defined('RUTA_JS')      OR define('RUTA_JS'     , 'http://'.(isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : null).'/HPEMicrosoft/public/js/');
-defined('RUTA_PLUGINS') OR define('RUTA_PLUGINS', 'http://'.(isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : null).'/HPEMicrosoft/public/plugins/');
+defined('RUTA_CSS')      OR define('RUTA_CSS'    , 'http://'.(isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : null).'/promos/CA/HPEMicrosoft/public/css/');
+defined('RUTA_FONTS')    OR define('RUTA_FONTS'  , 'http://'.(isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : null).'/promos/CA/HPEMicrosoft/public/fonts/');
+defined('RUTA_IMG')      OR define('RUTA_IMG'    , 'http://'.(isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : null).'/promos/CA/HPEMicrosoft/public/img/');
+defined('RUTA_ARCHIVOS') OR define('RUTA_ARCHIVOS', 'http://'.(isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : null).'/promos/CA/HPEMicrosoft/public/archivos/');
+defined('RUTA_JS')       OR define('RUTA_JS'     , 'http://'.(isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : null).'/promos/CA/HPEMicrosoft/public/js/');
+defined('RUTA_PLUGINS')  OR define('RUTA_PLUGINS', 'http://'.(isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : null).'/promos/CA/HPEMicrosoft/public/plugins/');
 
 
 //MENSAJES DE ERROR,CONFIRMACION Y EDICION
