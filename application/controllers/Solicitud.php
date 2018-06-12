@@ -103,7 +103,101 @@ class Solicitud extends CI_Controller {
 			$datoInsertCotizacion = $this->M_Solicitud->insertarCotizacion($arrayInsertCotizacion, 'tb_cotizacion', $arrayInsertProducto, 'tb_producto');
 			$this->session->set_userdata(array('id_cotizacion' => $datoInsertCotizacion['id_cotizacion'] ));
 
-			$obtenerOrdenes = $this->M_Solicitud->getLastOrders($idVendedor);
+			// $obtenerOrdenes = $this->M_Solicitud->getLastOrders($idVendedor);
+			// $html = null;
+			// $puntosEngage = 0;
+			// foreach ($obtenerOrdenes as $key) {
+			// 	$html .= '<tr>
+			// 			      <td class="text-left">'.$key->pais.'</td>
+	  //                         <td class="text-left">'.$key->documento.'</td>
+	  //                         <td class="text-left">'.$key->fecha.'</td>
+	  //                         <td class="text-center"> '.$key->puntos_cotizados.' </td>
+	  //                         <td class="text-center"> '.$key->puntos_facturados.' </td>
+	  //                         <td class="text-center"> '.$key->puntos_total.' </td> 
+	  //                     </tr>';
+	  //         	$puntosEngage += $key->puntos_total;
+			// }
+
+			// $pais2  = $this->session->userdata('pais');
+			// $html2  = '';
+			// $htmlCanales = '';
+			// $datos  = $this->M_Solicitud->getCanalMasUsado($pais, $idVendedor);
+			// $datos2 = $this->M_Solicitud->getLastCotizaciones($pais2, $idVendedor);
+			// foreach ($datos2 as $key) {
+   //      		$html2 .= '<tr>
+   //      			           <td>'.$key->canal.'</td>
+   //      			           <td>'.$key->no_vendedor.'</td>
+   //      			           <td>'.$key->pais.'</td>
+   //      			           <td>'.$key->fecha.'</td>
+   //                             <td class="text-center">
+   //                                 <button class="mdl-button mdl-js-button mdl-button--icon" onclick="getDetails('.$key->id_cotizacion.');">
+   //                                     <i class="mdi mdi-visibility"> </i>
+   //                                 </button>
+   //                                 <button class="mdl-button mdl-js-button mdl-button--icon" onclick="openModalDocuemento('.$key->id_cotizacion.')">
+   //                                     <i class="mdi mdi-collections"> </i>
+   //                                 </button>
+   //                             </td>
+   //      			       </tr>';
+   //      	}
+
+			// foreach ($datos as $key) {
+   //              $importe = round($key->importe * 100) / 100;
+			// 	$htmlCanales .= '<tr>
+			// 			      	     <td>'.$key->no_canal.'</td>
+	  //                                <td>'.$key->no_vendedor.'</td>
+	  //                                <td>'.$key->pais.'</td>
+	  //                                <td class="text-right">'.$importe.'</td>
+	  //                            </tr>';
+	  //       }
+   //      	$data['bodyCanales'] = $htmlCanales;
+   //      	$data['bodyCotizaciones'] = $html2;
+			// $data['html'] = $html;
+			// $data['puntosGeneral'] = $puntosEngage;
+			$data['error'] = EXIT_SUCCESS;
+		} 
+		catch (Exception $e) {
+			$data['msj'] = $e->getMessage();
+		}
+		echo json_encode($data);
+	}
+
+	function cargarFact(){
+		$respuesta = new stdClass();
+        $respuesta->mensaje = "";
+        $respuesta->error = EXIT_ERROR;
+    	$last = $this->session->userdata('id_cotizacion');
+        if(count($_FILES) == 0){
+            $data['msj'] = 'Seleccione su factura';
+            $this->M_Solicitud->eliminaRegistro($last, 'tb_cotizacion', 'tb_producto');
+        }else {
+            $tipo = $_FILES['archivo']['type'];
+            $tamanio = $_FILES['archivo']['size']; 
+            $archivotmp = $_FILES['archivo']['tmp_name'];
+            $namearch = $_FILES['archivo']['name'];
+            $nuevo = explode(".",$namearch);
+            $nombre = "";
+            if($tamanio > '2000000'){
+                $respuesta->mensaje = 'El tamaño de su pdf debe ser menor';
+            }else {
+                if($nuevo[1] == 'pdf' || $nuevo[1] == 'jpg' || $nuevo[1] == 'png'){
+                	$nombre = str_replace(" ", "_", $_FILES['archivo']['name']);
+                    $target = getcwd().DIRECTORY_SEPARATOR.'public'.DIRECTORY_SEPARATOR.'archivos'.DIRECTORY_SEPARATOR.basename($nombre);
+                    if(move_uploaded_file($archivotmp, $target) ){
+                        $arrUpdt = array('documento' => $nombre);
+                        $this->M_Solicitud->updateDatos($arrUpdt, $last, 'tb_cotizacion');
+                        $respuesta->mensaje = 'Su factura se subió correctamente';
+                        $respuesta->error = EXIT_SUCCESS;
+                    } else {
+                       $this->M_Solicitud->eliminaRegistro($last, 'tb_cotizacion', 'tb_producto');
+                       $respuesta->mensaje = 'Hubo un problema en la subida de su factura';
+                    }
+                }else {
+                    $this->M_Solicitud->eliminaRegistro($last, 'tb_cotizacion', 'tb_producto');
+                    $respuesta->mensaje = 'El formato de la factura es incorrecto';
+                }
+            }
+            $idVendedor     = $this->session->userdata('Id_user');
+            $obtenerOrdenes = $this->M_Solicitud->getLastOrders($idVendedor);
 			$html = null;
 			$puntosEngage = 0;
 			foreach ($obtenerOrdenes as $key) {
@@ -121,7 +215,7 @@ class Solicitud extends CI_Controller {
 			$pais2  = $this->session->userdata('pais');
 			$html2  = '';
 			$htmlCanales = '';
-			$datos  = $this->M_Solicitud->getCanalMasUsado($pais, $idVendedor);
+			$datos  = $this->M_Solicitud->getCanalMasUsado($pais2, $idVendedor);
 			$datos2 = $this->M_Solicitud->getLastCotizaciones($pais2, $idVendedor);
 			foreach ($datos2 as $key) {
         		$html2 .= '<tr>
@@ -141,7 +235,7 @@ class Solicitud extends CI_Controller {
         	}
 
 			foreach ($datos as $key) {
-                $importe = round($key->importe * 100) / 100;
+				$importe = round($key->importe * 100) / 100;
 				$htmlCanales .= '<tr>
 						      	     <td>'.$key->no_canal.'</td>
 	                                 <td>'.$key->no_vendedor.'</td>
@@ -149,103 +243,11 @@ class Solicitud extends CI_Controller {
 	                                 <td class="text-right">'.$importe.'</td>
 	                             </tr>';
 	        }
-        	$data['bodyCanales'] = $htmlCanales;
-        	$data['bodyCotizaciones'] = $html2;
-			$data['html'] = $html;
-			$data['puntosGeneral'] = $puntosEngage;
-			$data['error'] = EXIT_SUCCESS;
-		} 
-		catch (Exception $e) {
-			$data['msj'] = $e->getMessage();
-		}
-		echo json_encode($data);
-	}
+	        $respuesta->bodyCanales 	 = $htmlCanales;
+        	$respuesta->bodyCotizaciones = $html2;
+			$respuesta->html 		 	 = $html;
+			$respuesta->puntosGeneral 	 = $puntosEngage;
 
-	function cargarFact(){
-		$respuesta = new stdClass();
-        $respuesta->mensaje = "";
-        $respuesta->error = EXIT_ERROR;
-        if(count($_FILES) == 0){
-            $data['msj'] = 'Seleccione su factura';
-        }else {
-            $tipo = $_FILES['archivo']['type'];
-            $tamanio = $_FILES['archivo']['size']; 
-            $archivotmp = $_FILES['archivo']['tmp_name'];
-            $namearch = $_FILES['archivo']['name'];
-            $nuevo = explode(".",$namearch);
-            $nombre = "";
-            if($tamanio > '2000000'){
-                $respuesta->mensaje = 'El tamaño de su pdf debe ser menor';
-            }else {
-            	$last = $this->session->userdata('id_cotizacion');
-                if($nuevo[1] == 'pdf' || $nuevo[1] == 'jpg' || $nuevo[1] == 'png'){
-                	$nombre = str_replace(" ", "_", $_FILES['archivo']['name']);
-                    $target = getcwd().DIRECTORY_SEPARATOR.'public'.DIRECTORY_SEPARATOR.'archivos'.DIRECTORY_SEPARATOR.basename($nombre);
-                    if(move_uploaded_file($archivotmp, $target) ){
-                        $arrUpdt = array('documento' => $nombre);
-                        $this->M_Solicitud->updateDatos($arrUpdt, $last, 'tb_cotizacion');
-                        $respuesta->mensaje = 'Su factura se subió correctamente';
-                        $respuesta->error = EXIT_SUCCESS;
-                    } else {
-                       $respuesta->mensaje = 'Hubo un problema en la subida de su factura';
-                    }
-                }else {
-                    $respuesta->mensaje = 'El formato de la factura es incorrecto';
-                    $this->M_Solicitud->eliminaRegistro($last, 'tb_cotizacion', 'tb_producto');
-                }
-
-                $idVendedor     = $this->session->userdata('Id_user');
-                $obtenerOrdenes = $this->M_Solicitud->getLastOrders($idVendedor);
-				$html = null;
-				$puntosEngage = 0;
-				foreach ($obtenerOrdenes as $key) {
-					$html .= '<tr>
-							      <td class="text-left">'.$key->pais.'</td>
-		                          <td class="text-left">'.$key->documento.'</td>
-		                          <td class="text-left">'.$key->fecha.'</td>
-		                          <td class="text-center"> '.$key->puntos_cotizados.' </td>
-		                          <td class="text-center"> '.$key->puntos_facturados.' </td>
-		                          <td class="text-center"> '.$key->puntos_total.' </td> 
-		                      </tr>';
-		          	$puntosEngage += $key->puntos_total;
-				}
-
-				$pais2  = $this->session->userdata('pais');
-				$html2  = '';
-				$htmlCanales = '';
-				$datos  = $this->M_Solicitud->getCanalMasUsado($pais2, $idVendedor);
-				$datos2 = $this->M_Solicitud->getLastCotizaciones($pais2, $idVendedor);
-				foreach ($datos2 as $key) {
-	        		$html2 .= '<tr>
-	        			           <td>'.$key->canal.'</td>
-	        			           <td>'.$key->no_vendedor.'</td>
-	        			           <td>'.$key->pais.'</td>
-	        			           <td>'.$key->fecha.'</td>
-	                               <td class="text-center">
-	                                   <button class="mdl-button mdl-js-button mdl-button--icon" onclick="getDetails('.$key->id_cotizacion.');">
-	                                       <i class="mdi mdi-visibility"> </i>
-	                                   </button>
-	                                   <button class="mdl-button mdl-js-button mdl-button--icon" onclick="openModalDocuemento('.$key->id_cotizacion.')">
-	                                       <i class="mdi mdi-collections"> </i>
-	                                   </button>
-	                               </td>
-	        			       </tr>';
-	        	}
-
-				foreach ($datos as $key) {
-					$importe = round($key->importe * 100) / 100;
-					$htmlCanales .= '<tr>
-							      	     <td>'.$key->no_canal.'</td>
-		                                 <td>'.$key->no_vendedor.'</td>
-		                                 <td>'.$key->pais.'</td>
-		                                 <td class="text-right">'.$importe.'</td>
-		                             </tr>';
-		        }
-		        $respuesta->bodyCanales 	 = $htmlCanales;
-	        	$respuesta->bodyCotizaciones = $html2;
-				$respuesta->html 		 	 = $html;
-				$respuesta->puntosGeneral 	 = $puntosEngage;
-            }
             echo json_encode($respuesta);
         }
     }

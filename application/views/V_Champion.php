@@ -163,7 +163,7 @@
                                 <input class="js-disabled" placeholder="0.00" type="text" id="monto">
                             </div>
                             <div class="col-xs-12 js-input js-file js-flex">
-                                <input class="js-disabled" type="text" id="archivoDocumento" name="archivoDocumento" maxlength="10" placeholder="Suba su factura en imagen o pdf" style="pointer-events: none">
+                                <input class="js-disabled" type="text" id="archivoDocumento" name="archivoDocumento" maxlength="10" placeholder="Suba su factura en imagen o pdf (2MB Max)" style="pointer-events: none">
                                 <div class="js-icon">
                                     <button type="button" class="mdl-button mdl-js-button mdl-button--icon js-disabled" onclick="subirFactura()">
                                         <i class="mdi mdi-backup"></i>

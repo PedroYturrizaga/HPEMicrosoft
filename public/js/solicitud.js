@@ -24,6 +24,9 @@ function registrar() {
 		msj('error', 'Seleccione una factura');
 		return;
 	}
+	if(factura['size'] > 2048000){
+		return;
+	}
 	if( parseInt($('#puntosWSEE').text() ) > 0 || parseInt($('#puntosWSSE').text() ) >0 ) {
 		puntos += 50; 
 	}
@@ -156,6 +159,14 @@ function agregarDatos(){
 	var datos = new FormData();
 	factura = $('#archivo')[0].files[0];
 	if(factura == undefined){
+		//msj('error', 'Seleccione una factura');
+		return;
+	}
+	if(factura['size'] > 2048000){
+		msj('error', 'La factura debe ser menor a 2MB');
+		return;
+	}
+	if(factura == undefined){
 		msj('error', 'Seleccione una factura');
 		return;
 	}
@@ -176,12 +187,12 @@ function agregarDatos(){
         		$('#puntajeGeneral').html(respuesta.puntosGeneral);
         		$('#bodyUltimaCotizacion').html(respuesta.bodyCotizaciones);
         		$('#bodyCanales').html(respuesta.bodyCanales);
+        		limpiarCampos();
 			}, 250);
       		
       	} else {
         	msj('error', respuesta.mensaje);
       	}
-        limpiarCampos();
         // setTimeout(function(){ location.href = 'Solicitud'; }, 1500);
     });
 }
