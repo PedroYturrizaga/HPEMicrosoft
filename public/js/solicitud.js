@@ -19,7 +19,6 @@ function registrar() {
 	var puntos      = 0;
 
 	factura = $('#archivo')[0].files[0];
-	console.log(factura);
 	if(factura == undefined){
 		msj('error', 'Seleccione una factura');
 		return;
@@ -250,7 +249,7 @@ function isEmpty(val){
 
 function calcularWSEE() {
 	var WSEE = $('#cantidadWSEE').val();
-	if(WSEE != '') {
+	if(WSEE != '' && parseInt(WSEE)  > 0) {
  		$('#puntosWSEE').text('50');
 	} else {
 		$('#puntosWSEE').text('');
@@ -258,7 +257,7 @@ function calcularWSEE() {
 }
 function calcularWSSE() {
 	var WSSE = $('#cantidadWSSE').val();
-	if(WSSE != '') {
+	if(WSSE != '' && parseInt(WSSE)  > 0) {
  		$('#puntosWSSE').text('50');
 	} else {
 		$('#puntosWSSE').text('');
@@ -266,7 +265,7 @@ function calcularWSSE() {
 }
 function calcularWSDE() {
 	var WSDE = $('#cantidadWSDE').val();
-	if(WSDE != '') {
+	if(WSDE != '' && parseInt(WSDE)  > 0) {
  		$('#puntosWSDE').text('100');
 	} else {
 		$('#puntosWSDE').text('');
@@ -274,7 +273,7 @@ function calcularWSDE() {
 }
 function calcularCAL() {
 	var CAL = $('#cantidadCAL').val();
-	if(CAL != '') {
+	if(CAL != '' && parseInt(CAL) > 0) {
  		$('#puntosCAL').text('100');
 	} else {
 		$('#puntosCAL').text('');

@@ -119,7 +119,7 @@
                                 <input class="js-disabled" type="text" id="canal">
                             </div>
                             <div class="col-xs-12 js-input">
-                                <label for="Nombre">Nombre del Vendedor</label>
+                                <label for="Nombre">Nombre del vendedor del canal</label>
                                 <input class="js-disabled" type="text" id="Nombre">
                             </div>
                             <div class="col-xs-12 js-input">
@@ -151,7 +151,7 @@
                                 <input class="js-disabled" type="text"id="numFactura" >
                             </div>
                             <div class="col-xs-12 js-input js-date js-flex">
-                                <input class="js-disabled" type="text" id="fecha" name="fecha" maxlength="10" placeholder="dd/mm/aaaa" value="" style="pointer-events: none">
+                                <input class="js-disabled" type="text" id="fecha" name="fecha" maxlength="10" placeholder="Fecha del documento" value="" style="pointer-events: none">
                                 <div class="js-icon">
                                     <button type="button" class="mdl-button mdl-js-button mdl-button--icon js-disabled">
                                         <i class="mdi mdi-date_range"></i>
@@ -209,7 +209,7 @@
                         </div>
                     </div> 
                     <div class="mdl-card__actions" id="aceptar">                         
-                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect js-button" data-dismiss="modal">Aceptar</button>
+                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect js-button" data-dismiss="modal">Cerrar</button>
                     </div>
                     <div class="mdl-card__actions" id="registrar">                         
                         <button type="button" name="boton" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect js-button js-button--default" data-dismiss="modal">Cancelar</button>
