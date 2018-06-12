@@ -108,8 +108,8 @@
                                 </div>
                             </div>
                             <div class="col-xs-12 js-input">
-                                <label for="monto">Monto</label>
-                                <input type="text" id="monto" onchange="validarCampos()">
+                                <label for="monto">Monto en USD</label>
+                                <input type="text" id="monto" placeholder="0.00" onchange="validarCampos()">
                             </div>
                             <div class="col-xs-12 js-input js-file js-flex">
                                 <input type="text" id="archivoDocumento" placeholder="Suba su factura en imagen o pdf" name="archivoDocumento" disabled>
