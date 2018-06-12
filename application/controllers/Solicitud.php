@@ -141,11 +141,12 @@ class Solicitud extends CI_Controller {
         	}
 
 			foreach ($datos as $key) {
+                $importe = round($key->importe * 100) / 100;
 				$htmlCanales .= '<tr>
 						      	     <td>'.$key->no_canal.'</td>
 	                                 <td>'.$key->no_vendedor.'</td>
 	                                 <td>'.$key->pais.'</td>
-	                                 <td class="text-right">'.$key->importe.'</td>
+	                                 <td class="text-right">'.$importe.'</td>
 	                             </tr>';
 	        }
         	$data['bodyCanales'] = $htmlCanales;
@@ -232,11 +233,12 @@ class Solicitud extends CI_Controller {
 	        	}
 
 				foreach ($datos as $key) {
+					$importe = round($key->importe * 100) / 100;
 					$htmlCanales .= '<tr>
 							      	     <td>'.$key->no_canal.'</td>
 		                                 <td>'.$key->no_vendedor.'</td>
 		                                 <td>'.$key->pais.'</td>
-		                                 <td class="text-right">'.$key->importe.'</td>
+		                                 <td class="text-right">'.$importe.'</td>
 		                             </tr>';
 		        }
 		        $respuesta->bodyCanales 	 = $htmlCanales;

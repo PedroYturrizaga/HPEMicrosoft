@@ -27,11 +27,12 @@ class Champion extends CI_Controller{
             $html   = ' ';
             $html2  = ' ';
             foreach ($datos as $key) {
+                $importe = round($key->importe * 100) / 100;
                 $html .= '<tr>
                               <td>'.$key->no_canal.'</td>
                               <td>'.$key->no_vendedor.'</td>
                               <td>'.$key->pais.'</td>
-                              <td class="text-right">'.$key->importe.'</td>
+                              <td class="text-right">'.$importe.'</td>
                           </tr>';
             }
             foreach ($datos2 as $key) {
