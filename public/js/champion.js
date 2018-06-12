@@ -30,6 +30,7 @@ function getDetails(cotizacion) {
         				$('#cantidadCAL').val(data.detalles[i]['cantidad']);
         			}
         		}
+        		$('#archivoDocumento').val(data.detalles[0]['documento']);
         		$('#cotizacion').addClass('js-events-none');
         		$('#facturacion').addClass('js-events-none');
 				$('.js-disabled').prop('disabled', true);

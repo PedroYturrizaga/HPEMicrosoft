@@ -89,7 +89,8 @@ class M_Solicitud extends CI_Model {
 					   c.monto, 
 					   m.mayorista, 
 					   p.no_producto, 
-					   p.cantidad 
+					   p.cantidad, 
+					   c.documento
 				  FROM tb_producto p, 
 				       tb_cotizacion c, 
 				       tb_vendedores v, 

@@ -67,7 +67,6 @@ class Champion extends CI_Controller{
             $idVendedor = $this->session->userdata('Id_user');
             $datos2 = $this->M_Solicitud->getMayoristas($idVendedor);
             $option = ' ';
-            print_r($datos);
             foreach ($datos2 as $key) {
                 if($datos[0]->mayorista == $key->mayorista) {
                     $option = '<option value="'.$key->mayorista.'" class="selected">'.$key->mayorista.'</option>';

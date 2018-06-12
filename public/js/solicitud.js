@@ -172,6 +172,10 @@ function agregarDatos(){
       		modal('ModalQuestion');
       		setTimeout(function() {
 				modal('modalDetalles');
+				$('#bodyPuntaje').html(respuesta.html);
+        		$('#puntajeGeneral').html(respuesta.puntosGeneral);
+        		$('#bodyUltimaCotizacion').html(respuesta.bodyCotizaciones);
+        		$('#bodyCanales').html(respuesta.bodyCanales);
 			}, 250);
       		
       	} else {
