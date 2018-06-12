@@ -25,6 +25,14 @@
     <link rel="stylesheet"    href="<?php echo RUTA_CSS?>style.css?v=<?php echo time();?>">
     <link rel="stylesheet"    href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css">
     <link rel="stylesheet"    href="https://cdn.datatables.net/buttons/1.5.1/css/buttons.bootstrap.min.css">
+    <style type="text/css">
+        object {
+              height: 100%;
+              left: 0;
+              top:0;
+              width: 100%;
+            }
+    </style>
 </head>
 <body>
     <div class="js-header js-fixed">
@@ -220,7 +228,7 @@
                         <h2>Documento</h2>
                     </div>
                     <div class="mdl-card__supporting-text">
-                        <img  id="imgDocumento" src="">
+                        <object id="imgDocumento" data=""></object>
                     </div> 
                     <div class="mdl-card__actions">                         
                         <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect js-button" data-dismiss="modal">Cerrar</button>
