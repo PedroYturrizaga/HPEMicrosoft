@@ -119,7 +119,7 @@ function openModalDocuemento (id) {
 	}).done(function(data){
 		data = JSON.parse(data);
 		if(data.error == 0 ){
-			$('#imgDocumento').attr("src", data.imagen);
+			$('#imgDocumento').attr("data", data.imagen);
 			modal('modalDocumento');		
 		} else { return; }
 	});
