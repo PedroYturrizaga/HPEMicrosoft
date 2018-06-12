@@ -53,6 +53,7 @@ class Solicitud extends CI_Controller {
 		$data['error'] = EXIT_ERROR;
 		$data['msj']   = null;
 		try {
+			//$this->session->unset_userdata('id_cotizacion');
 			$idVendedor     = $this->session->userdata('Id_user');
 			$nombreVendedor = ucwords(strtolower($this->input->post('Nombre')));
 			$email			= $this->input->post('email');
@@ -75,7 +76,6 @@ class Solicitud extends CI_Controller {
 			$cantidadCAL	= $this->input->post('cantidadCAL');
 
 			$columnaFinal   = (($tipoDoc == 1 ) ? 'puntos_cotizados': 'puntos_cerrados') ;
-
 			$arrayInsertCotizacion = array('no_vendedor'   => $nombreVendedor,
 										   'email'		   => $email,
 										   'fecha' 		   => $fecha,
@@ -100,7 +100,7 @@ class Solicitud extends CI_Controller {
 															$cantidadWSDE,
 															$cantidadCAL) );
 			$datoInsertCotizacion = $this->M_Solicitud->insertarCotizacion($arrayInsertCotizacion, 'tb_cotizacion', $arrayInsertProducto, 'tb_producto');
-			$this->session->set_userdata(array('id_cotizacion' => $datoInsertCotizacion['id_cotizacion'] ));
+			//$this->session->set_userdata(array('id_cotizacion' => $datoInsertCotizacion['id_cotizacion'] ));
 			$obtenerOrdenes = $this->M_Solicitud->getLastOrders($idVendedor);
 			$html = null;
 			$puntosEngage = 0;
@@ -130,6 +130,9 @@ class Solicitud extends CI_Controller {
                                <td class="text-center">
                                    <button class="mdl-button mdl-js-button mdl-button--icon" onclick="getDetails('.$key->id_cotizacion.');">
                                        <i class="mdi mdi-visibility"> </i>
+                                   </button>
+                                   <button class="mdl-button mdl-js-button mdl-button--icon" onclick="openModalDocuemento('.$key->id_cotizacion.')">
+                                       <i class="mdi mdi-collections"> </i>
                                    </button>
                                </td>
         			       </tr>';
@@ -175,10 +178,13 @@ class Solicitud extends CI_Controller {
                 	$nombre = str_replace(" ", "_", $_FILES['archivo']['name']);
                     $target = getcwd().DIRECTORY_SEPARATOR.'public'.DIRECTORY_SEPARATOR.'archivos'.DIRECTORY_SEPARATOR.basename($nombre);
                     if(move_uploaded_file($archivotmp, $target) ){
-                       $arrUpdt = array('documento' => $nombre);
-                       $this->M_Solicitud->updateDatos($arrUpdt, $this->session->userdata('id_cotizacion'), 'tb_cotizacion');
-                       $respuesta->mensaje = 'Su factura se subió correctamente';
-                       $respuesta->error = EXIT_SUCCESS;
+                    	$id_vendedor = $this->M_Solicitud->getIdUser($this->session->userdata('usuario'));
+                    	$last    = $this->M_Solicitud->getLast(/*$id_vendedor*/4);
+                    	//print_r($last);
+                        $arrUpdt = array('documento' => $nombre);
+                        $this->M_Solicitud->updateDatos($arrUpdt, $last, 'tb_cotizacion');
+                        $respuesta->mensaje = 'Su factura se subió correctamente';
+                        $respuesta->error = EXIT_SUCCESS;
                     } else {
                        $respuesta->mensaje = 'Hubo un problema en la subida de su factura';
                     }

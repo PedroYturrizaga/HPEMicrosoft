@@ -35,6 +35,7 @@ class M_Solicitud extends CI_Model {
         if ($this->db->trans_status() == false) {
             throw new Exception('No se pudo actualizar los datos');
         }
+        //print_r($this->db->last_query());
         return array('error' => EXIT_SUCCESS,'msj' => MSJ_UPT);
     }
 
@@ -67,6 +68,21 @@ class M_Solicitud extends CI_Model {
 		return $result->result();
 	}
 
+	function getLast($id){
+      $sql = "SELECT MAX(c.id_cotizacion) as id_cotizacion
+                  FROM tb_cotizacion c
+                 WHERE (c._id_vendedor = ?)";
+      $result = $this->db->query($sql, array($id));
+      return $result->row()->id_cotizacion;
+    }
+    function getIdUser($id){
+      $sql = "SELECT v.id_vendedor
+      			FROM tb_vendedores v 
+      		   WHERE v.usuario = ?";
+      $result = $this->db->query($sql, array($id));
+      //print_r($this->db->last_query());
+      return $result->row()->id_vendedor;
+    }
 // 	PARA EL CHAMPION
 	function getDetallesCotizacion($idCotizacion) {
 		$sql = "SELECT c.email, 

@@ -213,7 +213,7 @@
                     </div>
                     <div class="mdl-card__actions" id="registrar">                         
                         <button type="button" name="boton" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect js-button js-button--default" data-dismiss="modal">Cancelar</button>
-                        <button type="button" name="boton" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect js-button"  onclick="agregarDatos(); registrar();">Registrar Oportunidad</button>  
+                        <button type="button" name="boton" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect js-button"  onclick="registrar(); agregarDatos(); ">Registrar Oportunidad</button>  
                         <!-- onclick="agregarDatos(); ">Registrar Oportunidad</button> -->
                     </div>
                 </div>

@@ -5,6 +5,7 @@ $( window ).load(function(){
 		$('.mdl-layout__drawer-button i').addClass('mdi mdi-menu');
 	}, 250);
 });
+
 function registrar() {
 	var Nombre 		= $('#Nombre').val();
 	var email 		= $('#email').val();
@@ -18,7 +19,6 @@ function registrar() {
 	var cotizacion  = $('#radioCotizacion').is(':checked');
 	var tipoDoc		= null;
 	var puntos      = 0;
-console.log(monto);
 	factura = $('#archivo')[0].files[0];
 	if(factura == undefined){
 		msj('error', 'Seleccione una factura');
@@ -128,6 +128,10 @@ console.log(monto);
         	data = JSON.parse(data);
         	if(data.error == 0){
         		modal('ModalQuestion');
+        		$('#bodyPuntaje').html(data.html);
+        		$('#puntajeGeneral').html(data.puntosGeneral);
+        		$('#bodyUltimaCotizacion').html(data.bodyCotizaciones);
+        		$('#bodyCanales').html(data.bodyCanales);
         	} else { return; }
       } catch (err){
         msj('error',err.message);
@@ -150,12 +154,12 @@ $("#archivo").change(function(e) {
 });
 
 function agregarDatos(){
-var datos = new FormData();
-  factura = $('#archivo')[0].files[0];
-  if(factura == undefined){
-    msj('error', 'Seleccione una factura');
-    return;
-  }
+	var datos = new FormData();
+	factura = $('#archivo')[0].files[0];
+	if(factura == undefined){
+		msj('error', 'Seleccione una factura');
+		return;
+	}
     datos.append('archivo',$('#archivo')[0].files[0]);
      $.ajax({
         type:"post",
@@ -169,6 +173,10 @@ var datos = new FormData();
       		modal('ModalQuestion');
       		setTimeout(function() {
 				modal('modalDetalles');
+	    		/*$('#bodyPuntaje').html(data.html);
+	    		$('#puntajeGeneral').html(data.puntosGeneral);
+	    		$('#bodyUltimaCotizacion').html(data.bodyCotizaciones);
+	    		$('#bodyCanales').html(data.bodyCanales);*/
 			}, 250);
       		
       	} else {
