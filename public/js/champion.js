@@ -111,6 +111,7 @@ $("#archivo").change(function(e) {
 
 function openModalDocuemento (id) {
 	var id = id;
+	var ruta = '';
 	$.ajax({
 		data : { id : id},
 		url  : 'champion/muestraDocumento',
@@ -118,7 +119,7 @@ function openModalDocuemento (id) {
 	}).done(function(data){
 		data = JSON.parse(data);
 		if(data.error == 0 ){
-			$('#imgDocumento').attr('data',data.imagen[0].documento);
+			$('#imgDocumento').attr("src", data.imagen);
 			modal('modalDocumento');		
 		} else { return; }
 	});

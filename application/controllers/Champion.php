@@ -141,7 +141,8 @@ class Champion extends CI_Controller{
         $data['msj']   = null;
         try {
             $id  = $this->input->post('id');
-            $data['imagen'] = $this->M_Solicitud->getDocumento($id);
+            $img = $this->M_Solicitud->getDocumento($id);
+            $data['imagen'] = RUTA_ARCHIVOS.$img[0]->documento;
             $data['error'] = EXIT_SUCCESS;
         }
         catch (Exception $ex){
