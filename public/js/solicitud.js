@@ -24,13 +24,12 @@ function registrar() {
 		msj('error', 'Seleccione una factura');
 		return;
 	}
-	if($('#puntosWSEE').text() != " " || $('#puntosWSSE').text() != " ") {
+	if( parseInt($('#puntosWSEE').text() ) > 0 || parseInt($('#puntosWSSE').text() ) >0 ) {
 		puntos += 50; 
 	}
-	if($('#puntosWSDE').text() != " " || $('#puntosCAL').text() != " ") {
+	if( parseInt($('#puntosWSDE').text() ) > 0 || parseInt($('#puntosCAL').text() ) > 0) {
 		puntos += 100;
 	}
-
 	var noProducto1 = "Windows Server Essentials Edition";
 	var cantidadWSEE= $('#cantidadWSEE').val();
 
