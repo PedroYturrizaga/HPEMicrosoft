@@ -27,7 +27,7 @@
     <link rel="stylesheet"    href="https://cdn.datatables.net/buttons/1.5.1/css/buttons.bootstrap.min.css">
     <style type="text/css">
         object {
-              height: 100%;
+              height: 400px;
               left: 0;
               top:0;
               width: 100%;
