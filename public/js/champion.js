@@ -18,7 +18,7 @@ function getDetails(cotizacion) {
         		$('#numFactura').val(data.detalles[0]['nu_cotizacion']);
         		$('#fecha').val(data.detalles[0]['fecha']);
         		$('#monto').val(data.detalles[0]['monto']);
-        		(data.detalles[0]['tipo_documento'] == null) ? $('#facturacion').addClass('is-checked') : $('#cotizacion').addClass('is-checked');
+        		$('#cotizacion').addClass('is-checked');
         		for (var i = 0; i < data.detalles.length; i++) {
         			if(data.detalles[i]['no_producto'] == "Windows Server Essentials Edition") {
 						$('#cantidadWSEE').val(data.detalles[i]['cantidad']);
