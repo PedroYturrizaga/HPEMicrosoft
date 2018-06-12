@@ -162,21 +162,17 @@ function agregarDatos(){
 	}
     datos.append('archivo',$('#archivo')[0].files[0]);
      $.ajax({
-        type:"post",
-        dataType:"json",
-        url:"solicitud/cargarFact",
-        contentType:false,
-        data:datos,
-        processData:false,
+        type     	:"post",
+        dataType 	:"json",
+        url		    :"solicitud/cargarFact",
+        contentType :false,
+        data 		:datos,
+        processData :false,
       }).done(function(respuesta){
       	if(respuesta.error == 0) {
       		modal('ModalQuestion');
       		setTimeout(function() {
 				modal('modalDetalles');
-	    		/*$('#bodyPuntaje').html(data.html);
-	    		$('#puntajeGeneral').html(data.puntosGeneral);
-	    		$('#bodyUltimaCotizacion').html(data.bodyCotizaciones);
-	    		$('#bodyCanales').html(data.bodyCanales);*/
 			}, 250);
       		
       	} else {
