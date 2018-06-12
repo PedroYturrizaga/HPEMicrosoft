@@ -176,24 +176,22 @@ class Solicitud extends CI_Controller {
             if($tamanio > '2000000'){
                 $respuesta->mensaje = 'El tamaño de su pdf debe ser menor';
             }else {
+            	$last = $this->session->userdata('id_cotizacion');
                 if($nuevo[1] == 'pdf' || $nuevo[1] == 'jpg' || $nuevo[1] == 'png'){
                 	$nombre = str_replace(" ", "_", $_FILES['archivo']['name']);
                     $target = getcwd().DIRECTORY_SEPARATOR.'public'.DIRECTORY_SEPARATOR.'archivos'.DIRECTORY_SEPARATOR.basename($nombre);
                     if(move_uploaded_file($archivotmp, $target) ){
-                    	// $id_vendedor = $this->M_Solicitud->getIdUser($this->session->userdata('usuario'));
-                    	// $last    = $this->M_Solicitud->getLast(/*$id_vendedor*/4);
-                    	$last = $this->session->userdata('id_cotizacion');
-                    	//print_r($last);
-                    	// print_r("cotizacion en sesion 2 :::: ".$this->session->userdata('id_cotizacion') );
                         $arrUpdt = array('documento' => $nombre);
                         $this->M_Solicitud->updateDatos($arrUpdt, $last, 'tb_cotizacion');
                         $respuesta->mensaje = 'Su factura se subió correctamente';
                         $respuesta->error = EXIT_SUCCESS;
                     } else {
                        $respuesta->mensaje = 'Hubo un problema en la subida de su factura';
+                       $this->M_Solicitud->eliminaRegistro($last, 'tb_cotizacion', 'tb_producto');
                     }
                 }else {
                     $respuesta->mensaje = 'El formato de la factura es incorrecto';
+                    $this->M_Solicitud->eliminaRegistro($last, 'tb_cotizacion', 'tb_producto');
                 }
             }
             echo json_encode($respuesta);

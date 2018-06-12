@@ -35,7 +35,6 @@ class M_Solicitud extends CI_Model {
         if ($this->db->trans_status() == false) {
             throw new Exception('No se pudo actualizar los datos');
         }
-        //print_r($this->db->last_query());
         return array('error' => EXIT_SUCCESS,'msj' => MSJ_UPT);
     }
 
@@ -67,7 +66,17 @@ class M_Solicitud extends CI_Model {
 	  	$result = $this->db->query($sql);
 		return $result->result();
 	}
-	
+
+	function eliminaRegistro($id, $tabla1, $tabla2) {
+		$this->db->where('id_cotizacion'  , $id);
+        $this->db->delete($tabla1);
+
+        $this->db->where('_id_cotizacion'  , $id);
+        $this->db->delete($tabla2);
+
+        return array('error' => EXIT_SUCCESS,'msj' => MSJ_DEL);
+	}
+
 // 	PARA EL CHAMPION
 	function getDetallesCotizacion($idCotizacion) {
 		$sql = "SELECT c.email, 
@@ -134,7 +143,7 @@ class M_Solicitud extends CI_Model {
 					       pais,
 					       date_format(fecha, '%d/%m/%Y') AS fecha
 					  FROM tb_cotizacion
-					   AND tipo_documento = 1
+					 WHERE tipo_documento = 1
 				  ORDER BY id_cotizacion DESC
 					 LIMIT 10";
 		} else {
