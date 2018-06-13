@@ -20,6 +20,7 @@ function registrar() {
 	var cotizacion  = $('#radioCotizacion').is(':checked');
 	var tipoDoc		= null;
 	var puntos      = 0;
+
 	seleccion    = (cotizacion == true) ? 'cotizacion' : 'factura';
 	factura = $('#archivo')[0].files[0];
 	if(factura == undefined){
@@ -29,22 +30,14 @@ function registrar() {
 	if(factura['size'] > 2048000){
 		return;
 	}
-	if(cotizacion == true) {
-		if( parseInt($('#puntosWSEE').text() ) > 0 || parseInt($('#puntosWSSE').text() ) >0 ) {
-			puntos += 50; 
-		}
-		if( parseInt($('#puntosWSDE').text() ) > 0 || parseInt($('#puntosCAL').text() ) > 0) {
-			puntos += 100;
-		}
-	} else if(facturacion == true){
-		if( parseInt($('#puntosWSEE').text() ) > 0 || parseInt($('#puntosWSSE').text() ) >0 ) {
-			puntos += 200; 
-		}
-		if( parseInt($('#puntosWSDE').text() ) > 0 || parseInt($('#puntosCAL').text() ) > 0) {
-			puntos += 300;
-		}
-	}
 	
+	var puntosWSEE = $('#puntosWSEE').text() != ""  ? parseInt($('#puntosWSEE').text()) : 0 ;
+	var puntosWSSE = $('#puntosWSSE').text() != ""  ? parseInt($('#puntosWSSE').text()) : 0 ;
+	var puntosWSDE = $('#puntosWSDE').text() != ""  ? parseInt($('#puntosWSDE').text()) : 0 ;
+	var puntosCAL  = $('#puntosCAL').text()  != ""  ? parseInt($('#puntosCAL').text())  : 0 ;
+	
+	puntos = puntosWSEE + puntosWSSE + puntosWSDE + puntosCAL;
+
 	var noProducto1 = "Windows Server Essentials Edition";
 	var cantidadWSEE= $('#cantidadWSEE').val();
 
@@ -287,20 +280,23 @@ function isEmpty(val){
 function calcularWSEE() {
 	var facturacion = $('#radioFacturacion').is(':checked');
 	var cotizacion  = $('#radioCotizacion').is(':checked');
-	seleccion    = (facturacion == true) ? 'factura' : 'cotizacion';
-	var WSEE = $('#cantidadWSEE').val();
+	seleccion    	= (facturacion == true) ? 'factura' : 'cotizacion';
+	var WSEE 		= $('#cantidadWSEE').val();
+	var total		= 0;
 	if(facturacion == false && cotizacion == false) {
 		return;
 	} else {
 		if(seleccion == 'cotizacion') {
 			if(WSEE != '' && parseInt(WSEE)  > 0) {
-		 		$('#puntosWSEE').text('50');
+				total = 50 * WSEE;
+		 		$('#puntosWSEE').text(total);
 			} else {
 				$('#puntosWSEE').text('');
 			}
 		} else {
 			if(WSEE != '' && parseInt(WSEE)  > 0) {
-		 		$('#puntosWSEE').text('200');
+				total = 200 * WSEE;
+		 		$('#puntosWSEE').text(total);
 			} else {
 				$('#puntosWSEE').text('');
 			}
@@ -310,20 +306,23 @@ function calcularWSEE() {
 function calcularWSSE() {
 	var facturacion = $('#radioFacturacion').is(':checked');
 	var cotizacion  = $('#radioCotizacion').is(':checked');
-	seleccion    = (facturacion == true) ? 'factura' : 'cotizacion';
-	var WSSE = $('#cantidadWSSE').val();
+	seleccion    	= (facturacion == true) ? 'factura' : 'cotizacion';
+	var WSSE 		= $('#cantidadWSSE').val();
+	var total		= 0;
 	if(facturacion == false && cotizacion == false) {
 		return;
 	} else {
 		if(seleccion == 'cotizacion') {
 			if(WSSE != '' && parseInt(WSSE)  > 0) {
-		 		$('#puntosWSSE').text('50');
+				total = 50 * WSSE;
+		 		$('#puntosWSSE').text(total);
 			} else {
 				$('#puntosWSSE').text('');
 			}
 		} else {
 			if(WSSE != '' && parseInt(WSSE)  > 0) {
-		 		$('#puntosWSSE').text('200');
+				total = 200 * WSSE;
+		 		$('#puntosWSSE').text(total);
 			} else {
 				$('#puntosWSSE').text('');
 			}
@@ -333,20 +332,23 @@ function calcularWSSE() {
 function calcularWSDE() {
 	var facturacion = $('#radioFacturacion').is(':checked');
 	var cotizacion  = $('#radioCotizacion').is(':checked');
-	seleccion    = (facturacion == true) ? 'factura' : 'cotizacion';
-	var WSDE = $('#cantidadWSDE').val();
+	seleccion    	= (facturacion == true) ? 'factura' : 'cotizacion';
+	var WSDE 		= $('#cantidadWSDE').val();
+	var total		= 0;
 	if(facturacion == false && cotizacion == false) {
 		return;
 	} else {
 		if(seleccion == 'cotizacion') {
 			if(WSDE != '' && parseInt(WSDE)  > 0) {
-		 		$('#puntosWSDE').text('100');
+				total = 100 * WSDE;
+		 		$('#puntosWSDE').text(total);
 			} else {
 				$('#puntosWSDE').text('');
 			}
 		} else {
 			if(WSDE != '' && parseInt(WSDE)  > 0) {
-		 		$('#puntosWSDE').text('300');
+				total = 300 * WSDE;
+		 		$('#puntosWSDE').text(total);
 			} else {
 				$('#puntosWSDE').text('');
 			}
@@ -358,18 +360,21 @@ function calcularCAL() {
 	var cotizacion  = $('#radioCotizacion').is(':checked');
 	seleccion    = (facturacion == true) ? 'factura' : 'cotizacion';
 	var CAL = $('#cantidadCAL').val();
+	var total		= 0;
 	if(facturacion == false && cotizacion == false) {
 		return;
 	} else {
 		if(seleccion == 'cotizacion') {
 			if(CAL != '' && parseInt(CAL) > 0) {
-		 		$('#puntosCAL').text('100');
+				total = 100 * CAL;
+		 		$('#puntosCAL').text(total);
 			} else {
 				$('#puntosCAL').text('');
 			}
 		} else {
 			if(CAL != '' && parseInt(CAL) > 0) {
-		 		$('#puntosCAL').text('300');
+				total = 300 * CAL;
+		 		$('#puntosCAL').text(total);
 			} else {
 				$('#puntosCAL').text('');
 			}
