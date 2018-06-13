@@ -133,7 +133,7 @@
                                 <label for="pais">Pais</label>
                                 <input class="js-disabled" type="text"  id="pais">
                             </div>
-                            <div class="col-xs-12 js-input js-radio">
+                            <div class="col-xs-12 js-input js-radio" onchange="calcularWSEE(); calcularWSSE(); calcularWSDE(); calcularCAL();">
                                 <label> Tipo de documento:</label>
                                 <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="radioCotizacion" id="cotizacion">
                                     <input type="radio" id="radioCotizacion" class="mdl-radio__button" name="option1" value="1">

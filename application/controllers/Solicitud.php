@@ -102,57 +102,6 @@ class Solicitud extends CI_Controller {
 															$cantidadCAL) );
 			$datoInsertCotizacion = $this->M_Solicitud->insertarCotizacion($arrayInsertCotizacion, 'tb_cotizacion', $arrayInsertProducto, 'tb_producto');
 			$this->session->set_userdata(array('id_cotizacion' => $datoInsertCotizacion['id_cotizacion'] ));
-
-			// $obtenerOrdenes = $this->M_Solicitud->getLastOrders($idVendedor);
-			// $html = null;
-			// $puntosEngage = 0;
-			// foreach ($obtenerOrdenes as $key) {
-			// 	$html .= '<tr>
-			// 			      <td class="text-left">'.$key->pais.'</td>
-	  //                         <td class="text-left">'.$key->documento.'</td>
-	  //                         <td class="text-left">'.$key->fecha.'</td>
-	  //                         <td class="text-center"> '.$key->puntos_cotizados.' </td>
-	  //                         <td class="text-center"> '.$key->puntos_facturados.' </td>
-	  //                         <td class="text-center"> '.$key->puntos_total.' </td> 
-	  //                     </tr>';
-	  //         	$puntosEngage += $key->puntos_total;
-			// }
-
-			// $pais2  = $this->session->userdata('pais');
-			// $html2  = '';
-			// $htmlCanales = '';
-			// $datos  = $this->M_Solicitud->getCanalMasUsado($pais, $idVendedor);
-			// $datos2 = $this->M_Solicitud->getLastCotizaciones($pais2, $idVendedor);
-			// foreach ($datos2 as $key) {
-   //      		$html2 .= '<tr>
-   //      			           <td>'.$key->canal.'</td>
-   //      			           <td>'.$key->no_vendedor.'</td>
-   //      			           <td>'.$key->pais.'</td>
-   //      			           <td>'.$key->fecha.'</td>
-   //                             <td class="text-center">
-   //                                 <button class="mdl-button mdl-js-button mdl-button--icon" onclick="getDetails('.$key->id_cotizacion.');">
-   //                                     <i class="mdi mdi-visibility"> </i>
-   //                                 </button>
-   //                                 <button class="mdl-button mdl-js-button mdl-button--icon" onclick="openModalDocuemento('.$key->id_cotizacion.')">
-   //                                     <i class="mdi mdi-collections"> </i>
-   //                                 </button>
-   //                             </td>
-   //      			       </tr>';
-   //      	}
-
-			// foreach ($datos as $key) {
-   //              $importe = round($key->importe * 100) / 100;
-			// 	$htmlCanales .= '<tr>
-			// 			      	     <td>'.$key->no_canal.'</td>
-	  //                                <td>'.$key->no_vendedor.'</td>
-	  //                                <td>'.$key->pais.'</td>
-	  //                                <td class="text-right">'.$importe.'</td>
-	  //                            </tr>';
-	  //       }
-   //      	$data['bodyCanales'] = $htmlCanales;
-   //      	$data['bodyCotizaciones'] = $html2;
-			// $data['html'] = $html;
-			// $data['puntosGeneral'] = $puntosEngage;
 			$data['error'] = EXIT_SUCCESS;
 		} 
 		catch (Exception $e) {

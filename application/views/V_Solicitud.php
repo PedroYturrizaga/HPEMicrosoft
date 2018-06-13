@@ -82,9 +82,9 @@
                                 <label for="pais">Pais</label>
                                 <input type="text" id="pais" onchange="validarCampos()">
                             </div>
-                            <div class="col-xs-12 js-input js-radio">
+                            <div class="col-xs-12 js-input js-radio" onchange="calcularWSEE(); calcularWSSE(); calcularWSDE(); calcularCAL();">
                                 <label>Tipo Documento:</label>
-                                <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect j" for="radioCotizacion">
+                                <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="radioCotizacion">
                                     <input type="radio" id="radioCotizacion" class="mdl-radio__button" name="option1" value="1" onchange="validarCampos()">
                                     <span class="mdl-radio__label">Cotizaci&oacute;n</span>
                                 </label>

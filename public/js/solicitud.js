@@ -6,6 +6,7 @@ $( window ).load(function(){
 	}, 250);
 });
 
+var seleccion = null;
 function registrar() {
 	var Nombre 		= $('#Nombre').val();
 	var email 		= $('#email').val();
@@ -19,6 +20,7 @@ function registrar() {
 	var cotizacion  = $('#radioCotizacion').is(':checked');
 	var tipoDoc		= null;
 	var puntos      = 0;
+	seleccion    = (cotizacion == true) ? 'cotizacion' : 'factura';
 	factura = $('#archivo')[0].files[0];
 	if(factura == undefined){
 		msj('error', 'Seleccione una factura');
@@ -27,12 +29,22 @@ function registrar() {
 	if(factura['size'] > 2048000){
 		return;
 	}
-	if( parseInt($('#puntosWSEE').text() ) > 0 || parseInt($('#puntosWSSE').text() ) >0 ) {
-		puntos += 50; 
+	if(cotizacion == true) {
+		if( parseInt($('#puntosWSEE').text() ) > 0 || parseInt($('#puntosWSSE').text() ) >0 ) {
+			puntos += 50; 
+		}
+		if( parseInt($('#puntosWSDE').text() ) > 0 || parseInt($('#puntosCAL').text() ) > 0) {
+			puntos += 100;
+		}
+	} else if(facturacion == true){
+		if( parseInt($('#puntosWSEE').text() ) > 0 || parseInt($('#puntosWSSE').text() ) >0 ) {
+			puntos += 200; 
+		}
+		if( parseInt($('#puntosWSDE').text() ) > 0 || parseInt($('#puntosCAL').text() ) > 0) {
+			puntos += 300;
+		}
 	}
-	if( parseInt($('#puntosWSDE').text() ) > 0 || parseInt($('#puntosCAL').text() ) > 0) {
-		puntos += 100;
-	}
+	
 	var noProducto1 = "Windows Server Essentials Edition";
 	var cantidadWSEE= $('#cantidadWSEE').val();
 
@@ -134,6 +146,7 @@ function registrar() {
         		$('#puntajeGeneral').html(data.puntosGeneral);
         		$('#bodyUltimaCotizacion').html(data.bodyCotizaciones);
         		$('#bodyCanales').html(data.bodyCanales);
+        		limpiarCampos();
         	} else { return; }
       } catch (err){
         msj('error',err.message);
@@ -189,15 +202,15 @@ function agregarDatos(){
         		$('#bodyCanales').html(respuesta.bodyCanales);
         		limpiarCampos();
 			}, 250);
-      		
       	} else {
         	msj('error', respuesta.mensaje);
       	}
-        // setTimeout(function(){ location.href = 'Solicitud'; }, 1500);
     });
 }
 
 function limpiarCampos(){
+	$('#facturacion').removeClass('is-checked');
+	$('#cotizacion').removeClass('is-checked');
 	$('#Nombre').val(null);
 	$('#email').val(null);
 	$('#noMayorista').val(null);
@@ -209,6 +222,7 @@ function limpiarCampos(){
 	$('#cantidadWSSE').val(null);
 	$('#cantidadWSDE').val(null);
 	$('#cantidadCAL').val(null);
+	$('#archivoDocumento').val(null);
 	$('#puntosWSEE').text('');
 	$('#puntosWSSE').text('');
 	$('#puntosWSDE').text('');
@@ -271,35 +285,95 @@ function isEmpty(val){
 }
 
 function calcularWSEE() {
+	var facturacion = $('#radioFacturacion').is(':checked');
+	var cotizacion  = $('#radioCotizacion').is(':checked');
+	seleccion    = (facturacion == true) ? 'factura' : 'cotizacion';
 	var WSEE = $('#cantidadWSEE').val();
-	if(WSEE != '' && parseInt(WSEE)  > 0) {
- 		$('#puntosWSEE').text('50');
+	if(facturacion == false && cotizacion == false) {
+		return;
 	} else {
-		$('#puntosWSEE').text('');
+		if(seleccion == 'cotizacion') {
+			if(WSEE != '' && parseInt(WSEE)  > 0) {
+		 		$('#puntosWSEE').text('50');
+			} else {
+				$('#puntosWSEE').text('');
+			}
+		} else {
+			if(WSEE != '' && parseInt(WSEE)  > 0) {
+		 		$('#puntosWSEE').text('200');
+			} else {
+				$('#puntosWSEE').text('');
+			}
+		}
 	}
 }
 function calcularWSSE() {
+	var facturacion = $('#radioFacturacion').is(':checked');
+	var cotizacion  = $('#radioCotizacion').is(':checked');
+	seleccion    = (facturacion == true) ? 'factura' : 'cotizacion';
 	var WSSE = $('#cantidadWSSE').val();
-	if(WSSE != '' && parseInt(WSSE)  > 0) {
- 		$('#puntosWSSE').text('50');
+	if(facturacion == false && cotizacion == false) {
+		return;
 	} else {
-		$('#puntosWSSE').text('');
+		if(seleccion == 'cotizacion') {
+			if(WSSE != '' && parseInt(WSSE)  > 0) {
+		 		$('#puntosWSSE').text('50');
+			} else {
+				$('#puntosWSSE').text('');
+			}
+		} else {
+			if(WSSE != '' && parseInt(WSSE)  > 0) {
+		 		$('#puntosWSSE').text('200');
+			} else {
+				$('#puntosWSSE').text('');
+			}
+		}
 	}
 }
 function calcularWSDE() {
+	var facturacion = $('#radioFacturacion').is(':checked');
+	var cotizacion  = $('#radioCotizacion').is(':checked');
+	seleccion    = (facturacion == true) ? 'factura' : 'cotizacion';
 	var WSDE = $('#cantidadWSDE').val();
-	if(WSDE != '' && parseInt(WSDE)  > 0) {
- 		$('#puntosWSDE').text('100');
+	if(facturacion == false && cotizacion == false) {
+		return;
 	} else {
-		$('#puntosWSDE').text('');
+		if(seleccion == 'cotizacion') {
+			if(WSDE != '' && parseInt(WSDE)  > 0) {
+		 		$('#puntosWSDE').text('100');
+			} else {
+				$('#puntosWSDE').text('');
+			}
+		} else {
+			if(WSDE != '' && parseInt(WSDE)  > 0) {
+		 		$('#puntosWSDE').text('300');
+			} else {
+				$('#puntosWSDE').text('');
+			}
+		}
 	}
 }
 function calcularCAL() {
+	var facturacion = $('#radioFacturacion').is(':checked');
+	var cotizacion  = $('#radioCotizacion').is(':checked');
+	seleccion    = (facturacion == true) ? 'factura' : 'cotizacion';
 	var CAL = $('#cantidadCAL').val();
-	if(CAL != '' && parseInt(CAL) > 0) {
- 		$('#puntosCAL').text('100');
+	if(facturacion == false && cotizacion == false) {
+		return;
 	} else {
-		$('#puntosCAL').text('');
+		if(seleccion == 'cotizacion') {
+			if(CAL != '' && parseInt(CAL) > 0) {
+		 		$('#puntosCAL').text('100');
+			} else {
+				$('#puntosCAL').text('');
+			}
+		} else {
+			if(CAL != '' && parseInt(CAL) > 0) {
+		 		$('#puntosCAL').text('300');
+			} else {
+				$('#puntosCAL').text('');
+			}
+		}
 	}
 }
 function goToMenu(id){
