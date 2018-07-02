@@ -280,33 +280,19 @@
         var pais = <?php echo "'".$pais."'"?>;
         if (pais == '') {
             $(document).ready(function() {
-                $('#tableCanales').DataTable( {
-                    searching : false,
-                    dom: 'Bfrtip',
-                    paging: false,
-                    language:{
-                        "emptyTable":     "Aucune donnée disponible",
-                        "info" : ''
-                    },
-                    buttons: [
-                        {
-                            extend:'excel',
-                            text: 'Exportar a Excel'
-                        }
-                    ]
-                });
                 $('#tableCotizacion').DataTable( {
                     searching : false,
                     dom: 'Bfrtip',
                     paging: false,
                     language:{
-                        "emptyTable":     "Aucune donnée disponible",
+                        "emptyTable":     "No se encontraron registros",
                         "info" : ''
                     },
                     buttons: [
                         {
                             extend:'excel',
-                            text: 'Exportar a Excel'
+                            text: 'Exportar a Excel',
+                            // color: '#2AD2C9'
                         }
                     ]
                 });
