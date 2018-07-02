@@ -292,7 +292,7 @@
                         {
                             extend:'excel',
                             text: 'Exportar a Excel',
-                            // color: '#2AD2C9'
+                            className: 'js-excel'
                         }
                     ]
                 });
