@@ -157,7 +157,7 @@
                             </div>
                         </div>
                         <div class="col-xs-12">
-                            <button type="button" name="boton" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect js-button" onclick="agregarDatos(); registrar();">Registrar Oportunidad</button>
+                            <button id="ingresar" type="button" name="boton" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect js-button" onclick="agregarDatos(); registrar();">Registrar Oportunidad</button>
                         </div>
                     </div>
                 </div>
@@ -222,11 +222,6 @@
                     </div>
                 </div>
             </section>
-            <!-- <section id="section-champion" class="js-section js-section--menu js-opacity-done">
-                <div class="js-container">
-                    <h2 class="js-title">Escr&iacute;benos</h2>
-                </div>
-            </section> -->
         </main>
     </div>
     <!--MODAL-->
@@ -253,6 +248,8 @@
         <input id="archivo" type="file" name="archivo" />
         <input type="hidden" name="MAX_FILE_SIZE" value="2000000"/>
     </form>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
 	<script src="<?php echo RUTA_JS?>jquery-3.2.1.min.js?v=<?php echo time();?>"></script>
 	<script src="<?php echo RUTA_JS?>jquery-1.11.2.min.js?v=<?php echo time();?>"></script>
 	<script src="<?php echo RUTA_PLUGINS?>bootstrap/js/bootstrap.min.js?v=<?php echo time();?>"></script>

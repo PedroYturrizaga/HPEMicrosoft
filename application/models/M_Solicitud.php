@@ -203,5 +203,4 @@ class M_Solicitud extends CI_Model {
 		$result = $this->db->query($sql);
 		return $result->result();
 	}
-
 }

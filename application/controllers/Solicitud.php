@@ -54,7 +54,6 @@ class Solicitud extends CI_Controller {
 		$data['msj']   = null;
 		try {
 			$this->session->unset_userdata('id_cotizacion');
-			// print_r("cotizacion en sesion:::: ".$this->session->userdata('id_cotizacion') );
 			$idVendedor     = $this->session->userdata('Id_user');
 			$nombreVendedor = ucwords(strtolower($this->input->post('Nombre')));
 			$email			= $this->input->post('email');
