@@ -91,6 +91,7 @@
                                         <th>Nombre vendedor</th>
                                         <th>Pais</th>
                                         <th>Fecha</th>
+                                        <th style="display:none">Productos</th>
                                         <th class="text-center">Ver m&aacute;s</th>
                                     </tr>
                                 </thead>

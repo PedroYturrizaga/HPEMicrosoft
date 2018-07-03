@@ -142,7 +142,8 @@ class M_Solicitud extends CI_Model {
 					       no_vendedor,
 					       canal,
 					       pais,
-					       date_format(fecha, '%d/%m/%Y') AS fecha
+					       date_format(fecha, '%d/%m/%Y') AS fecha,
+					       documento
 					  FROM tb_cotizacion
 					 WHERE tipo_documento = 1
 				  ORDER BY id_cotizacion DESC
@@ -192,6 +193,13 @@ class M_Solicitud extends CI_Model {
 		$sql    = "SELECT documento 
 					 FROM tb_cotizacion
 					WHERE id_cotizacion = ".$id."";
+		$result = $this->db->query($sql);
+		return $result->result();
+	}
+	function getProductosById($id){
+		$sql    = "SELECT * 
+					 FROM tb_producto
+					WHERE _id_cotizacion = ".$id."";
 		$result = $this->db->query($sql);
 		return $result->result();
 	}

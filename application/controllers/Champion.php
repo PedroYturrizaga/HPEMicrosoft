@@ -26,6 +26,7 @@ class Champion extends CI_Controller{
             $datos2 = $this->M_Solicitud->getLastCotizaciones($pais, $idUser);
             $html   = ' ';
             $html2  = ' ';
+            $producto= '';
             foreach ($datos as $key) {
                 $importe = round($key->importe * 100) / 100;
                 $html .= '<tr>
@@ -36,11 +37,22 @@ class Champion extends CI_Controller{
                           </tr>';
             }
             foreach ($datos2 as $key) {
+                $productos = $this->M_Solicitud->getProductosById($key->id_cotizacion);
+                $producto  = '';
+                foreach ($productos as $value) {
+                    if ($value->cantidad != 0){
+                        $producto .= $value->cantidad.' '.$value->no_producto.', ';
+                    };
+                }
+                $producto =substr($producto, 0, -2);
+                $producto .= '.';
+
                 $html2 .= '<tr>
                                <td>'.$key->canal.'</td>
                                <td>'.$key->no_vendedor.'</td>
                                <td>'.$key->pais.'</td>
                                <td>'.$key->fecha.'</td>
+                               <td style="display:none">'.$producto.'</td>
                                <td class="text-center">
                                    <button class="mdl-button mdl-js-button mdl-button--icon" onclick="getDetails('.$key->id_cotizacion.');">
                                        <i class="mdi mdi-visibility"> </i>
@@ -48,6 +60,7 @@ class Champion extends CI_Controller{
                                    <button class="mdl-button mdl-js-button mdl-button--icon" onclick="openModalDocuemento('.$key->id_cotizacion.')">
                                        <i class="mdi mdi-collections"> </i>
                                    </button>
+                                   <a style="display:none" href="'.RUTA_ARCHIVOS.$key->documento.'">'.RUTA_ARCHIVOS.$key->documento.'</a>
                                </td>
                              </tr>';
             }
