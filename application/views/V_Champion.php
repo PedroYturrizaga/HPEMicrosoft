@@ -83,7 +83,7 @@
                     </div>
                     <div class="js-table">
                     	<h2>&Uacute;ltimas 10 cotizaciones </h2>
-                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect button-pdf" id="excel1">Descargar Excel</button>
+                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect js-excel" id="excel1">Descargar Excel</button>
                         <div class="table-responsive">
                             <table class="table" id="tableCotizacion">
                                 <thead>
