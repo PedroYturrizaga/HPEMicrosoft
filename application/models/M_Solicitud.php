@@ -203,4 +203,17 @@ class M_Solicitud extends CI_Model {
 		$result = $this->db->query($sql);
 		return $result->result();
 	}
+	function getDatosReporte(){
+		$sql = "SELECT id_cotizacion,
+					   email,
+				       no_vendedor,
+				       canal,
+				       pais,
+				       date_format(fecha, '%d/%m/%Y') AS fecha,
+				       documento
+				  FROM tb_cotizacion c
+			  ORDER BY fecha ASC";
+		$result = $this->db->query($sql);
+		return $result->result();
+	}
 }

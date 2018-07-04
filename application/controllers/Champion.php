@@ -24,8 +24,10 @@ class Champion extends CI_Controller{
             $data['nombre'] = $nombre[0]->no_vendedor;
             $datos  = $this->M_Solicitud->getCanalMasUsado($pais, $idUser);
             $datos2 = $this->M_Solicitud->getLastCotizaciones($pais, $idUser);
+            $datos3 = $this->M_Solicitud->getDatosReporte();
             $html   = ' ';
             $html2  = ' ';
+            $html3  = ' '; 
             $producto= '';
             foreach ($datos as $key) {
                 $importe = round($key->importe * 100) / 100;
@@ -37,6 +39,22 @@ class Champion extends CI_Controller{
                           </tr>';
             }
             foreach ($datos2 as $key) {
+                $html2 .= '<tr>
+                               <td>'.$key->canal.'</td>
+                               <td>'.$key->no_vendedor.'</td>
+                               <td>'.$key->pais.'</td>
+                               <td>'.$key->fecha.'</td>
+                               <td class="text-center">
+                                   <button class="mdl-button mdl-js-button mdl-button--icon" onclick="getDetails('.$key->id_cotizacion.');">
+                                       <i class="mdi mdi-visibility"> </i>
+                                   </button>
+                                   <button class="mdl-button mdl-js-button mdl-button--icon" onclick="openModalDocuemento('.$key->id_cotizacion.')">
+                                       <i class="mdi mdi-collections"> </i>
+                                   </button>
+                               </td>
+                             </tr>';
+            }
+            foreach ($datos3 as $key) {
                 $productos = $this->M_Solicitud->getProductosById($key->id_cotizacion);
                 $producto  = '';
                 foreach ($productos as $value) {
@@ -47,25 +65,19 @@ class Champion extends CI_Controller{
                 $producto =substr($producto, 0, -2);
                 $producto .= '.';
 
-                $html2 .= '<tr>
+                $html3 .= '<tr>
                                <td>'.$key->canal.'</td>
                                <td>'.$key->no_vendedor.'</td>
+                               <td>'.$key->email.'</td>
                                <td>'.$key->pais.'</td>
                                <td>'.$key->fecha.'</td>
-                               <td style="display:none">'.$producto.'</td>
-                               <td class="text-center">
-                                   <button class="mdl-button mdl-js-button mdl-button--icon" onclick="getDetails('.$key->id_cotizacion.');">
-                                       <i class="mdi mdi-visibility"> </i>
-                                   </button>
-                                   <button class="mdl-button mdl-js-button mdl-button--icon" onclick="openModalDocuemento('.$key->id_cotizacion.')">
-                                       <i class="mdi mdi-collections"> </i>
-                                   </button>
-                                   <a style="display:none" href="'.RUTA_ARCHIVOS.$key->documento.'">'.RUTA_ARCHIVOS.$key->documento.'</a>
-                               </td>
+                               <td>'.$producto.'</td>
+                               <td>'.RUTA_ARCHIVOS.$key->documento.'</td>
                              </tr>';
             }
             $data['bodyCanales'] = $html;
             $data['bodyCotizaciones'] = $html2;
+            $data['bodyReporte'] = $html3;
             $data['pais'] = $pais;
             $this->load->view('v_champion', $data);
         }

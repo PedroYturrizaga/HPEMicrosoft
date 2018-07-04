@@ -83,6 +83,7 @@
                     </div>
                     <div class="js-table">
                     	<h2>&Uacute;ltimas 10 cotizaciones </h2>
+                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect button-pdf" id="excel1">Descargar Excel</button>
                         <div class="table-responsive">
                             <table class="table" id="tableCotizacion">
                                 <thead>
@@ -91,7 +92,6 @@
                                         <th>Nombre vendedor</th>
                                         <th>Pais</th>
                                         <th>Fecha</th>
-                                        <th style="display:none">Productos</th>
                                         <th class="text-center">Ver m&aacute;s</th>
                                     </tr>
                                 </thead>
@@ -101,6 +101,28 @@
                             </table>
                         </div>
                     </div>
+                    <div id="reporte" class="js-table" style="display:none">
+                        <h2>Oportunidades Registradas </h2>
+                        <div class="table-responsive">
+                            <table class="table" id="tbReporte">
+                                <thead>
+                                    <tr>
+                                        <th>Nombre canal</th>
+                                        <th>Nombre vendedor</th>
+                                        <th>Email vendedor</th>
+                                        <th>Pais</th>
+                                        <th>Fecha</th>
+                                        <th>Productos</th>
+                                        <th>Documento</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="bodyReporte">
+                                    <?php echo $bodyReporte?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div id="reporte1"></div>
                 </div>
             </div>
         </div>
@@ -267,6 +289,7 @@
     <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.print.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.5/jszip.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+
     <script type="text/javascript">
     	if( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ) {
         	$('select').selectpicker('mobile');
@@ -280,20 +303,27 @@
         google.charts.setOnLoadCallback(drawChart);
         var pais = <?php echo "'".$pais."'"?>;
         if (pais == '') {
+            $('#excel1').click(function(){
+                $('#tbReporte_wrapper').find('button').trigger("click");
+                console.log('entra');
+            });
             $(document).ready(function() {
-                $('#tableCotizacion').DataTable( {
+                $('#tbReporte').DataTable( {
                     searching : false,
                     dom: 'Bfrtip',
                     paging: false,
+                    order:[5,'desc'],
                     language:{
                         "emptyTable":     "No se encontraron registros",
                         "info" : ''
                     },
+                    lengthMenu: [
+                        [ 10 ]
+                    ],
                     buttons: [
                         {
                             extend:'excel',
                             text: 'Exportar a Excel',
-                            className: 'js-excel'
                         }
                     ]
                 });
