@@ -210,7 +210,8 @@ class M_Solicitud extends CI_Model {
 				       canal,
 				       pais,
 				       date_format(fecha, '%d/%m/%Y') AS fecha,
-				       documento
+				       documento, 
+				       tipo_documento
 				  FROM tb_cotizacion c
 			  ORDER BY fecha ASC";
 		$result = $this->db->query($sql);

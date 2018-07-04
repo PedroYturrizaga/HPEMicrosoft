@@ -111,6 +111,7 @@
                                         <th>Nombre vendedor</th>
                                         <th>Email vendedor</th>
                                         <th>Pais</th>
+                                        <th>Tipo Documento</th>
                                         <th>Fecha</th>
                                         <th>Productos</th>
                                         <th>Documento</th>
@@ -312,7 +313,7 @@
                     searching : false,
                     dom: 'Bfrtip',
                     paging: false,
-                    order:[5,'desc'],
+                    order:[[5, 'asc'], [3,'asc'], [4, 'asc']],
                     language:{
                         "emptyTable":     "No se encontraron registros",
                         "info" : ''
