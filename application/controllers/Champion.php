@@ -43,6 +43,7 @@ class Champion extends CI_Controller{
                                <td>'.$key->canal.'</td>
                                <td>'.$key->no_vendedor.'</td>
                                <td>'.$key->pais.'</td>
+                               <td>'.(($key->tipo_documento == 1) ? 'Cotización' : 'Facturazión' ).'</td>
                                <td>'.$key->fecha.'</td>
                                <td class="text-center">
                                    <button class="mdl-button mdl-js-button mdl-button--icon" onclick="getDetails('.$key->id_cotizacion.');">

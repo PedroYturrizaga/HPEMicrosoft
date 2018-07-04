@@ -143,10 +143,11 @@ class M_Solicitud extends CI_Model {
 					       canal,
 					       pais,
 					       date_format(fecha, '%d/%m/%Y') AS fecha,
-					       documento
+					       fecha as fecha2,
+					       documento,
+					       tipo_documento
 					  FROM tb_cotizacion
-					 WHERE tipo_documento = 1
-				  ORDER BY id_cotizacion DESC
+				  ORDER BY fecha2 DESC
 					 LIMIT 10";
 		} else {
 			$sql = "SELECT id_cotizacion,
@@ -210,10 +211,11 @@ class M_Solicitud extends CI_Model {
 				       canal,
 				       pais,
 				       date_format(fecha, '%d/%m/%Y') AS fecha,
-				       documento, 
+				       fecha as fecha2,
+				       documento,
 				       tipo_documento
-				  FROM tb_cotizacion c
-			  ORDER BY fecha ASC";
+				  FROM tb_cotizacion
+			  ORDER BY fecha2 DESC";
 		$result = $this->db->query($sql);
 		return $result->result();
 	}

@@ -82,8 +82,7 @@
                         </div>
                     </div>
                     <div class="js-table">
-                    	<h2>&Uacute;ltimas 10 cotizaciones </h2>
-                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect js-excel" id="excel1">Descargar Excel</button>
+                    	<h2>&Uacute;ltimas 10 registros </h2>
                         <div class="table-responsive">
                             <table class="table" id="tableCotizacion">
                                 <thead>
@@ -91,6 +90,7 @@
                                         <th>Nombre canal</th>
                                         <th>Nombre vendedor</th>
                                         <th>Pais</th>
+                                        <th>Tipo Doc.</th>
                                         <th>Fecha</th>
                                         <th class="text-center">Ver m&aacute;s</th>
                                     </tr>
@@ -99,6 +99,12 @@
                                     <?php echo $bodyCotizaciones?>
                                 </tbody>
                             </table>
+                        </div>
+                    </div>
+                    <div class="mdl-card">
+                        <div class="mdl-card__actions">
+                            <h5>Reporte General de Registros</h5>
+                            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect js-excel" id="excel1">Descargar Excel</button>
                         </div>
                     </div>
                     <div id="reporte" class="js-table" style="display:none">
@@ -313,7 +319,7 @@
                     searching : false,
                     dom: 'Bfrtip',
                     paging: false,
-                    order:[[5, 'asc'], [3,'asc'], [4, 'asc']],
+                    order:[[5, 'desc'], [3,'desc'], [4, 'asc']],
                     language:{
                         "emptyTable":     "No se encontraron registros",
                         "info" : ''
