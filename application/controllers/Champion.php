@@ -72,7 +72,7 @@ class Champion extends CI_Controller{
                                <td>'.$key->email.'</td>
                                <td>'.$key->pais.'</td>
                                <td>'.(($key->tipo_documento == 1) ? 'Cotización' : 'Facturazión' ).'</td>
-                               <td>'.$key->fecha.'</td>
+                               <td>'.$key->fecha2.'</td>
                                <td>'.$producto.'</td>
                                <td>'.RUTA_ARCHIVOS.$key->documento.'</td>
                              </tr>';
