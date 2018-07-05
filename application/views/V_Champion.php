@@ -82,7 +82,7 @@
                         </div>
                     </div>
                     <div class="js-table">
-                    	<h2>&Uacute;ltimas 10 registros </h2>
+                    	<h2>&Uacute;ltimos 10 registros </h2>
                         <div class="table-responsive">
                             <table class="table" id="tableCotizacion">
                                 <thead>
