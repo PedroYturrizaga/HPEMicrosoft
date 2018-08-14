@@ -116,6 +116,7 @@
                                         <th>Nombre canal</th>
                                         <th>Nombre vendedor</th>
                                         <th>Email vendedor</th>
+                                        <th>Mayorista</th>
                                         <th>Pais</th>
                                         <th>Tipo Documento</th>
                                         <th>Fecha</th>
@@ -312,7 +313,6 @@
         if (pais == '') {
             $('#excel1').click(function(){
                 $('#tbReporte_wrapper').find('button').trigger("click");
-                console.log('entra');
             });
             $(document).ready(function() {
                 $('#tbReporte').DataTable( {

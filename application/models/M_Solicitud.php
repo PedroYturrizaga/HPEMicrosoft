@@ -209,6 +209,7 @@ class M_Solicitud extends CI_Model {
 					   email,
 				       no_vendedor,
 				       canal,
+                       mayorista,
 				       pais,
 				       date_format(fecha, '%d/%m/%Y') AS fecha,
 				       fecha as fecha2,

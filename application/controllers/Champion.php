@@ -70,6 +70,7 @@ class Champion extends CI_Controller{
                                <td>'.$key->canal.'</td>
                                <td>'.$key->no_vendedor.'</td>
                                <td>'.$key->email.'</td>
+                               <td>'.$key->mayorista.'</td>
                                <td>'.$key->pais.'</td>
                                <td>'.(($key->tipo_documento == 1) ? 'Cotización' : 'Facturazión' ).'</td>
                                <td>'.$key->fecha2.'</td>
